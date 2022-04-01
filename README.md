@@ -15,21 +15,26 @@ När du har valt en task följ denna guide!
 2. Skapa en ny branch med task id; Kommando: git checkout -b {branchName} Ex. git checkout -b Task-34 
 [Förtydligande av branchName =>(Task-{taskens id-nummer}) Ex. Task-34]
 
-3. Sen löser man tasken.
+3. Sen löser man tasken och sparar lokalt.
 
-4a. När tasken är klar så pushar man sina sista ändringar i branchen.
-OBS! När man pushar för första gången så skriver man ex. git push -u origin {branchName}
+4. Skriv in följande kommandon: 
+git add .
+git commit -m"beskrivning av arbete"
+git push -u origin {branchName} ( OBS! Detta görs bara första gången man pushar sin branch till github)
+git push(Annars körs detta)
 
-4b. Annars skriver man Kommando: git push 
-
-5. Pull request via Github.com
+5. OBS! Endast när man helt klar med tasken; Pull request görs via Github.com på den arbetade branchen.
 
 6. Skriv i discord att du är klar med din task och gjort en pull request
 
-7. Annan utvecklare kollar genom pull-requesten och godkänner och gillar posten på discord (DoD).
+7. Annan utvecklare kollar genom pull-requesten och gör följade:
+Godkänner enligt DoD på Task.
+OBS! Ifall icke-godkänd Task => Godkännaren ger feedback.
+Ifall feedback är otillräcklig så kontaktar man godkännaren.
+Tar bort branchen.
+Gillar discordinlägget (DoD).
 
 8. OBS! När pull-request är godkänd -> Taskägaren sätter tasken som klar på Azure boards. 
 
 9. Branchskaparen tar bort branchen lokalt. Kommando: git bransch -d {branchName}; Ex. git branch - d Task-34
 
-10. Branchskaparen tar bort branchen remote. Kommando: git push origin --delete {branchName} Ex. git push origin --delete Task-34
