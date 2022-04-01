@@ -24,6 +24,10 @@ git push -u origin {branchName} ( OBS! Detta görs bara första gången man push
 git push(Annars körs detta)
 
 5. OBS! Endast när man helt klar med tasken; Pull request görs via Github.com på den arbetade branchen.
+Klicka på bransches - välj branchen som du har jobbat med
+Klicka på Pull-request
+OBS!!! Ändra Base: från Main till development i vilken bransh man pullar till.
+Klicka på p
 
 6. Skriv i discord att du är klar med din task och gjort en pull request
 
