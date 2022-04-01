@@ -44,4 +44,4 @@ Gillar discordinlägget (DoD).
 
 10. Have a nice day and a pleasant stay :)(hello sir)
 
-
+Good morning, good evening, goodnight!
