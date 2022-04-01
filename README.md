@@ -42,6 +42,6 @@ Gillar discordinlägget (DoD).
 
 9. Branchskaparen tar bort branchen lokalt. Kommando: git bransch -d {branchName}; Ex. git branch - d Task-34
 
-10. Have a nice day and a pleasant stay :)(willthethrill)
+10. Have a nice day and a pleasant stay :)(adios amigo)
 
 
