@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\wills\\source\\repos\\K-rra-Games-Corner\\KärraGamesCorner\\KärraGamesCorner\\KärraGamesCorner.csproj": {}
+    "C:\\Users\\wills\\Source\\Repos\\K-rra-Games-Corner\\KärraGamesCorner\\KärraGamesCorner\\KärraGamesCorner.csproj": {}
   },
   "projects": {
-    "C:\\Users\\wills\\source\\repos\\K-rra-Games-Corner\\KärraGamesCorner\\KärraGamesCorner\\KärraGamesCorner.csproj": {
+    "C:\\Users\\wills\\Source\\Repos\\K-rra-Games-Corner\\KärraGamesCorner\\KärraGamesCorner\\KärraGamesCorner.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wills\\source\\repos\\K-rra-Games-Corner\\KärraGamesCorner\\KärraGamesCorner\\KärraGamesCorner.csproj",
+        "projectUniqueName": "C:\\Users\\wills\\Source\\Repos\\K-rra-Games-Corner\\KärraGamesCorner\\KärraGamesCorner\\KärraGamesCorner.csproj",
         "projectName": "KärraGamesCorner",
-        "projectPath": "C:\\Users\\wills\\source\\repos\\K-rra-Games-Corner\\KärraGamesCorner\\KärraGamesCorner\\KärraGamesCorner.csproj",
+        "projectPath": "C:\\Users\\wills\\Source\\Repos\\K-rra-Games-Corner\\KärraGamesCorner\\KärraGamesCorner\\KärraGamesCorner.csproj",
         "packagesPath": "C:\\Users\\wills\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wills\\source\\repos\\K-rra-Games-Corner\\KärraGamesCorner\\KärraGamesCorner\\obj\\",
+        "outputPath": "C:\\Users\\wills\\Source\\Repos\\K-rra-Games-Corner\\KärraGamesCorner\\KärraGamesCorner\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

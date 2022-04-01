@@ -26,8 +26,8 @@ git push(Annars körs detta)
 5. OBS! Endast när man helt klar med tasken; Pull request görs via Github.com på den arbetade branchen.
 Klicka på bransches - välj branchen som du har jobbat med
 Klicka på Pull-request
-OBS!!! Ändra Base: från Main till development i vilken bransh man pullar till.
-Klicka på p
+OBS!!! Ändra Base: från Main till development i vilken branch man pullar till.
+Klicka på create pull request.
 
 6. Skriv i discord att du är klar med din task och gjort en pull request
 
@@ -41,4 +41,7 @@ Gillar discordinlägget (DoD).
 8. OBS! När pull-request är godkänd -> Taskägaren sätter tasken som klar på Azure boards. 
 
 9. Branchskaparen tar bort branchen lokalt. Kommando: git bransch -d {branchName}; Ex. git branch - d Task-34
+
+10. Have a nice day and a pleasant stay :)(willthethrill)
+
 
