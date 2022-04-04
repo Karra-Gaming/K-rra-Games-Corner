@@ -41,4 +41,8 @@ När du har valt en task följ denna guide!
 
 8. OBS! När pull-request är godkänd -> Taskägaren sätter tasken som klar på Azure boards.
 
-9. Branchskaparen tar bort branchen lokalt. Kommando: git branch -d {branchName}; Ex. git branch -d Task-34
+
+9. Branchskaparen tar bort branchen lokalt. Använd följande kommandon: <br>
+git checkout development <br>
+git branch -d {branchName}; Ex. git branch -d Task-34
+
