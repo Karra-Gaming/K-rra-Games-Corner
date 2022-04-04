@@ -6,7 +6,7 @@
 
 * Clone repo
 
-##Sen utgår vi från nedan.
+## Sen utgår vi från nedan.
 
 När du har valt en task följ denna guide!
 
