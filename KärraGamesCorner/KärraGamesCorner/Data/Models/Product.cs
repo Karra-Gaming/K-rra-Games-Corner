@@ -17,6 +17,9 @@
         public string ImageUrl { get; set; } 
 
         public string Producer { get; set; }
+
+        //måste ha för att kunna skapa junction table för cart
+        public List<User> UserCart { get; set; }
         public Product(int id, string name, string description, decimal price, Genre? genre, int genreId, string imageUrl, string producer)
         {
             Id = id;
@@ -27,6 +30,10 @@
             GenreId = genreId;
             ImageUrl = imageUrl;
             Producer = producer;
+
+            UserCart = new List<User>();
+
+
         }
 
 
