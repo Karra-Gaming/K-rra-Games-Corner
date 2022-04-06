@@ -8,11 +8,11 @@
     </div>
 
     <main>
-        <div class="top-row px-4 auth">
-            <LoginDisplay />
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
-
+        <AuthorizeView>
+    <Authorized>
+        <h5>Welcome,Logged in as: <a href="Identity/Account/Manage">@context.User.Identity?.Name!</a></h5>
+    </Authorized>
+</AuthorizeView>
         <article class="content px-4">
             @Body
         </article>
