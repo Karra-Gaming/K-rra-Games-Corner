@@ -12,7 +12,6 @@
         public decimal Price { get; set; }
 
         public Genre? Genre { get; set; }
-        public int GenreId { get; set; }
 
         public string ImageUrl { get; set; } 
 
@@ -20,14 +19,13 @@
 
         //måste ha för att kunna skapa junction table för cart
         public List<ApplicationUser> UserCart { get; set; }
-        public Product(int id, string name, string description, decimal price, Genre? genre, int genreId, string imageUrl, string producer)
+        public Product(int id, string name, string description, decimal price, Genre? genre, string imageUrl, string producer)
         {
             Id = id;
             Name = name;
             Description = description;
             Price = price;
             Genre = genre;
-            GenreId = genreId;
             ImageUrl = imageUrl;
             Producer = producer;
 
