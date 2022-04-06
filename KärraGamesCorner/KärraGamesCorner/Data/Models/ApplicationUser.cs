@@ -6,7 +6,6 @@ namespace KärraGamesCorner.Data.Models
     {
         
         public string  ImageUrl { get; set; } = string.Empty;
-        public bool IsAdmin { get; set; }
         public List<Product> Cart { get; set; }
         public List<Token> PurchasedTokens { get; set; }
 
