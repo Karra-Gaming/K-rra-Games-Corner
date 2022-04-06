@@ -34,7 +34,7 @@ namespace KärraGamesCorner.Migrations
 
                     b.HasIndex("UserCartId");
 
-                    b.ToTable("ApplicationUserProduct");
+                    b.ToTable("ApplicationUserProduct", (string)null);
                 });
 
             modelBuilder.Entity("KärraGamesCorner.Data.Models.ApplicationUser", b =>
@@ -119,7 +119,7 @@ namespace KärraGamesCorner.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genre");
+                    b.ToTable("Genre", (string)null);
                 });
 
             modelBuilder.Entity("KärraGamesCorner.Data.Models.Product", b =>
@@ -156,7 +156,7 @@ namespace KärraGamesCorner.Migrations
 
                     b.HasIndex("GenreId");
 
-                    b.ToTable("Product");
+                    b.ToTable("Product", (string)null);
                 });
 
             modelBuilder.Entity("KärraGamesCorner.Data.Models.Token", b =>
@@ -182,7 +182,7 @@ namespace KärraGamesCorner.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Token");
+                    b.ToTable("Token", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

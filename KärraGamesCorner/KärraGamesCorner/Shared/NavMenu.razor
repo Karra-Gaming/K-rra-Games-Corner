@@ -24,6 +24,8 @@
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
             </NavLink>
         </div>
+    
+
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" @onclick="()=>expandSubMenuAccount= !expandSubMenuAccount">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Account
@@ -31,18 +33,18 @@
             
         @if (expandSubMenuAccount)
         {
+      <AuthorizeView>
+                <Authorized>
 
-             <NavLink class="expand-down" href="Log in">
-                <span class="oi oi-file" aria-hidden="true"></span> Log in
-            </NavLink>
-            <NavLink class="expand-down" href="Log out">
-                <span class="oi oi-file" aria-hidden="true"></span> Log out
-            </NavLink>
-            <NavLink class="expand-down" href="Register">
-                <span class="oi oi-file" aria-hidden="true"></span> Register
-            </NavLink>
-            
-            
+                    <form method="post" action="Identity/Account/LogOut">
+                        <button type="submit" class="nav-link btn btn-link">Log out</button>
+                    </form>
+                </Authorized>
+                <NotAuthorized>
+                    <a href="Identity/Account/Register">Register</a>
+                    <a href="Identity/Account/Login">Log in</a>
+                </NotAuthorized>
+        </AuthorizeView>  
         }
         </div>
         <div class="nav-item px-3">
