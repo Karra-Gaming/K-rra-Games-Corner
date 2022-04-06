@@ -1,36 +1,45 @@
-﻿namespace KärraGamesCorner.Data.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace KärraGamesCorner.Data.Models
 {
     public class Product
     {
         
 
         public int Id { get; set; }
+
         public string Name { get; set; } 
 
         public string Description { get; set; } 
-
+        [Column(TypeName = "decimal(8,2)")]
         public decimal Price { get; set; }
 
         public Genre? Genre { get; set; }
-        public int GenreId { get; set; }
 
         public string ImageUrl { get; set; } 
 
         public string Producer { get; set; }
 
+        public IEnumerable<Token> Tokens { get; set; }
+
         //måste ha för att kunna skapa junction table för cart
-        public List<ApplicationUser> UserCart { get; set; }
-        public Product(int id, string name, string description, decimal price, Genre? genre, int genreId, string imageUrl, string producer)
+        public IEnumerable<ApplicationUser> UserCart { get; set; }
+
+        public Product()
+        {
+            
+        }
+        public Product(int id, string name, string description, decimal price, Genre? genre, string imageUrl, string producer)
         {
             Id = id;
             Name = name;
             Description = description;
             Price = price;
             Genre = genre;
-            GenreId = genreId;
             ImageUrl = imageUrl;
             Producer = producer;
-
+            // Lägg if-sats här för att hämta befintlig lista om den finns.
+            Tokens = new List<Token>();
             UserCart = new List<ApplicationUser>();
 
 
