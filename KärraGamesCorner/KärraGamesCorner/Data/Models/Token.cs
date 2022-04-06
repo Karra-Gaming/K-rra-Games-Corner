@@ -7,13 +7,13 @@
         public Guid GameToken  { get; set; }
 
         //varje token måste ha en user
-        public User? User { get; set; }
+        public ApplicationUser? ApplicationUser { get; set; }
 
-        public Token(int id, User user)
+        public Token(int id, ApplicationUser applicationUser)
         {
             Id = id;
             GameToken = Guid.NewGuid(); 
-            User = user;
+            ApplicationUser = applicationUser;
         }
 
 
