@@ -25,26 +25,44 @@
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" @onclick="()=>expandSubMenu= !expandSubMenu">
+            <NavLink class="nav-link" href="" @onclick="()=>expandSubMenuAccount= !expandSubMenuAccount">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Account
             </NavLink>
             
-        @if (expandSubMenu)
+        @if (expandSubMenuAccount)
         {
 
-             <NavLink class="expand-down" href="LoginDisplay" asp-page="/Account/Login">
+             <NavLink class="expand-down" href="Log in">
                 <span class="oi oi-file" aria-hidden="true"></span> Log in
             </NavLink>
-            <NavLink class="expand-down" href="fetchdata">
+            <NavLink class="expand-down" href="Log out">
                 <span class="oi oi-file" aria-hidden="true"></span> Log out
             </NavLink>
-            <NavLink class="expand-down" href="fetchdata">
+            <NavLink class="expand-down" href="Register">
                 <span class="oi oi-file" aria-hidden="true"></span> Register
             </NavLink>
             
             
         }
         </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" @onclick="()=>expandSubMenuContact= !expandSubMenuContact">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Contact/About
+            </NavLink>
+            
+        @if (expandSubMenuContact)
+        {
+
+             <NavLink class="expand-down" href="About us">
+                <span class="oi oi-file" aria-hidden="true"></span> About us
+            </NavLink>
+            <NavLink class="expand-down" href="Contact us">
+                <span class="oi oi-file" aria-hidden="true"></span> Contact us
+            </NavLink>
+  
+        }
+        </div>
+
 
 
 
@@ -54,7 +72,8 @@
 @code {
     private bool collapseNavMenu = true;
 
-    private bool expandSubMenu;//add
+    private bool expandSubMenuAccount;
+    private bool expandSubMenuContact;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
