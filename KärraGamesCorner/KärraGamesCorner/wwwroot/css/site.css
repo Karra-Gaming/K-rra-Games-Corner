@@ -69,3 +69,32 @@ a, .btn-link {
 
 
     }
+
+.c-info {
+    display:flex; 
+    justify-content:space-around;
+    flex-direction:row;
+
+   align-content:center;
+}
+
+.card-img-top{
+    height:25vw;
+   object-fit:cover;
+}
+
+
+.card-deck-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card-deck-wrapper .card {
+  margin:5px;
+
+}
+
+.price {
+   margin:10px 0px;
+}
+
