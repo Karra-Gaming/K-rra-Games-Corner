@@ -102,3 +102,14 @@ a {
    margin:10px 0px;
 }
 
+footer {
+    color:black;
+   justify-content:center;
+    bottom: 0;
+}
+.copyright{
+    text-align:center;
+}
+.header {
+    text-decoration: underline;
+}
