@@ -10,6 +10,7 @@ namespace KärraGamesCorner.Data
         public DbSet<ApplicationUser> ApplicationUsers;
         public DbSet<Token> Tokens;
         public DbSet<Genre> Genres;
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

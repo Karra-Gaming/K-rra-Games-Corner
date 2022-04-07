@@ -1,14 +1,14 @@
 ﻿using KärraGamesCorner.Data.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace KärraGamesCorner.Data
+namespace KärraGamesCorner
 {
     public interface IRepository<T,U> where T : IEntity<U> where U : struct
     {
         Task<bool> CreateAsync(T type);
-        Task<bool> DeleteAsync(U id);
-        Task UpdateAsync();
+        Task<bool> DeleteAsync(T type);
+        Task UpdateOrCreateAsync(T type);
         Task<IEnumerable<T>> GetAllAsync();
-        Task<T> GetAsync(Guid guid);
+        Task<T> GetAsync(U id);
     }
 }

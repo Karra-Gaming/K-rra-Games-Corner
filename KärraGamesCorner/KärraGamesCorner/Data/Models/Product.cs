@@ -27,6 +27,7 @@ namespace KärraGamesCorner.Data.Models
         {
             
         }
+
         public Product(int id, string name, string description, decimal price, Genre? genre, string imageUrl, string producer)
         {
             Id = id;
