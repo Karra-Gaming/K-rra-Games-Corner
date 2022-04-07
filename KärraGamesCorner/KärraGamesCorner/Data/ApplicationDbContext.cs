@@ -1,4 +1,6 @@
-﻿using KärraGamesCorner.Data.Models;
+﻿using System.Net;
+using System.Reflection;
+using KärraGamesCorner.Data.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,12 +18,16 @@ namespace KärraGamesCorner.Data
         {
         }
 
-        //protected override void OnModelCreating(ModelBuilder builder)
-        //{
-        //    builder.Entity<ApplicationUser>(u =>
-        //    {
-        //        u.HasMany<Product>().WithMany <ApplicationUser>()
-        //    });
-        //}
+        protected override async Task OnModelCreating(ModelBuilder modelBuilder)
+        {
+            string fileName = "Resources/Produkter.Json";
+
+
+            modelBuilder
+                .ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly())
+                .Entity<Product>().HasData(
+                    new Product()
+                );
+        }
     }
 }
