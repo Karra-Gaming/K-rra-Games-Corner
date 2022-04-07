@@ -1,5 +1,9 @@
 ﻿@page "/"
 @using KärraGamesCorner.Data.Models
+@using KärraGamesCorner.Data
+@using KärraGamesCorner.Interfaces
+
+@inject IUnitOfWork _unitOfWork
 
 <PageTitle>Home Page</PageTitle>
 
@@ -39,10 +43,9 @@
 
     private IEnumerable<Product> _products;
 
-    protected override Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
     {
-        _products = new List<Product>();
-        return base.OnInitializedAsync();
+        _products = await _unitOfWork.Products.GetAllAsync();
     }
 
 }
