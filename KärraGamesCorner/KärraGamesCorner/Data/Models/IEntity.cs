@@ -1,6 +1,7 @@
 ﻿namespace KärraGamesCorner.Data.Models
 {
-    public class Entity
+    public interface IEntity<T>
     {
+        public T Id { get; set; }
     }
 }

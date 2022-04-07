@@ -2,10 +2,8 @@
 
 namespace KärraGamesCorner.Data.Models
 {
-    public class Product
+    public class Product : IEntity<int>
     {
-        
-
         public int Id { get; set; }
 
         public string Name { get; set; } 
@@ -24,7 +22,7 @@ namespace KärraGamesCorner.Data.Models
 
         //måste ha för att kunna skapa junction table för cart
         public IEnumerable<ApplicationUser> UserCart { get; set; }
-
+        
         public Product()
         {
             
