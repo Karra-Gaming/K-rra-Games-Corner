@@ -2,7 +2,9 @@
 using System.Reflection;
 using KärraGamesCorner.Data.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.CodeAnalysis.VisualBasic.Syntax;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace KärraGamesCorner.Data
 {
@@ -18,16 +20,20 @@ namespace KärraGamesCorner.Data
         {
         }
 
-        protected override async Task OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            string fileName = "Resources/Produkter.Json";
+            //string fileName = "Resources/Produkter.Json";
+            //string readAllText = File.ReadAllText(fileName);
 
+            //Product[] productList = Newtonsoft.Json.JsonConvert.DeserializeObject<Product[]>(readAllText);
+            //var prod = new Product[] { new Product(1, "bla", "bla", 20, new Genre(), "", ""), };
+            //new Product(2, "bla", "bla", 20, new Genre(), "", "");
 
             modelBuilder
                 .ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly())
-                .Entity<Product>().HasData(
-                    new Product()
-                );
+                .Entity<Product>().HasData(prod);
+                    
+            
         }
     }
 }
