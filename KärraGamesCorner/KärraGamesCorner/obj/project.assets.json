@@ -8,24 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\wills\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Niklas\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\wills\\source\\repos\\K-rra-Games-Corner\\KärraGamesCorner\\KärraGamesCorner\\KärraGamesCorner.csproj",
+      "projectUniqueName": "C:\\Users\\Niklas\\source\\repos\\K-rra-Games-Corner\\KärraGamesCorner\\KärraGamesCorner\\KärraGamesCorner.csproj",
       "projectName": "KärraGamesCorner",
-      "projectPath": "C:\\Users\\wills\\source\\repos\\K-rra-Games-Corner\\KärraGamesCorner\\KärraGamesCorner\\KärraGamesCorner.csproj",
-      "packagesPath": "C:\\Users\\wills\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\wills\\source\\repos\\K-rra-Games-Corner\\KärraGamesCorner\\KärraGamesCorner\\obj\\",
+      "projectPath": "C:\\Users\\Niklas\\source\\repos\\K-rra-Games-Corner\\KärraGamesCorner\\KärraGamesCorner\\KärraGamesCorner.csproj",
+      "packagesPath": "C:\\Users\\Niklas\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Niklas\\source\\repos\\K-rra-Games-Corner\\KärraGamesCorner\\KärraGamesCorner\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\wills\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Niklas\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
