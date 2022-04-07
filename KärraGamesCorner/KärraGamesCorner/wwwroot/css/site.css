@@ -78,8 +78,8 @@ a {
     display:flex; 
     justify-content:space-around;
     flex-direction:row;
-
-   align-content:center;
+    align-content:center;
+    
 }
 
 .card-img-top{
@@ -100,5 +100,9 @@ a {
 
 .price {
    margin:10px 0px;
+}
+
+.c-info .btn {
+    margin: auto 0px;
 }
 
