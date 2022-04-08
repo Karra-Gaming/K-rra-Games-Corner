@@ -68,3 +68,22 @@ main {
         padding-right: 1.5rem !important;
     }
 }
+.main > footer {
+    height: 3rem;
+    max-height: 3rem;
+}
+
+.main > .content {
+    height: calc(100vh - 6.5rem);
+    max-height: calc(100vh - 6.5rem);
+    overflow-y: auto;
+}
+
+
+
+
+
+
+
+
+
