@@ -8,7 +8,7 @@ h1:focus {
     outline: none;
 }
 
-a, .btn-link {
+a .btn-link {
     color: #fff;
 }
 
@@ -78,8 +78,8 @@ a {
     display:flex; 
     justify-content:space-around;
     flex-direction:row;
-
-   align-content:center;
+    align-content:center;
+    
 }
 
 .card-img-top{
@@ -113,3 +113,9 @@ footer {
 .header {
     text-decoration: underline;
 }
+
+.c-info .btn {
+    margin: auto 0px;
+}
+
+

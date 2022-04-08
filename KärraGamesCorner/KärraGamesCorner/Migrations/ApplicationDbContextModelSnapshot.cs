@@ -34,7 +34,7 @@ namespace KärraGamesCorner.Migrations
 
                     b.HasIndex("UserCartId");
 
-                    b.ToTable("ApplicationUserProduct", (string)null);
+                    b.ToTable("ApplicationUserProduct");
                 });
 
             modelBuilder.Entity("KärraGamesCorner.Data.Models.ApplicationUser", b =>
@@ -103,6 +103,24 @@ namespace KärraGamesCorner.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "c9146dcb-33dd-486f-a474-89f3350e3968",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "fd096154-eac0-4651-844a-2e7fe21f3565",
+                            Email = "admin@gmail.com",
+                            EmailConfirmed = true,
+                            ImageUrl = "",
+                            LockoutEnabled = false,
+                            NormalizedUserName = "ADMIN@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPNBL+0yDA6PdynS4qw6Eku74nfzjknzsGj0F/1x1nSe855kKFefFc0UwGfJ5tcinQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "032e8cc0-01c0-4da4-a7f3-502eef5978b6",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@gmail.com"
+                        });
                 });
 
             modelBuilder.Entity("KärraGamesCorner.Data.Models.Genre", b =>
@@ -119,7 +137,7 @@ namespace KärraGamesCorner.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genre", (string)null);
+                    b.ToTable("Genre");
                 });
 
             modelBuilder.Entity("KärraGamesCorner.Data.Models.Product", b =>
@@ -156,7 +174,7 @@ namespace KärraGamesCorner.Migrations
 
                     b.HasIndex("GenreId");
 
-                    b.ToTable("Product", (string)null);
+                    b.ToTable("Product");
                 });
 
             modelBuilder.Entity("KärraGamesCorner.Data.Models.Token", b =>
@@ -182,7 +200,7 @@ namespace KärraGamesCorner.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Token", (string)null);
+                    b.ToTable("Token");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -210,6 +228,15 @@ namespace KärraGamesCorner.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "5ff92b11-d124-4993-9c56-7e59caede9a8",
+                            ConcurrencyStamp = "5ff92b11-d124-4993-9c56-7e59caede9a8",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -299,6 +326,13 @@ namespace KärraGamesCorner.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "c9146dcb-33dd-486f-a474-89f3350e3968",
+                            RoleId = "5ff92b11-d124-4993-9c56-7e59caede9a8"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
