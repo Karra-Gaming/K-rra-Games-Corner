@@ -3,61 +3,61 @@
     "Name": "Battlefield 2042",
     "Description": "Battlefield 2042 är en förstapersonsskjutare som återvänder till seriens ikoniska totala krigföring.",
     "Price": 500,
-    "Genre": "FPS",
+    "GenreId": 9,
     "Publisher": "EA DICE",
-    "ImageUrl": ""
+    "ImageUrl": "~/Resources/Images/Products/All_Images/Product_1.png"
   },
 
   {
     "Name": "Farming Simulator 22",
     "Description": "Skapa din egen gård och låt glädjen växa fram!",
     "Price": 300,
-    "Genre": "Simulator",
+    "GenreId": 13,
     "Publisher": "Giants Software",
-    "ImageUrl": ""
+    "ImageUrl": "~/Resources/Images/Products/All_Images/Product_2.png"
   },
 
   {
     "Name": "Euro Truck Simulator 2",
     "Description": "Frakta gods med din lastbil runt om i europa.",
     "Price": 100,
-    "Genre": "Simulator",
+    "GenreId": 13,
     "Publisher": "SCS Software",
-    "ImageUrl": ""
+    "ImageUrl": "~/Resources/Images/Products/All_Images/Product_3.png"
   },
 
   {
     "Name": "DayZ",
     "Description": "Hur länge överlever du i en postapokalyptisk värld? I ett land översvämmat av infekterade “zombier”, där du konkurrerar med andra överlevare om tunnsådda resurser.",
     "Price": 300,
-    "Genre": "Överlevnad",
+    "GenreId": 10,
     "Publisher": "Bohemia Interactive",
-    "ImageUrl": ""
+    "ImageUrl": "~/Resources/Images/Products/All_Images/Product_4.png"
   },
 
   {
     "Name": "Final Fantasy XIV Online",
     "Description": "Var delaktig i ett stort äventyr tillsammans med människor från hela världen.",
     "Price": 100,
-    "Genre": "MMORPG",
+    "GenreId": 11,
     "Publisher": "Square Enix",
-    "ImageUrl": ""
+    "ImageUrl": "~/Resources/Images/Products/All_Images/Product_5.png"
   },
 
   {
     "Name": "Counter Strike",
     "Description": "Lag Spel",
     "Price": 200,
-    "Genre": "FPS",
+    "GenreId": 9,
     "Publisher": "Valve",
-    "ImageUrl": ""
+    "ImageUrl": "~/Resources/Images/Products/All_Images/Product_6.png"
   },
 
   {
     "Name": "Elden Ring",
     "Description": "Stig upp,Tarnished, och låt försynen leda dig att använda kraften hos elden ring och bli Elden Lord i Lands Between.",
     "Price": 600,
-    "Genre": "Actionrollspel",
+    "GenreId": 4,
     "Publisher": "From Software",
     "ImageUrl": ""
   },
@@ -66,7 +66,7 @@
     "Name": "Ghostwire Tokyo",
     "Description": "Tokyos befolkning är försvunnen, och dödliga övernaturliga krafter stryker runt på gatorna.Med din arsenal av elementärkrafter är det bara du som kan uppdaga sanningen och rädda Tokyo",
     "Price": 600,
-    "Genre": "Actionrollspel",
+    "GenreId": 4,
     "Publisher": "Bethesda Softworks",
     "ImageUrl": ""
   },
@@ -75,7 +75,7 @@
     "Name": "Spyro Reignited Trilogy",
     "Description": "Spyro är eld och lågor över att vara tillbaka i Spyro Reignited Trilogy,nu snyggare än någonsin i otrolig HD!Gå tillbaka till din gamla flamma i remastrade versioner av de tre ursprungliga spelen: Spyro the dragon, Spyro2:Ripto’s Rage! och Spyro:Year of the Dragon.",
     "Price": 400,
-    "Genre": "Äventyr",
+    "GenreId": 7,
     "Publisher": "Activision",
     "ImageUrl": ""
   },
@@ -84,7 +84,7 @@
     "Name": "Crash Team Racing Nitro-Fueled",
     "Description": "Det här är den autentiska CTR-upplevelsen plus mycket mer - helt remastrad och nitroboostad till max: Dra igång motorn med originalets spellägen, karaktärer, banor, boostar, vapen och kontroller. Slira hela vägen till seger med nya gokarter, banor och arenor från Crash™ Nitro Kart.",
     "Price": 400,
-    "Genre": "Racing",
+    "GenreId": 12,
     "Publisher": "Activision",
     "ImageUrl": ""
   },
@@ -93,7 +93,7 @@
     "Name": "MineCraft",
     "Description": "Här kan använda sin egna fantasi för att bygga och skapa nya världar.",
     "Price": 499,
-    "Genre": "Äventyr",
+    "GenreId": 7,
     "Publisher": "Mojang",
     "ImageUrl": ""
   },
@@ -102,7 +102,7 @@
     "Name": "Spindelharpan",
     "Description": "Spela det orginella harpanspelet med en twist nu finns det ännu mer kort",
     "Price": 99,
-    "Genre": "Kortspel",
+    "GenreId": 5,
     "Publisher": "Microsoft",
     "ImageUrl": ""
   },
@@ -111,7 +111,7 @@
     "Name": "No Man's Sky",
     "Description": "No Man's Sky är ett spel om utforskning och överlevnad i ett oändligt procedurgenererat universum.",
     "Price": 550,
-    "Genre": "Äventyr",
+    "GenreId": 7,
     "Publisher": "Hello Games",
     "ImageUrl": ""
   },
@@ -120,7 +120,7 @@
     "Name": "Among Us",
     "Description": "Jobba tillsammans med alla andra för att ta reda på vem som är förrädaren i gruppen genom slutledningsförmåga",
     "Price": 349,
-    "Genre": "Sällskapsspel",
+    "GenreId": 3,
     "Publisher": "Innersloth",
     "ImageUrl": ""
   },
@@ -129,7 +129,7 @@
     "Name": "Dark Souls",
     "Description": "Ta dig an utmanande boss-strider och skryt för dina vänner när du klarat av dom.",
     "Price": 599,
-    "Genre": "Actionrollspel",
+    "GenreId": 4,
     "Publisher": "From Software",
     "ImageUrl": ""
   },
@@ -138,7 +138,7 @@
     "Name": "Total War: THREE KINGDOMS",
     "Description": "Använda dina trupper för att ta över världens nationer genom strategi och paktning",
     "Price": 399,
-    "Genre": "Strategi",
+    "GenreId": 8,
     "Publisher": "Sega",
     "ImageUrl": ""
   },
@@ -147,7 +147,7 @@
     "Name": "Tetris",
     "Description": "Använd geometri för att placera de fallande formerna på det mest optimala sätt och samla poäng",
     "Price": 49,
-    "Genre": "Pussel",
+    "GenreId": 2,
     "Publisher": "The Tetris Company",
     "ImageUrl": ""
   },
@@ -156,7 +156,7 @@
     "Name": "Civilization VI",
     "Description": "Civilization är ett turbaserat strategispel som går ut på att bygga ett imperium som står sig genom tiderna.",
     "Price": 600,
-    "Genre": "Strategi",
+    "GenreId": 8,
     "Publisher": "2K",
     "ImageUrl": ""
   },
@@ -165,7 +165,7 @@
     "Name": "Forza Horizon 5",
     "Description": "Utforska ett öppet Mexiko som ständigt utvecklas, med gränslös och rolig körning i hundratals av världens bästa bilar.",
     "Price": 599,
-    "Genre": "Racing",
+    "GenreId": 12,
     "Publisher": "Xbox Game Studios",
     "ImageUrl": ""
   },
@@ -174,7 +174,7 @@
     "Name": "Grid Legends",
     "Description": "Kör race, uppgradera och anpassa varenda bil i den största GRID-uppställningen någonsin, från klassiska touringbilar till ensitsbilar och stora kärror.",
     "Price": 449,
-    "Genre": "Racing",
+    "GenreId": 12,
     "Publisher": "Electronic Arts",
     "ImageUrl": ""
   },
@@ -183,7 +183,7 @@
     "Name": "Ride 4",
     "Description": "RIDE 4 tar fram vinnarskallen i dig med hundratals motorcyklar, dussintals banor och realism på en helt ny nivå.",
     "Price": 599,
-    "Genre": "Racing",
+    "GenreId": 12,
     "Publisher": "Milestone S.r.l",
     "ImageUrl": ""
   },
@@ -192,7 +192,7 @@
     "Name": "Need for speed",
     "Description": "Jobba hårt om dagarna och riskera allt under natthimlen. Need for Speed Heat är ett nervkittlande streetrace-spel där lagar och regler suddas ut när solen går ner.",
     "Price": 599,
-    "Genre": "Racing",
+    "GenreId": 12,
     "Publisher": "Electronic Arts",
     "ImageUrl": ""
   },
@@ -201,7 +201,7 @@
     "Name": "The Crew 2",
     "Description": "Känn spänningen i jakten och adrenalinrushen i flykten i The Crew 2.",
     "Price": 299,
-    "Genre": "Racing",
+    "GenreId": 12,
     "Publisher": "Ubisoft",
     "ImageUrl": ""
   },
@@ -210,7 +210,7 @@
     "Name": "MotoGP22",
     "Description": "Starta motorerna: Sätt igång den mest autentiska säsongen av MotoGP som någonsin skapats!",
     "Price": 599,
-    "Genre": "Racing",
+    "GenreId": 12,
     "Publisher": "Milestone S.r.l",
     "ImageUrl": ""
   },
@@ -219,7 +219,7 @@
     "Name": "Dead by Daylight",
     "Description": "Dead by Daylight är ett skräckspel för flera spelare (4vs1) där en spelare tar på sig rollen som den vilde mördaren, och de andra fyra spelarna spelar som överlevare och försöker fly mördaren och undvika att bli fångad och dödad.",
     "Price": 200,
-    "Genre": "Skräck",
+    "GenreId": 6,
     "Publisher": "Behaviour Interactive Inc.",
     "ImageUrl": ""
   },
@@ -228,7 +228,7 @@
     "Name": "Valheim",
     "Description": "Ett brutalt överlevnadsspel för 1-10 spelare, som utspelar sig i en processuellt genererad värld inspirerad av vikingakulturen.",
     "Price": 180,
-    "Genre": "Överlevnad",
+    "GenreId": 10,
     "Publisher": "Iron Gate",
     "ImageUrl": ""
   },
@@ -237,7 +237,7 @@
     "Name": "Cyberpunk 2077",
     "Description": "Cyberpunk är ett actionfyllt öppen-värld rollspel där du kan utföra uppdrag och röra dig runt i den futuristiska staden 'Night City'. Forma historien genom de val du gör och se handlingen utvecklas.",
     "Price": 630,
-    "Genre": "Actionrollspel",
+    "GenreId": 4,
     "Publisher": "CD PROJEKT RED",
     "ImageUrl": ""
   },
@@ -246,7 +246,7 @@
     "Name": "Tyranny",
     "Description": "Kampen mellan de goda och onda har redan avgjorts - härskaren Kyros har vunnit, och håller nu på att lägga de sista provinserna under sitt styre. Du är en “Fatebinder”, i Kyros tjänst. Spela en avgörande roll för hur handlingen utvecklar sig samt välj vilken sida du allierar dig med.",
     "Price": 300,
-    "Genre": "Rollspel",
+    "GenreId": 1,
     "Publisher": "Paradox Interactive",
     "ImageUrl": ""
   },
@@ -255,7 +255,7 @@
     "Name": "Divinity: Original Sin - Enhanced Edition",
     "Description": "Spela antingen ensam med två karaktärer du själv skapar eller spela med en vän som spelar den ena karaktären. Utforska en spännande fantasy-värld som ett par “source-hunters”, med ett uppdrag som börjar med att utforska ett mord. Under spelets gång kommer du stöta på många spännande karaktärer, vilka du kan rekrytera till din grupp av hjältar. Världens öde ligger i dina händer.",
     "Price": 430,
-    "Genre": "Rollspel",
+    "GenreId": 1,
     "Publisher": "Paradox Interactive",
     "ImageUrl": ""
   },
@@ -264,7 +264,7 @@
     "Name": "Mass Effect Legendary Edition",
     "Description": "Du är Shepard, medlem i den mänskliga rymdflottan. Du håller på at scoutas som en potentiell Spectre, en agent för alliansen av olika raser av folkslag som befolkar vår galax, exempelvis salarians, krogans, asari och människor. Mänskligheten håller på att göra framsteg på det galaktiska planet och nu har du möjligheten att bli en av rådets agenter, mycket prestigefyllt. Men saker går inte som förväntat, och snart måste du som Spectre jaga runt i galaxen för att stoppa en total utrotning av allt liv i den. Spela denna samling på tre spel, denna mästerliga rymdsaga, nu med bättre uppdaterad grafik än någonsin.",
     "Price": 620,
-    "Genre": "Actionrollspel",
+    "GenreId": 4,
     "Publisher": "Electronic Arts",
     "ImageUrl": ""
   },
@@ -273,7 +273,7 @@
     "Name": "Pillars of Eternity",
     "Description": "Återupplev ett rollspel i samma stil som de gamla klassikerna, ett spel i samma stil som storheter såsom Baldur’s Gate och Icewind Dale. Skapa din egna hjälte och utforska en spännande fantasy-värld fylld av quests och äventyr. Upptäck de hemligheter detta spel döljer, möt karaktärer som kan ansluta sig till din grupp och döda monster samt samla på dig gold, utrustning och andra skatter.",
     "Price": 299,
-    "Genre": "Rollspel",
+    "GenreId": 1,
     "Publisher": "Paradox Interactive",
     "ImageUrl": ""
   },
@@ -282,7 +282,7 @@
     "Name": "Crusader Kings 3",
     "Description": "Börja spela med en historisk karaktär från någonstans i Europa under medeltiden. Etablera en ätt som klarar att förbli stark under flera generationer. Om du så väljer att börja spela som en baron eller som härskaren för ett helt imperium, välj fritt bland alla olika baroner/furstar/kungar/drottningar i hela Europa och få din ätt, din familj, att överleva allt från storskaliga krig till lönnmord. Hur vill du att just din valda karaktär skall utforma sitt liv? Blir personen djupt religiös? Dedikerar du dig åt att skapa ett handelsimperium? Blir personen bokstavligt talat galen och börjar dyrka onda makter? Du väljer. Det viktiga är att hålla ätten vid liv.",
     "Price": 518,
-    "Genre": "Strategi",
+    "GenreId": 8,
     "Publisher": "Paradox Interactive",
     "ImageUrl": ""
   },
@@ -291,7 +291,7 @@
     "Name": "Age of Empires IV",
     "Description": "Den välkända legendariska Age of Empires serien får efter många års väntan ytterligare en uppföljare. Det fjärde spelet i serien lånar mycket från föregångarna samtidigt som det har en ny förbättrad grafik. Aldrig har det varit lika skoj att gå i krig med helt olika nationer, alla med sina egna styrkor och svagheter! Bygg upp dina styrkor och sänd iväg dem för att slåss och bränna ner fiendens städer! Spela ensam eller tävla online med dina kompisar i multiplayer läge.",
     "Price": 620,
-    "Genre": "Strategi",
+    "GenreId": 8,
     "Publisher": "Xbox Game Studios",
     "ImageUrl": ""
   },
@@ -300,7 +300,7 @@
     "Name": "Beholder 2",
     "Description": "Din far har just dött i en tragisk olycka och den store ledaren har valt ut dig till att bli anställd hos ministeriet. Som en trogen medborgare dedikerad till att, som oss alla, göra allt som vi kan för att fullgöra vår store ledares vision kommer du att inställa dig på ministeriet för att arbeta dagligen från och med nu. Länge leve vår store ledare! Detta spel innehåller även möjligheten att utforska din döde fars död.",
     "Price": 155,
-    "Genre": "Strategi",
+    "GenreId": 8,
     "Publisher": "Alawar Premimum",
     "ImageUrl": ""
   },
@@ -309,7 +309,7 @@
     "Name": "Escape from Tarkov",
     "Description": "Escape from Tarkov är ett realistiskt, hardcore FPS spel som utspelar sig i den fiktiva regionen Norvinsk.",
     "Price": 399,
-    "Genre": "FPS",
+    "GenreId": 9,
     "Publisher": "Battlestate Games",
     "ImageUrl": ""
   },
@@ -318,7 +318,7 @@
     "Name": "Witcher 3 Wild Hunt",
     "Description": "Spelet spelas ur ett tredjepersonsperspektiv där spelaren tar kontrollen över huvudpersonen Geralt of Rivia, en Witcher som ger sig ut på en lång resa genom det stora landet The Northern Kingdoms.",
     "Price": 300,
-    "Genre": "Rollspel",
+    "GenreId": 1,
     "Publisher": "CD PROJEKT RED",
     "ImageUrl": ""
   },
@@ -327,7 +327,7 @@
     "Name": "The Elder Scrolls Online",
     "Description": "Spela med dina vänner för första gången på den legendariska kontinenten Tamriel. I detta MMO kan du besöka allt från Morrowind till High-Rock, med massvis av quests och detaljrika berättelser finns det inget slut för ditt äventyr.",
     "Price": 200,
-    "Genre": "MMORPG",
+    "GenreId": 11,
     "Publisher": "Bethesda Software",
     "ImageUrl": ""
   },
@@ -336,7 +336,7 @@
     "Name": "Subnautica",
     "Description": "Gå ner i djupet av en främmande undervattensvärld fylld av förundran och fara.",
     "Price": 300,
-    "Genre": "Överlevnad",
+    "GenreId": 10,
     "Publisher": "Unknown Worlds Entertainment",
     "ImageUrl": ""
   },
@@ -345,7 +345,7 @@
     "Name": "ARMA 3",
     "Description": "Spelet utspelar sig i mitten av 2030-talet under den fiktiva militäroperationen Operation Magnitude som inleddes av NATO-styrkor, vilka är i krig mot 'Östeuropeiska arméer' under det gemensamma namnet CSAT (Canton-Protocol Strategic Alliance Treaty) som leds av Iran ihop med en koalition av andra asiatiska länder.",
     "Price": 300,
-    "Genre": "FPS",
+    "GenreId": 9,
     "Publisher": "Bohemia Interactive",
     "ImageUrl": ""
   },
@@ -354,7 +354,7 @@
     "Name": "XCOM 2",
     "Description": "X-COM 2 är ett turordningsbaserat taktiskt strategispel som utspelar sig på jorden, som har ockuperats av utomjordingar.  Ta på dig rollen som ledaren för X-COM organisationen och ta tillbaka ditt hem.",
     "Price": 500,
-    "Genre": "Strategi",
+    "GenreId": 8,
     "Publisher": "2K",
     "ImageUrl": ""
   },
@@ -363,7 +363,7 @@
     "Name": "Dying Light 2 Stay Human",
     "Description": "I Dying Light 2 kan du ta dig runt i parkourstil i en öppen värld där zombieapokalypsen brytit ut. Varje val du gör har en konsekvens under spelets gång.",
     "Price": 600,
-    "Genre": "Actionrollspel",
+    "GenreId": 4,
     "Publisher": "Techland",
     "ImageUrl": ""
   },
@@ -372,7 +372,7 @@
     "Name": "Mount & Blade 2: Bannerlord",
     "Description": "Skapa ditt egna kungarike och erövra världen i detta spel!",
     "Price": 400,
-    "Genre": "Rollspel",
+    "GenreId": 1,
     "Publisher": "TaleWorlds Entertainment",
     "ImageUrl": ""
   },
@@ -381,7 +381,7 @@
     "Name": "Outer Wilds",
     "Description": "Du är den senaste rekryten av Outer Wilds Ventures, ett nystartat rymdprogram som söker efter svar i ett märkligt, ständigt utvecklande solsystem.",
     "Price": 200,
-    "Genre": "Äventyr",
+    "GenreId": 7,
     "Publisher": "Annapurna Interactive",
     "ImageUrl": ""
   },
@@ -390,7 +390,7 @@
     "Name": "Resident Evil Village",
     "Description": "Upplev överlevnadsskräck som aldrig förr i den åttonde delen i den berömda Resident Evil-serien.",
     "Price": 600,
-    "Genre": "Skräck",
+    "GenreId": 6,
     "Publisher": "CAPCOM",
     "ImageUrl": ""
   },
@@ -399,7 +399,7 @@
     "Name": "Slay the Spire",
     "Description": "I Slay the Spire försöker spelaren, genom en av fyra karaktärer, bestiga en spira på flera våningar, skapad genom procedurgenerering, slåss genom fiender och bossar. Samla på dig kort från vunna strider och bygg din egna kortlek för att ta dig genom nivåerna.",
     "Price": 200,
-    "Genre": "Kortspel",
+    "GenreId": 5,
     "Publisher": "Mega Crit Games",
     "ImageUrl": ""
   },
@@ -408,7 +408,7 @@
     "Name": "Sekiro: Shadows Die Twice",
     "Description": "Du är den 'enarmade vargen', en vanärad och vanställd krigare som räddas från dödens rand. För att skydda en ung härskare som är ättling till ett uråldrigt släktskap, blir du måltavla för många fiender, inklusive den farliga Ashina-klanen. När den unge härskaren blir tillfångatagen kommer ingenting att stoppa dig i en farlig strävan att återvinna din ära, inte ens döden.",
     "Price": 600,
-    "Genre": "Actionrollspel",
+    "GenreId": 4,
     "Publisher": "From Software",
     "ImageUrl": ""
   },
@@ -417,7 +417,7 @@
     "Name": "Dishonored",
     "Description": "Utspelar sig i den fiktiva, pestdrabbade industristaden Dunwall, och följer historien om Corvo Attano, livvakt till Kejsarinnan av Öarna. Han är anklagad för hennes mord och tvingad att bli en lönnmördare, som söker hämnd på dem som konspirerat mot honom.",
     "Price": 100,
-    "Genre": "Actionrollspel",
+    "GenreId": 4,
     "Publisher": "Bethesda Software",
     "ImageUrl": ""
   },
@@ -426,7 +426,7 @@
     "Name": "Pummel Party",
     "Description": "Ett spel för 4-8 personer. Tävla om att förstöra vänskap i den underhållande samlingen av minispel.",
     "Price": 120,
-    "Genre": "Sällskapsspel",
+    "GenreId": 3,
     "Publisher": "Rebuilt Games",
     "ImageUrl": ""
   },
@@ -435,7 +435,7 @@
     "Name": "The Room",
     "Description": "Följ ett spår av kryptiska bokstäver och lös många unika pussel på allt mer extraordinära platser, på en tidsspännande resa där maskiner möter myter.",
     "Price": 50,
-    "Genre": "Pussel",
+    "GenreId": 2,
     "Publisher": "Fireproof Games",
     "ImageUrl": ""
   },
@@ -444,7 +444,7 @@
     "Name": "NieR:Automata",
     "Description": "NieR_Automata berättar historien om androiderna 2B, 9S och A2 och deras kamp för att återta den maskindrivna dystopin som är invaderad av kraftfulla maskiner.",
     "Price": 400,
-    "Genre": "Actionrollspel",
+    "GenreId": 4,
     "Publisher": "Square Enix",
     "ImageUrl": ""
   }
