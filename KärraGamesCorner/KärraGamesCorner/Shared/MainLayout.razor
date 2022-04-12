@@ -9,12 +9,27 @@
 
     <main>
         <AuthorizeView>
-    <Authorized>
-        <h5>Welcome,Logged in as: <a href="Identity/Account/Manage">@context.User.Identity?.Name!</a></h5>
-    </Authorized>
+            <Authorized>
+                <h5>
+                    Welcome,Logged in as: 
+                    <a href="Identity/Account/Manage">
+                        @context.User.Identity?.Name!
+                        @if (context.User.IsInRole("Admin"))
+                        {
+                            <p>[Admin]</p>
+                        }
+                    </a>
+                </h5>
+            </Authorized>
 </AuthorizeView>
         <article class="content px-4">
             @Body
         </article>
     </main>
+
+  
+      
+
 </div>
+
+
