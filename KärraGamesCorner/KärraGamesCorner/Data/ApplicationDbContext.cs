@@ -16,15 +16,18 @@ namespace KärraGamesCorner.Data
         public DbSet<Token> Tokens;
         public DbSet<Genre> Genres;
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        private readonly IWebHostEnvironment environment;
+
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IWebHostEnvironment environment)
             : base(options)
         {
+            this.environment = environment;
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //string fileName = "~/Resources/Produkter.Json";
-            //string readAllText = File.ReadAllText(fileName);
+            string fileName = $"{environment.WebRootPath}/Resources/Produkter.json";
+            string readAllText = File.ReadAllText(fileName);
             modelBuilder
                 .Entity<Genre>().HasData(
                     new Genre() { Id = 1, Name = "Rollspel" },
@@ -42,32 +45,35 @@ namespace KärraGamesCorner.Data
                     new Genre() { Id = 13, Name = "Simulator" });
 
             //Använd inte konstruktorn när du lägger till produkter
-            //Product[] productList = Newtonsoft.Json.JsonConvert.DeserializeObject<Product[]>(readAllText);
-            //var prod = new Product[] { new Product(1, "bla", "bla", 20, new Genre(), "", ""), };
-            var prod = new Product(){
-                Id = 2,
-                Name = "bla",
-                Description = "bla",
-                Price = 20,
-                GenreId = 2,
-                ImageUrl = "",
-                Producer = ""
-            };
+
+            Product[] productList = JsonConvert.DeserializeObject<Product[]>(readAllText);
+            
+            //var prod = new Product(){
+            //    Id = 2,
+            //    Name = "bla",
+            //    Description = "bla",
+            //    Price = 20,
+            //    GenreId = 2,
+            //    ImageUrl = "",
+            //    Producer = ""
+            //};
 
             modelBuilder
-                .Entity<Product>().HasData(prod);
+                .Entity<Product>().HasData(productList);
 
-Guid ADMIN_ID = Guid.NewGuid();
+            Guid ADMIN_ID = Guid.NewGuid();
             string ROLE_ID = Guid.NewGuid().ToString();
 
             //seed admin role
-            //builder.Entity<IdentityRole>().HasData(new IdentityRole
-            //{
-            //    Name = "Admin",
-            //    NormalizedName = "ADMIN",
-            //    Id = ROLE_ID,
-            //    ConcurrencyStamp = ROLE_ID
-            //});
+
+            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
+            {
+                Name = "Admin",
+                NormalizedName = "ADMIN",
+                Id = ROLE_ID,
+                ConcurrencyStamp = ROLE_ID
+            });
+
 
             //create user
             var appUser = new ApplicationUser()
@@ -84,14 +90,16 @@ Guid ADMIN_ID = Guid.NewGuid();
             appUser.PasswordHash = ph.HashPassword(appUser, "admin");
 
             //seed user
-            //builder.Entity<ApplicationUser>().HasData(appUser);
 
-            ////set user role to admin
-            //builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
-            //{
-            //    RoleId = ROLE_ID,
-            //    UserId = ADMIN_ID.ToString()
-            //});
+            modelBuilder.Entity<ApplicationUser>().HasData(appUser);
+
+            //set user role to admin
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            {
+                RoleId = ROLE_ID,
+                UserId = ADMIN_ID.ToString()
+            });
+
             base.OnModelCreating(modelBuilder);
                     
             
