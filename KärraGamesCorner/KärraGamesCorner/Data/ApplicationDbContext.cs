@@ -16,14 +16,17 @@ namespace KärraGamesCorner.Data
         public DbSet<Token> Tokens;
         public DbSet<Genre> Genres;
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        private readonly IWebHostEnvironment environment;
+
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IWebHostEnvironment environment)
             : base(options)
         {
+            this.environment = environment;
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            string fileName = @"C:\Users\Marti\source\repos\K-rra-Games-Corner\KärraGamesCorner\KärraGamesCorner\wwwroot\Resources\Produkter.json";
+            string fileName = $"{environment.WebRootPath}/Resources/Produkter.json";
             string readAllText = File.ReadAllText(fileName);
             modelBuilder
                 .Entity<Genre>().HasData(
