@@ -9,10 +9,10 @@
    
 <PageTitle>Home Page</PageTitle>
 
-   @* @foreach (var product in _products)
+   @foreach (var product in _products)
     {
         <div class="card" style="width: 18rem;">
-            <img src="@product.ImageUrl" class="card-img-top" alt="...">
+            <img src="@product.ImageUrl" runat="server" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">@product.Name</h5>
                 <p class="card-text">@product.Description</p>
@@ -22,7 +22,7 @@
                 <a href="#" class="btn btn-primary">add</a>
             </div>
         </div>
-    }*@
+    }
 
 
  <hr />

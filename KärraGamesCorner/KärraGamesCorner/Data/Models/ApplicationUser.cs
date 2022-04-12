@@ -10,12 +10,12 @@ namespace KärraGamesCorner.Data.Models
             set => base.Id = value.ToString();
         }
         public string? ImageUrl { get; set; } = string.Empty;
-        public IEnumerable<Product> Cart { get; set; }
-        public IEnumerable<Token> PurchasedTokens { get; set; }
+        public ICollection<CartProduct> CartProducts { get; set; }
+        public ICollection<Token> PurchasedTokens { get; set; }
 
         public ApplicationUser()
         {
-            Cart = new List<Product>();
+            CartProducts = new List<CartProduct>();
             PurchasedTokens = new List<Token>();
         }
 
