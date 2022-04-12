@@ -96,6 +96,9 @@ namespace KärraGamesCorner.Data
                 RoleId = ROLE_ID,
                 UserId = ADMIN_ID.ToString()
             });
+
+            modelBuilder.Entity<CartProduct>().HasKey(vf => new { vf.UserId, vf.ProductId });
+
             base.OnModelCreating(modelBuilder);
                     
             
