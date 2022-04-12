@@ -61,13 +61,13 @@ Guid ADMIN_ID = Guid.NewGuid();
             string ROLE_ID = Guid.NewGuid().ToString();
 
             //seed admin role
-            builder.Entity<IdentityRole>().HasData(new IdentityRole
-            {
-                Name = "Admin",
-                NormalizedName = "ADMIN",
-                Id = ROLE_ID,
-                ConcurrencyStamp = ROLE_ID
-            });
+            //builder.Entity<IdentityRole>().HasData(new IdentityRole
+            //{
+            //    Name = "Admin",
+            //    NormalizedName = "ADMIN",
+            //    Id = ROLE_ID,
+            //    ConcurrencyStamp = ROLE_ID
+            //});
 
             //create user
             var appUser = new ApplicationUser()
@@ -84,14 +84,14 @@ Guid ADMIN_ID = Guid.NewGuid();
             appUser.PasswordHash = ph.HashPassword(appUser, "admin");
 
             //seed user
-            builder.Entity<ApplicationUser>().HasData(appUser);
+            //builder.Entity<ApplicationUser>().HasData(appUser);
 
-            //set user role to admin
-            builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
-            {
-                RoleId = ROLE_ID,
-                UserId = ADMIN_ID.ToString()
-            });
+            ////set user role to admin
+            //builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            //{
+            //    RoleId = ROLE_ID,
+            //    UserId = ADMIN_ID.ToString()
+            //});
             base.OnModelCreating(modelBuilder);
                     
             
