@@ -4,6 +4,7 @@ using KärraGamesCorner.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KärraGamesCorner.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220408105926_presentatin")]
+    partial class presentatin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -107,17 +109,17 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c9146dcb-33dd-486f-a474-89f3350e3968",
+                            Id = "f9ae95ad-d872-4d2c-b0f9-754e703704fd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fd096154-eac0-4651-844a-2e7fe21f3565",
+                            ConcurrencyStamp = "366120cb-568a-4552-8811-cc350f130fdf",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             ImageUrl = "",
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPNBL+0yDA6PdynS4qw6Eku74nfzjknzsGj0F/1x1nSe855kKFefFc0UwGfJ5tcinQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGjO4Hgy/3hYu/RMS3ARSHITXxr0Qwdxz2Oq86osWQIAREXsOUhcEG2zqaJ8zsU7QQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "032e8cc0-01c0-4da4-a7f3-502eef5978b6",
+                            SecurityStamp = "f3593a72-a427-4265-881d-9a1c20192b49",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -138,75 +140,6 @@ namespace KärraGamesCorner.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Genre");
-
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Rollspel"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Pussel"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Sällskapsspel"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Actionrollspel"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Kortspel"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Skräck"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Äventyr"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "Strategi"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "FPS"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Name = "Överlevnad"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Name = "MMORPG"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Name = "Racing"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Name = "Simulator"
-                        });
-
                 });
 
             modelBuilder.Entity("KärraGamesCorner.Data.Models.Product", b =>
@@ -221,7 +154,7 @@ namespace KärraGamesCorner.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("GenreId")
+                    b.Property<int?>("GenreId")
                         .HasColumnType("int");
 
                     b.Property<string>("ImageUrl")
@@ -244,19 +177,6 @@ namespace KärraGamesCorner.Migrations
                     b.HasIndex("GenreId");
 
                     b.ToTable("Product");
-
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 2,
-                            Description = "bla",
-                            GenreId = 2,
-                            ImageUrl = "",
-                            Name = "bla",
-                            Price = 20m,
-                            Producer = ""
-                        });
                 });
 
             modelBuilder.Entity("KärraGamesCorner.Data.Models.Token", b =>
@@ -314,8 +234,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5ff92b11-d124-4993-9c56-7e59caede9a8",
-                            ConcurrencyStamp = "5ff92b11-d124-4993-9c56-7e59caede9a8",
+                            Id = "0e4a1e3b-1a09-431d-ac77-2db5642d2884",
+                            ConcurrencyStamp = "0e4a1e3b-1a09-431d-ac77-2db5642d2884",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -412,8 +332,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "c9146dcb-33dd-486f-a474-89f3350e3968",
-                            RoleId = "5ff92b11-d124-4993-9c56-7e59caede9a8"
+                            UserId = "f9ae95ad-d872-4d2c-b0f9-754e703704fd",
+                            RoleId = "0e4a1e3b-1a09-431d-ac77-2db5642d2884"
                         });
                 });
 
@@ -457,9 +377,7 @@ namespace KärraGamesCorner.Migrations
                 {
                     b.HasOne("KärraGamesCorner.Data.Models.Genre", "Genre")
                         .WithMany()
-                        .HasForeignKey("GenreId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GenreId");
 
                     b.Navigation("Genre");
                 });
