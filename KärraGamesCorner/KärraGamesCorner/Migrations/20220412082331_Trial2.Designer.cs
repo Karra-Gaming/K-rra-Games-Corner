@@ -4,6 +4,7 @@ using KärraGamesCorner.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KärraGamesCorner.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220412082331_Trial2")]
+    partial class Trial2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -107,17 +109,17 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f94f3071-fccc-431f-975f-d5aa5e4bd614",
+                            Id = "ced72c51-7481-42bd-9c4c-4fef5da49b33",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "889eb84e-0a79-4624-b053-7f450e15c36f",
+                            ConcurrencyStamp = "f84127e9-f905-4bf3-90da-51516c1f636d",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             ImageUrl = "",
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPpzCQmIzqIghFNChwnIN6p7Xb8FQy6lJPFFr8AdzmZLT8XLzW8699DOw8LY9mP/tw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELQoAoaVWRrzuIVJEPd3sktPUtp2XElnO2GvnXGFnqW8noGGd/4C7zWZr9/wctYAsg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "99d140cb-b0db-44ce-bc14-e796d5389cf4",
+                            SecurityStamp = "6e0b6609-673b-485d-9704-8ff6baa0e639",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -269,7 +271,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 3,
                             Description = "Frakta gods med din lastbil runt om i europa.",
                             GenreId = 13,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_3.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_3.png",
                             Name = "Euro Truck Simulator 2",
                             Price = 100m,
                             Producer = "SCS Software"
@@ -279,7 +281,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 4,
                             Description = "Hur länge överlever du i en postapokalyptisk värld? I ett land översvämmat av infekterade “zombier”, där du konkurrerar med andra överlevare om tunnsådda resurser.",
                             GenreId = 10,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_4.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_4.png",
                             Name = "DayZ",
                             Price = 300m,
                             Producer = "Bohemia Interactive"
@@ -289,7 +291,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 5,
                             Description = "Var delaktig i ett stort äventyr tillsammans med människor från hela världen.",
                             GenreId = 11,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_5.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_5.png",
                             Name = "Final Fantasy XIV Online",
                             Price = 100m,
                             Producer = "Square Enix"
@@ -319,7 +321,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 8,
                             Description = "Tokyos befolkning är försvunnen, och dödliga övernaturliga krafter stryker runt på gatorna.Med din arsenal av elementärkrafter är det bara du som kan uppdaga sanningen och rädda Tokyo",
                             GenreId = 4,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_8.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_8.png",
                             Name = "Ghostwire Tokyo",
                             Price = 600m,
                             Producer = "Bethesda Softworks"
@@ -339,7 +341,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 10,
                             Description = "Det här är den autentiska CTR-upplevelsen plus mycket mer - helt remastrad och nitroboostad till max: Dra igång motorn med originalets spellägen, karaktärer, banor, boostar, vapen och kontroller. Slira hela vägen till seger med nya gokarter, banor och arenor från Crash™ Nitro Kart.",
                             GenreId = 12,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_10.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_10.png",
                             Name = "Crash Team Racing Nitro-Fueled",
                             Price = 400m,
                             Producer = "Activision"
@@ -359,7 +361,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 12,
                             Description = "Spela det orginella harpanspelet med en twist nu finns det ännu mer kort",
                             GenreId = 5,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_12.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_12.png",
                             Name = "Spindelharpan",
                             Price = 99m,
                             Producer = "Microsoft"
@@ -369,7 +371,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 13,
                             Description = "No Man's Sky är ett spel om utforskning och överlevnad i ett oändligt procedurgenererat universum.",
                             GenreId = 7,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_13.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_13.png",
                             Name = "No Man's Sky",
                             Price = 550m,
                             Producer = "Hello Games"
@@ -399,7 +401,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 16,
                             Description = "Använda dina trupper för att ta över världens nationer genom strategi och paktning",
                             GenreId = 8,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_16.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_16.png",
                             Name = "Total War: THREE KINGDOMS",
                             Price = 399m,
                             Producer = "Sega"
@@ -409,7 +411,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 17,
                             Description = "Använd geometri för att placera de fallande formerna på det mest optimala sätt och samla poäng",
                             GenreId = 2,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_17.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_17.png",
                             Name = "Tetris",
                             Price = 49m,
                             Producer = "The Tetris Company"
@@ -419,7 +421,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 18,
                             Description = "Civilization är ett turbaserat strategispel som går ut på att bygga ett imperium som står sig genom tiderna.",
                             GenreId = 8,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_18.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_18.png",
                             Name = "Civilization VI",
                             Price = 600m,
                             Producer = "2K"
@@ -429,7 +431,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 19,
                             Description = "Utforska ett öppet Mexiko som ständigt utvecklas, med gränslös och rolig körning i hundratals av världens bästa bilar.",
                             GenreId = 12,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_19.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_19.png",
                             Name = "Forza Horizon 5",
                             Price = 599m,
                             Producer = "Xbox Game Studios"
@@ -439,7 +441,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 20,
                             Description = "Kör race, uppgradera och anpassa varenda bil i den största GRID-uppställningen någonsin, från klassiska touringbilar till ensitsbilar och stora kärror.",
                             GenreId = 12,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_20.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_20.png",
                             Name = "Grid Legends",
                             Price = 449m,
                             Producer = "Electronic Arts"
@@ -499,7 +501,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 26,
                             Description = "Ett brutalt överlevnadsspel för 1-10 spelare, som utspelar sig i en processuellt genererad värld inspirerad av vikingakulturen.",
                             GenreId = 10,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_26.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_26.png",
                             Name = "Valheim",
                             Price = 180m,
                             Producer = "Iron Gate"
@@ -509,7 +511,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 27,
                             Description = "Cyberpunk är ett actionfyllt öppen-värld rollspel där du kan utföra uppdrag och röra dig runt i den futuristiska staden 'Night City'. Forma historien genom de val du gör och se handlingen utvecklas.",
                             GenreId = 4,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_27.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_27.png",
                             Name = "Cyberpunk 2077",
                             Price = 630m,
                             Producer = "CD PROJEKT RED"
@@ -519,7 +521,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 28,
                             Description = "Kampen mellan de goda och onda har redan avgjorts - härskaren Kyros har vunnit, och håller nu på att lägga de sista provinserna under sitt styre. Du är en “Fatebinder”, i Kyros tjänst. Spela en avgörande roll för hur handlingen utvecklar sig samt välj vilken sida du allierar dig med.",
                             GenreId = 1,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_28.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_28.png",
                             Name = "Tyranny",
                             Price = 300m,
                             Producer = "Paradox Interactive"
@@ -559,7 +561,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 32,
                             Description = "Börja spela med en historisk karaktär från någonstans i Europa under medeltiden. Etablera en ätt som klarar att förbli stark under flera generationer. Om du så väljer att börja spela som en baron eller som härskaren för ett helt imperium, välj fritt bland alla olika baroner/furstar/kungar/drottningar i hela Europa och få din ätt, din familj, att överleva allt från storskaliga krig till lönnmord. Hur vill du att just din valda karaktär skall utforma sitt liv? Blir personen djupt religiös? Dedikerar du dig åt att skapa ett handelsimperium? Blir personen bokstavligt talat galen och börjar dyrka onda makter? Du väljer. Det viktiga är att hålla ätten vid liv.",
                             GenreId = 8,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_32.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_32.png",
                             Name = "Crusader Kings 3",
                             Price = 518m,
                             Producer = "Paradox Interactive"
@@ -579,7 +581,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 34,
                             Description = "Din far har just dött i en tragisk olycka och den store ledaren har valt ut dig till att bli anställd hos ministeriet. Som en trogen medborgare dedikerad till att, som oss alla, göra allt som vi kan för att fullgöra vår store ledares vision kommer du att inställa dig på ministeriet för att arbeta dagligen från och med nu. Länge leve vår store ledare! Detta spel innehåller även möjligheten att utforska din döde fars död.",
                             GenreId = 8,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_34.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_34.png",
                             Name = "Beholder 2",
                             Price = 155m,
                             Producer = "Alawar Premimum"
@@ -589,7 +591,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 35,
                             Description = "Escape from Tarkov är ett realistiskt, hardcore FPS spel som utspelar sig i den fiktiva regionen Norvinsk.",
                             GenreId = 9,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_35.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_35.png",
                             Name = "Escape from Tarkov",
                             Price = 399m,
                             Producer = "Battlestate Games"
@@ -619,7 +621,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 38,
                             Description = "Gå ner i djupet av en främmande undervattensvärld fylld av förundran och fara.",
                             GenreId = 10,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_38.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_38.png",
                             Name = "Subnautica",
                             Price = 300m,
                             Producer = "Unknown Worlds Entertainment"
@@ -649,7 +651,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 41,
                             Description = "I Dying Light 2 kan du ta dig runt i parkourstil i en öppen värld där zombieapokalypsen brytit ut. Varje val du gör har en konsekvens under spelets gång.",
                             GenreId = 4,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_41.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_41.png",
                             Name = "Dying Light 2 Stay Human",
                             Price = 600m,
                             Producer = "Techland"
@@ -669,7 +671,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 43,
                             Description = "Du är den senaste rekryten av Outer Wilds Ventures, ett nystartat rymdprogram som söker efter svar i ett märkligt, ständigt utvecklande solsystem.",
                             GenreId = 7,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_43.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_43.png",
                             Name = "Outer Wilds",
                             Price = 200m,
                             Producer = "Annapurna Interactive"
@@ -679,7 +681,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 44,
                             Description = "Upplev överlevnadsskräck som aldrig förr i den åttonde delen i den berömda Resident Evil-serien.",
                             GenreId = 6,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_44.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_44.png",
                             Name = "Resident Evil Village",
                             Price = 600m,
                             Producer = "CAPCOM"
@@ -699,7 +701,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 46,
                             Description = "Du är den 'enarmade vargen', en vanärad och vanställd krigare som räddas från dödens rand. För att skydda en ung härskare som är ättling till ett uråldrigt släktskap, blir du måltavla för många fiender, inklusive den farliga Ashina-klanen. När den unge härskaren blir tillfångatagen kommer ingenting att stoppa dig i en farlig strävan att återvinna din ära, inte ens döden.",
                             GenreId = 4,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_46.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_46.png",
                             Name = "Sekiro: Shadows Die Twice",
                             Price = 600m,
                             Producer = "From Software"
@@ -719,7 +721,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 48,
                             Description = "Ett spel för 4-8 personer. Tävla om att förstöra vänskap i den underhållande samlingen av minispel.",
                             GenreId = 3,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_48.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_48.png",
                             Name = "Pummel Party",
                             Price = 120m,
                             Producer = "Rebuilt Games"
@@ -729,7 +731,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 49,
                             Description = "Följ ett spår av kryptiska bokstäver och lös många unika pussel på allt mer extraordinära platser, på en tidsspännande resa där maskiner möter myter.",
                             GenreId = 2,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_49.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_49.png",
                             Name = "The Room",
                             Price = 50m,
                             Producer = "Fireproof Games"
@@ -739,7 +741,7 @@ namespace KärraGamesCorner.Migrations
                             Id = 50,
                             Description = "NieR_Automata berättar historien om androiderna 2B, 9S och A2 och deras kamp för att återta den maskindrivna dystopin som är invaderad av kraftfulla maskiner.",
                             GenreId = 4,
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_50.jpg",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_50.png",
                             Name = "NieR:Automata",
                             Price = 400m,
                             Producer = "Square Enix"
@@ -801,8 +803,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8112d4f2-8ad2-41ef-8bfc-8acf11bc9d27",
-                            ConcurrencyStamp = "8112d4f2-8ad2-41ef-8bfc-8acf11bc9d27",
+                            Id = "2eef4c53-4968-4b1b-b01d-3fe24efe8da5",
+                            ConcurrencyStamp = "2eef4c53-4968-4b1b-b01d-3fe24efe8da5",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -899,8 +901,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "f94f3071-fccc-431f-975f-d5aa5e4bd614",
-                            RoleId = "8112d4f2-8ad2-41ef-8bfc-8acf11bc9d27"
+                            UserId = "ced72c51-7481-42bd-9c4c-4fef5da49b33",
+                            RoleId = "2eef4c53-4968-4b1b-b01d-3fe24efe8da5"
                         });
                 });
 

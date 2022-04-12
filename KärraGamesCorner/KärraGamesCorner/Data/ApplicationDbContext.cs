@@ -23,8 +23,8 @@ namespace KärraGamesCorner.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //string fileName = "~/Resources/Produkter.Json";
-            //string readAllText = File.ReadAllText(fileName);
+            string fileName = @"C:\Users\Marti\source\repos\K-rra-Games-Corner\KärraGamesCorner\KärraGamesCorner\wwwroot\Resources\Produkter.json";
+            string readAllText = File.ReadAllText(fileName);
             modelBuilder
                 .Entity<Genre>().HasData(
                     new Genre() { Id = 1, Name = "Rollspel" },
@@ -42,26 +42,27 @@ namespace KärraGamesCorner.Data
                     new Genre() { Id = 13, Name = "Simulator" });
 
             //Använd inte konstruktorn när du lägger till produkter
-            //Product[] productList = Newtonsoft.Json.JsonConvert.DeserializeObject<Product[]>(readAllText);
-            //var prod = new Product[] { new Product(1, "bla", "bla", 20, new Genre(), "", ""), };
-            var prod = new Product(){
-                Id = 2,
-                Name = "bla",
-                Description = "bla",
-                Price = 20,
-                GenreId = 2,
-                ImageUrl = "",
-                Producer = ""
-            };
+
+            Product[] productList = JsonConvert.DeserializeObject<Product[]>(readAllText);
+            
+            //var prod = new Product(){
+            //    Id = 2,
+            //    Name = "bla",
+            //    Description = "bla",
+            //    Price = 20,
+            //    GenreId = 2,
+            //    ImageUrl = "",
+            //    Producer = ""
+            //};
 
             modelBuilder
-                .Entity<Product>().HasData(prod);
+                .Entity<Product>().HasData(productList);
 
-Guid ADMIN_ID = Guid.NewGuid();
+            Guid ADMIN_ID = Guid.NewGuid();
             string ROLE_ID = Guid.NewGuid().ToString();
 
             //seed admin role
-            builder.Entity<IdentityRole>().HasData(new IdentityRole
+            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
             {
                 Name = "Admin",
                 NormalizedName = "ADMIN",
@@ -84,10 +85,10 @@ Guid ADMIN_ID = Guid.NewGuid();
             appUser.PasswordHash = ph.HashPassword(appUser, "admin");
 
             //seed user
-            builder.Entity<ApplicationUser>().HasData(appUser);
+            modelBuilder.Entity<ApplicationUser>().HasData(appUser);
 
             //set user role to admin
-            builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
             {
                 RoleId = ROLE_ID,
                 UserId = ADMIN_ID.ToString()
