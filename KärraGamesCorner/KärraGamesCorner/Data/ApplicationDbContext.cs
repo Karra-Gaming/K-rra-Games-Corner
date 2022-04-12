@@ -65,6 +65,7 @@ namespace KärraGamesCorner.Data
             string ROLE_ID = Guid.NewGuid().ToString();
 
             //seed admin role
+
             modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
             {
                 Name = "Admin",
@@ -72,6 +73,7 @@ namespace KärraGamesCorner.Data
                 Id = ROLE_ID,
                 ConcurrencyStamp = ROLE_ID
             });
+
 
             //create user
             var appUser = new ApplicationUser()
@@ -88,6 +90,7 @@ namespace KärraGamesCorner.Data
             appUser.PasswordHash = ph.HashPassword(appUser, "admin");
 
             //seed user
+
             modelBuilder.Entity<ApplicationUser>().HasData(appUser);
 
             //set user role to admin
@@ -96,6 +99,7 @@ namespace KärraGamesCorner.Data
                 RoleId = ROLE_ID,
                 UserId = ADMIN_ID.ToString()
             });
+
             base.OnModelCreating(modelBuilder);
                     
             
