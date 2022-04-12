@@ -21,10 +21,10 @@ namespace KärraGamesCorner.Data.Models
 
         public string Producer { get; set; }
 
-        public IEnumerable<Token> Tokens { get; set; }
+        public ICollection<Token> Tokens { get; set; }
 
         //måste ha för att kunna skapa junction table för cart
-        public IEnumerable<ApplicationUser> UserCart { get; set; }
+        public ICollection<ApplicationUser> UserCart { get; set; }
         
         public Product()
         {
