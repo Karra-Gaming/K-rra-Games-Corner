@@ -21,6 +21,8 @@ namespace KärraGamesCorner.Data.Models
 
         public string Producer { get; set; }
 
+        public bool IsPhysical { get; set; }
+
         public ICollection<Token> Tokens { get; set; }
 
         //måste ha för att kunna skapa junction table för cart
@@ -31,7 +33,7 @@ namespace KärraGamesCorner.Data.Models
             
         }
 
-        public Product(int id, string name, string description, decimal price, Genre? genre, string imageUrl, string producer)
+        public Product(int id, string name, string description, decimal price, Genre? genre, string imageUrl, string producer,bool isPhysical)
         {
             Id = id;
             Name = name;
@@ -40,6 +42,7 @@ namespace KärraGamesCorner.Data.Models
             Genre = genre;
             ImageUrl = imageUrl;
             Producer = producer;
+            IsPhysical = isPhysical;
             // Lägg if-sats här för att hämta befintlig lista om den finns.
             Tokens = new List<Token>();
             UserCart = new List<ApplicationUser>();
