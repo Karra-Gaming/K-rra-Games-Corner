@@ -5,11 +5,20 @@ namespace KärraGamesCorner.Data.Models
 {
     public class CartProduct
     {
-        [Key, Column(Order = 0)]
-        public int UserId { get; set; }
-        [Key, Column(Order = 1)]
-        public int ProductId { get; set; }
+        
+        public ApplicationUser User { get; set; }
+        public Product Product { get; set; }
         public int Amount { get; set; }
+        public string ApplicationUserId { get => User.Id.ToString();
+            set => User.Id = Guid.Parse(value);
+        }
+
+        public int ProductId
+        {
+            get => Product.Id;
+            set => Product.Id = value;
+
+        }
 
         public CartProduct()
         {

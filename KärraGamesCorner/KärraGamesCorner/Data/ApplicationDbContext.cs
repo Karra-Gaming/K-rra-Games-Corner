@@ -15,6 +15,7 @@ namespace KärraGamesCorner.Data
         public DbSet<ApplicationUser> ApplicationUsers;
         public DbSet<Token> Tokens;
         public DbSet<Genre> Genres;
+        public DbSet<CartProduct> CartProducts;
 
         private readonly IWebHostEnvironment environment;
 
@@ -100,7 +101,7 @@ namespace KärraGamesCorner.Data
                 UserId = ADMIN_ID.ToString()
             });
 
-            modelBuilder.Entity<CartProduct>().HasKey(vf => new { vf.UserId, vf.ProductId });
+            modelBuilder.Entity<CartProduct>().HasKey(vf => new {  vf. ApplicationUserId, vf.ProductId });
 
             base.OnModelCreating(modelBuilder);
                     
