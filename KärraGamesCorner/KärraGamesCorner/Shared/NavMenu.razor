@@ -36,7 +36,7 @@
         }
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" @onclick="()=>expandSubMenuContact= !expandSubMenuContact">
+            <NavLink class="nav-link" href="" @onclick="()=>expandSubMenuContact =!expandSubMenuContact">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Kontakt/Om Oss
             </NavLink>
             
@@ -54,17 +54,23 @@
   
         }
         </div>
+
+           
+            
+        
+            <div class="nav-item px-3">
+            <NavLink class="nav-link" href="CustomerCart">
+                 <span class="oi" aria-hidden="true"><i class="bi bi-cart" style="color: #ffffff; font-size: 1em;" i/></span>Kundvagn
+                
+            </NavLink>
+             </div>
+  
+        
+       
+        
      
 
-        <div class="px-3">
-            
-            <a href="CustomerCart">
-                
-                <i class="bi bi-cart" style="color: #ffffff; font-size: 3em;"></i>
-            
-            </a>
-        
-        </div>
+      
 
 
     </nav>
@@ -75,6 +81,7 @@
 
     private bool expandSubMenuAccount;
     private bool expandSubMenuContact;
+    
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
