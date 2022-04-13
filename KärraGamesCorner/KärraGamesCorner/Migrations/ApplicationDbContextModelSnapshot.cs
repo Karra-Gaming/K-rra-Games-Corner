@@ -97,17 +97,29 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
+
+                            Id = "9738a3c5-ba3a-42ae-b0cc-369785842412",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "851c416b-c9ef-489d-bb46-ea8d397829f5",
+
                             Id = "9da6dec2-1c4e-4193-b9c9-29f6407b3d96",
                             AccessFailedCount = 0,
                             ConcurrencyStamp = "c0e58d5a-5bab-4ff9-aafc-26b6f4b9f33d",
+
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             ImageUrl = "",
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@GMAIL.COM",
+
+                            PasswordHash = "AQAAAAEAACcQAAAAELnCIDQDfHvG/emoGKR72PLf6GTO7p8Ph2GlbKOdqrbMsuKO2nKFFNZrcIAt/0f7vQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "3c312b37-fae5-40c4-b1bb-72f4ccccff47",
+
                             PasswordHash = "AQAAAAEAACcQAAAAENGrSmAbNXesMxefJrz8vVW9e9dfxZ6boH3guUBRsFFm5lRJge89NOb/X0u8jkoDVg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "e55d2b23-9623-45f6-802d-7e8870a8e2eb",
+
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -115,23 +127,18 @@ namespace KärraGamesCorner.Migrations
 
             modelBuilder.Entity("KärraGamesCorner.Data.Models.CartProduct", b =>
                 {
-                    b.Property<int>("UserId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(0);
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("ProductId")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
+                        .HasColumnType("int");
 
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.HasKey("ApplicationUserId", "ProductId");
 
-                    b.HasKey("UserId", "ProductId");
-
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("ProductId");
 
                     b.ToTable("CartProduct");
                 });
@@ -867,8 +874,13 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
+
+                            Id = "7ad8af27-ce3a-4f39-9ab2-eab51a41fead",
+                            ConcurrencyStamp = "7ad8af27-ce3a-4f39-9ab2-eab51a41fead",
+
                             Id = "557c23b1-65e8-4c5e-a834-4b35a4004308",
                             ConcurrencyStamp = "557c23b1-65e8-4c5e-a834-4b35a4004308",
+
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -965,8 +977,13 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
+
+                            UserId = "9738a3c5-ba3a-42ae-b0cc-369785842412",
+                            RoleId = "7ad8af27-ce3a-4f39-9ab2-eab51a41fead"
+
                             UserId = "9da6dec2-1c4e-4193-b9c9-29f6407b3d96",
                             RoleId = "557c23b1-65e8-4c5e-a834-4b35a4004308"
+
                         });
                 });
 
@@ -1000,9 +1017,21 @@ namespace KärraGamesCorner.Migrations
 
             modelBuilder.Entity("KärraGamesCorner.Data.Models.CartProduct", b =>
                 {
-                    b.HasOne("KärraGamesCorner.Data.Models.ApplicationUser", null)
+                    b.HasOne("KärraGamesCorner.Data.Models.ApplicationUser", "User")
                         .WithMany("CartProducts")
-                        .HasForeignKey("ApplicationUserId");
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("KärraGamesCorner.Data.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("KärraGamesCorner.Data.Models.Product", b =>
