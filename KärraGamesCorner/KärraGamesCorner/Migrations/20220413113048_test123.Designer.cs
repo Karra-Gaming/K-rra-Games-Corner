@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KärraGamesCorner.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220413074600_Initial")]
-    partial class Initial
+    [Migration("20220413113048_test123")]
+    partial class test123
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -99,17 +99,17 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "51286879-85ae-4052-b78c-5660cb011cc4",
+                            Id = "550964e4-d5a6-4480-b1d4-9f237b5e2831",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a177760f-9ffb-415d-870a-c9611b0676c1",
+                            ConcurrencyStamp = "7586dc10-05bd-4b75-b0c3-ddbe84613806",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             ImageUrl = "",
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBvLSzi3Wd5cjzDo4ImB10LLfc9gXW9OeODTDNgZ7jgCgKagF+XK0HNuhodyE0U1vw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENnaiJCR+8LCMIJsb0yQPoWRqnPl+z8zsVEWXGo3CiowxrlMiiPZRTL4vDUDQFCjvw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "21e087ae-d1b9-4f53-a656-2e5a1a7181f5",
+                            SecurityStamp = "4a27ef8f-dbac-4a0a-b975-1b2f3e600803",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -126,7 +126,12 @@ namespace KärraGamesCorner.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
                     b.HasKey("ApplicationUserId", "ProductId");
+
+                    b.HasIndex("OrderId");
 
                     b.HasIndex("ProductId");
 
@@ -215,6 +220,28 @@ namespace KärraGamesCorner.Migrations
                             Id = 13,
                             Name = "Simulator"
                         });
+                });
+
+            modelBuilder.Entity("KärraGamesCorner.Data.Models.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("OrderOfDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("KärraGamesCorner.Data.Models.Product", b =>
@@ -864,8 +891,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "57034861-89f1-473b-b5b0-a1a753f9e225",
-                            ConcurrencyStamp = "57034861-89f1-473b-b5b0-a1a753f9e225",
+                            Id = "5069e1e6-74de-47f3-97a2-add16b8d16ea",
+                            ConcurrencyStamp = "5069e1e6-74de-47f3-97a2-add16b8d16ea",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -962,8 +989,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "51286879-85ae-4052-b78c-5660cb011cc4",
-                            RoleId = "57034861-89f1-473b-b5b0-a1a753f9e225"
+                            UserId = "550964e4-d5a6-4480-b1d4-9f237b5e2831",
+                            RoleId = "5069e1e6-74de-47f3-97a2-add16b8d16ea"
                         });
                 });
 
@@ -1003,6 +1030,10 @@ namespace KärraGamesCorner.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("KärraGamesCorner.Data.Models.Order", null)
+                        .WithMany("Products")
+                        .HasForeignKey("OrderId");
+
                     b.HasOne("KärraGamesCorner.Data.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
@@ -1010,6 +1041,17 @@ namespace KärraGamesCorner.Migrations
                         .IsRequired();
 
                     b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("KärraGamesCorner.Data.Models.Order", b =>
+                {
+                    b.HasOne("KärraGamesCorner.Data.Models.ApplicationUser", "User")
+                        .WithMany("Orders")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
@@ -1097,7 +1139,14 @@ namespace KärraGamesCorner.Migrations
                 {
                     b.Navigation("CartProducts");
 
+                    b.Navigation("Orders");
+
                     b.Navigation("PurchasedTokens");
+                });
+
+            modelBuilder.Entity("KärraGamesCorner.Data.Models.Order", b =>
+                {
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("KärraGamesCorner.Data.Models.Product", b =>

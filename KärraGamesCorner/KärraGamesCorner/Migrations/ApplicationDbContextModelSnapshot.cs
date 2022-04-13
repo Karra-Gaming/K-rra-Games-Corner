@@ -98,9 +98,13 @@ namespace KärraGamesCorner.Migrations
                         new
                         {
 
-                            Id = "651c47c6-fc11-46d6-8d7a-6df194661e2c",
+                    
+
+
+                            Id = "d1faeb66-d59c-4e07-b4a0-b1e9402f0a8b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ef3c58a2-369a-4213-89f1-3d38008cba38",
+                            ConcurrencyStamp = "f3f21296-cefa-4cab-b219-8a04bfcd94f5",
+
 
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
@@ -108,9 +112,10 @@ namespace KärraGamesCorner.Migrations
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@GMAIL.COM",
 
-                            PasswordHash = "AQAAAAEAACcQAAAAEMTIuhUGDThJbXegbimhRpsLfwJcmGqhhNrjdTO2r/C5P4ujMbR6oI9hpLuJdx561A==",
+
+                            PasswordHash = "AQAAAAEAACcQAAAAEDRwC/6FtTzZHkeASOOcesB8s2rzE22Sgs7/+HWC35HhCTGCTWSMnTKGcp+KjIdFzg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7885fa28-1138-4b0d-b3f3-add26958ad20",
+                            SecurityStamp = "0edcb52f-c54e-4ee3-a59c-c23514d84a5d",
 
 
                             TwoFactorEnabled = false,
@@ -898,8 +903,11 @@ namespace KärraGamesCorner.Migrations
                         new
                         {
 
-                            Id = "f98082ed-a0f7-4388-9043-2809ff62b5a8",
-                            ConcurrencyStamp = "f98082ed-a0f7-4388-9043-2809ff62b5a8",
+        
+
+
+                            Id = "9e5e5c88-da7c-453f-b289-9a77a79e0f7c",
+                            ConcurrencyStamp = "9e5e5c88-da7c-453f-b289-9a77a79e0f7c",
 
 
                             Name = "Admin",
@@ -999,8 +1007,11 @@ namespace KärraGamesCorner.Migrations
                         new
                         {
 
-                            UserId = "651c47c6-fc11-46d6-8d7a-6df194661e2c",
-                            RoleId = "f98082ed-a0f7-4388-9043-2809ff62b5a8"
+                   
+
+
+                            UserId = "d1faeb66-d59c-4e07-b4a0-b1e9402f0a8b",
+                            RoleId = "9e5e5c88-da7c-453f-b289-9a77a79e0f7c"
 
 
                         });

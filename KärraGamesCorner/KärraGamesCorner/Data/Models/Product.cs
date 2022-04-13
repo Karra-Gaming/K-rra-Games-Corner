@@ -2,7 +2,7 @@
 
 namespace KärraGamesCorner.Data.Models
 {
-    public class Product : IEntity<int>
+    public class Product 
     {
         
         public int Id { get; set; }

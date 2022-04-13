@@ -1,6 +1,6 @@
 ﻿namespace KärraGamesCorner.Data.Models
 {
-    public class Genre : IEntity<int>
+    public class Genre 
     {
         public int Id { get; set; }
         public string Name { get; set; }

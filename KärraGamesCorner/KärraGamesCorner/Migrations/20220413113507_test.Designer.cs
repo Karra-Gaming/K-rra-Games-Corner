@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KärraGamesCorner.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220413085133_orderConstructor")]
-    partial class orderConstructor
+    [Migration("20220413113507_test")]
+    partial class test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -99,17 +99,17 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "651c47c6-fc11-46d6-8d7a-6df194661e2c",
+                            Id = "6d528673-a3ef-40a0-b1e2-47b19ecccf74",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ef3c58a2-369a-4213-89f1-3d38008cba38",
+                            ConcurrencyStamp = "b838d660-cdfd-4ef4-9ee7-34eacea3947e",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             ImageUrl = "",
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMTIuhUGDThJbXegbimhRpsLfwJcmGqhhNrjdTO2r/C5P4ujMbR6oI9hpLuJdx561A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOL1YcNmw9EXEiEBBJspDvmWC/Oc2ioE1SavRHo5o4kgRfacjEzHl5+oOzi0eWSkvg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7885fa28-1138-4b0d-b3f3-add26958ad20",
+                            SecurityStamp = "b19a29ee-cee9-42f1-a855-789c5825b3b6",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -894,8 +894,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f98082ed-a0f7-4388-9043-2809ff62b5a8",
-                            ConcurrencyStamp = "f98082ed-a0f7-4388-9043-2809ff62b5a8",
+                            Id = "bb5e0bc7-fe3a-4e6a-9c67-96d5ee8ea9a9",
+                            ConcurrencyStamp = "bb5e0bc7-fe3a-4e6a-9c67-96d5ee8ea9a9",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -992,8 +992,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "651c47c6-fc11-46d6-8d7a-6df194661e2c",
-                            RoleId = "f98082ed-a0f7-4388-9043-2809ff62b5a8"
+                            UserId = "6d528673-a3ef-40a0-b1e2-47b19ecccf74",
+                            RoleId = "bb5e0bc7-fe3a-4e6a-9c67-96d5ee8ea9a9"
                         });
                 });
 

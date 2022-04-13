@@ -3,14 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KärraGamesCorner.Data.Models
 {
-    public class CartProduct
+    public class CartProduct 
     {
         
         public ApplicationUser User { get; set; }
         public Product Product { get; set; }
         public int Amount { get; set; }
-        public string ApplicationUserId { get => User.Id.ToString();
-            set => User.Id = Guid.Parse(value);
+        public string ApplicationUserId { get => User.Id;
+            set => User.Id = value;
         }
 
         public int ProductId

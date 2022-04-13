@@ -1,9 +1,10 @@
-﻿using KärraGamesCorner.Data.Models;
+﻿using System.Text;
+using KärraGamesCorner.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace KärraGamesCorner.Data
 {
-    public class GenericRepository<T,U> : IRepository<T,U> where T : class, IEntity<U> where U  : struct
+    public class GenericRepository<T> : IRepository<T> where T : class
     {
         private readonly ApplicationDbContext _applicationDbContext;
         private readonly DbSet<T> _dbSet;
@@ -23,14 +24,12 @@ namespace KärraGamesCorner.Data
             return true;
         }
 
-        public async Task<bool> DeleteAsync(T type)
+        public async Task<bool> DeleteAsync(params object[] keys)
         {
-            if (!_dbSet.Any(t => t.Id.Equals(type.Id)))
-            {
-                return await Task.FromResult(false);
-            }
-
-            _dbSet.Remove(type);
+            var entity = await _dbSet.FindAsync(keys);
+            if (entity is null) return false;
+            
+            _dbSet.Remove(entity);
             return await Task.FromResult(true);
         }
 
@@ -39,24 +38,17 @@ namespace KärraGamesCorner.Data
             return await Task.FromResult(_dbSet);
         }
 
-        public async Task<T> GetAsync(U id)
+        public async Task<T> GetAsync(params object[] keys)
         {
-            return await Task.FromResult(_dbSet.FirstOrDefault(t => t.Id.Equals(id))!);
+            return await Task.FromResult(await _dbSet.FindAsync(keys));
         }
 
-        public async Task UpdateOrCreateAsync(T type)
+        public async Task UpdateAsync(params object[] keys)
         {
-            if (type is null)
-            {
-                return;
-            }
-            else if (!_dbSet.Any(t => t.Id.Equals(type.Id)))
-            {
-                await CreateAsync(type);
-                return;
-            }
+            var entity = await _dbSet.FindAsync(keys);
+            if (entity is null) return;
 
-            _dbSet.Update(type);
+            _dbSet.Update(entity);
         }
     }
 }
