@@ -35,6 +35,10 @@ namespace KärraGamesCorner.Data
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {
+            if (typeof(T) ==  typeof(ApplicationUser))
+            {
+                return (IEnumerable<T>)await Task.FromResult(_dbSet.IncludeCartProducts());
+            }
             return await Task.FromResult(_dbSet);
         }
 

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace KärraGamesCorner.Migrations
 {
-    public partial class orderConstructor : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -280,12 +280,12 @@ namespace KärraGamesCorner.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "f98082ed-a0f7-4388-9043-2809ff62b5a8", "f98082ed-a0f7-4388-9043-2809ff62b5a8", "Admin", "ADMIN" });
+                values: new object[] { "795e343f-3806-4ece-9f27-06d3707249f2", "795e343f-3806-4ece-9f27-06d3707249f2", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "ImageUrl", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProductId", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "651c47c6-fc11-46d6-8d7a-6df194661e2c", 0, "ef3c58a2-369a-4213-89f1-3d38008cba38", "admin@gmail.com", true, "", false, null, null, "ADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEMTIuhUGDThJbXegbimhRpsLfwJcmGqhhNrjdTO2r/C5P4ujMbR6oI9hpLuJdx561A==", null, false, null, "7885fa28-1138-4b0d-b3f3-add26958ad20", false, "admin@gmail.com" });
+                values: new object[] { "8d05da10-5e3d-42a9-b458-74dfe1b3c2ce", 0, "5cc20ff9-ef43-43b1-83a9-4adb66ae8b1a", "admin@gmail.com", true, "", false, null, null, "ADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEILtkA7c+My9ZFJr9Roj3GDNEnPGe6qz4InYDczeclsWP7X7MbRevvtoVQtiF7iSNg==", null, false, null, "6e882a3c-2367-4bae-b66f-00f1352abfa1", false, "admin@gmail.com" });
 
             migrationBuilder.InsertData(
                 table: "Genre",
@@ -310,7 +310,7 @@ namespace KärraGamesCorner.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "f98082ed-a0f7-4388-9043-2809ff62b5a8", "651c47c6-fc11-46d6-8d7a-6df194661e2c" });
+                values: new object[] { "795e343f-3806-4ece-9f27-06d3707249f2", "8d05da10-5e3d-42a9-b458-74dfe1b3c2ce" });
 
             migrationBuilder.InsertData(
                 table: "Product",
