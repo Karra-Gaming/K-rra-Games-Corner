@@ -2,7 +2,7 @@
 
 namespace KärraGamesCorner.Data.Models
 {
-    public class Order : IEntity<int>
+    public class Order 
     {
         public int Id { get; set; }
         //En order kan bara ha en user
