@@ -1,5 +1,9 @@
 ﻿@page "/customercart"
 @using KärraGamesCorner.Data.Models
+@using System.Security.Claims
+@using KärraGamesCorner.Interfaces
+@inject IUnitOfWork _unitOfWork
+@inject IHttpContextAccessor _accessor
 
 <head>
     <meta charset="utf-8" />
@@ -29,19 +33,23 @@
 
  <table syle="100%">
      
-              <tr>
-                <th>Titel</th>
-                <th>Pris</th>
-                <th>Antal</th>
-                <th>TotalPris</th>
+     <tr>
+         <th>Titel</th>
+         <th>Pris</th>
+         <th>Antal</th>
+         <th>TotalPris</th>
                 
-              </tr>
-               <tr>
-                <td>Csgo</td>
-                <td>200kr</td>
-                <td>1</td>
-                <td>200kr</td>
-              </tr>
+     </tr>
+     @foreach (var product in _currentUser.CartProducts)
+     {
+         <tr>
+             <td>@product.Product.Name</td>
+             <td>@product.Product.Price Kr</td>
+             <td>@product.Amount</td>
+             <td>@RowPriceAsync(product)</td>
+         </tr>
+     }
+               
             
                
             
@@ -61,28 +69,55 @@
 
 @code {
 
-    //Field för att targeta kundens lista av cartProducts
+    //Field för applcationUser kundens lista av cartProducts
+
+    //Hitta ett sätt att få reda på vilken applicationUser som är inloggad.
+    private ApplicationUser _currentUser;
+    protected override async Task OnInitializedAsync()
+    {
+        var claims = _accessor.HttpContext.User.Claims;
+        foreach (var claim in claims)
+        {
+            if (claim.Type == ClaimTypes.NameIdentifier)
+            {
+                _currentUser = await _unitOfWork.Users.GetAsync(claim.Value);
+            }
+        }
+    }
+    
 
     //Gör en metod som räknar ut totalpris på raden
-    public async Task<decimal> RowPriceAsync()
+    public async Task<decimal> RowPriceAsync(CartProduct product)
     {
-        var productCart = new CartProduct();
+        return product.Amount * product.Product.Price;
+    }
+    //Gör en metod som ökar antalet - koppla till en knapp
+    public async Task<int> AddToAmountAsync(int rowNumber)
+    {
+        var productCart =  _currentUser.CartProducts.ToList();
+        var rowProduct = productCart[rowNumber];
+        rowProduct.Amount++;
+        await _unitOfWork.CommitAsync();
 
-        return productCart.Amount * productCart.Product.Price;
+        return rowProduct.Amount;
     }
-    //Gör en metod som ökar antalet
-    public async Task<int> AddToAmountAsync()
+    //Gör en metod som minskar antalet - koppla till en knapp
+    public async Task<int> SubtractFromAmountAsync(int rowNumber)
     {
-        var product = 
-    }
-    //Gör en metod som minskar antalet
-    public async Task<int> SubtractFromAmountAsync()
-    {
-        var product = 
+        var productCart =  _currentUser.CartProducts.ToList();
+        var rowProduct = productCart[rowNumber];
+        rowProduct.Amount--;
+        await _unitOfWork.CommitAsync();
+
+        return rowProduct.Amount;
     }
     //Gör en metod som räknar ut totalpris på raden
-    public async Task DeleteRowAsync()
+    public async Task DeleteRowAsync(int rowNumber)
     {
-        var product = 
+        var productCart =  _currentUser.CartProducts.ToList();
+        var rowProduct = productCart[rowNumber];
+        productCart.Remove(rowProduct);
+
+        await _unitOfWork.CommitAsync();
     }
 }
