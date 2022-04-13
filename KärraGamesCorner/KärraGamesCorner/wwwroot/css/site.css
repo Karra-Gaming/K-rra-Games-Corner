@@ -154,3 +154,8 @@ svg {
     color: #fff;
     fill: currentColor;
 }
+
+.form-group
+{
+    padding:5px;
+}
