@@ -27,7 +27,10 @@
                     <form method="post" action="Identity/Account/LogOut">
                         <button type="submit" class="nav-link btn btn-link">Logga ut</button>
                     </form>
-                </Authorized>
+                    @if(context.User.IsInRole("Admin")){
+                            <NavLink class="nav-link" href="Admin">Admin</NavLink>
+                        }
+                    </Authorized>
                 <NotAuthorized>
                     <a href="Identity/Account/Register">Registrera</a>
                     <a href="Identity/Account/Login">Logga in</a>
