@@ -1,7 +1,11 @@
-﻿using KärraGamesCorner.Data.Models;
+using System.Net;
+using System.Reflection;
+using KärraGamesCorner.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.CodeAnalysis.VisualBasic.Syntax;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace KärraGamesCorner.Data
 {
@@ -12,24 +16,64 @@ namespace KärraGamesCorner.Data
         public DbSet<Token> Tokens;
         public DbSet<Genre> Genres;
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        private readonly IWebHostEnvironment environment;
+
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IWebHostEnvironment environment)
             : base(options)
         {
+            this.environment = environment;
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            string fileName = $"{environment.WebRootPath}/Resources/Produkter.json";
+            string readAllText = File.ReadAllText(fileName);
+            modelBuilder
+                .Entity<Genre>().HasData(
+                    new Genre() { Id = 1, Name = "Rollspel" },
+                    new Genre() { Id = 2, Name = "Pussel" },
+                    new Genre() { Id = 3, Name = "Sällskapsspel" },
+                    new Genre() { Id = 4, Name = "Actionrollspel" },
+                    new Genre() { Id = 5, Name = "Kortspel" },
+                    new Genre() { Id = 6, Name = "Skräck" },
+                    new Genre() { Id = 7, Name = "Äventyr" },
+                    new Genre() { Id = 8, Name = "Strategi" },
+                    new Genre() { Id = 9, Name = "FPS" },
+                    new Genre() { Id = 10, Name = "Överlevnad" },
+                    new Genre() { Id = 11, Name = "MMORPG" },
+                    new Genre() { Id = 12, Name = "Racing" },
+                    new Genre() { Id = 13, Name = "Simulator" });
+
+            //Använd inte konstruktorn när du lägger till produkter
+
+            Product[] productList = JsonConvert.DeserializeObject<Product[]>(readAllText);
+            
+            //var prod = new Product(){
+            //    Id = 2,
+            //    Name = "bla",
+            //    Description = "bla",
+            //    Price = 20,
+            //    GenreId = 2,
+            //    ImageUrl = "",
+            //    Producer = ""
+            //};
+
+            modelBuilder
+                .Entity<Product>().HasData(productList);
+
             Guid ADMIN_ID = Guid.NewGuid();
             string ROLE_ID = Guid.NewGuid().ToString();
 
             //seed admin role
-            builder.Entity<IdentityRole>().HasData(new IdentityRole
+
+            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
             {
                 Name = "Admin",
                 NormalizedName = "ADMIN",
                 Id = ROLE_ID,
                 ConcurrencyStamp = ROLE_ID
             });
+
 
             //create user
             var appUser = new ApplicationUser()
@@ -46,15 +90,22 @@ namespace KärraGamesCorner.Data
             appUser.PasswordHash = ph.HashPassword(appUser, "admin");
 
             //seed user
-            builder.Entity<ApplicationUser>().HasData(appUser);
+
+            modelBuilder.Entity<ApplicationUser>().HasData(appUser);
 
             //set user role to admin
-            builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
             {
                 RoleId = ROLE_ID,
                 UserId = ADMIN_ID.ToString()
             });
-            base.OnModelCreating(builder);
+
+            modelBuilder.Entity<CartProduct>().HasKey(vf => new { vf.UserId, vf.ProductId });
+
+            base.OnModelCreating(modelBuilder);
+                    
+            
+
         }
     }
 }
