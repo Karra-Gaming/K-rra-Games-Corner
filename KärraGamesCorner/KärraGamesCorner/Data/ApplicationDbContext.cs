@@ -16,6 +16,7 @@ namespace KärraGamesCorner.Data
         public DbSet<Token> Tokens;
         public DbSet<Genre> Genres;
         public DbSet<CartProduct> CartProducts;
+        public DbSet<Order> Orders;
 
         private readonly IWebHostEnvironment environment;
 
