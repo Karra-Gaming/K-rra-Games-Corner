@@ -1,91 +1,128 @@
 ﻿@page
 @model KärraGamesCorner.Pages.CheckoutModel
-
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
 <body>
+<main>
+	<section class="checkout-container">
+		<div class="form-wrap">
+			<form>
+				<div class="form-group">
+					<label for="name">Namn</label>
+					<input
+						type="text"
+						name="name"
+						id="name"
+						placeholder="Namn..."/>
+				</div>
 
-<h2>Responsive Checkout Form</h2>
-<p>Resize the browser window to see the effect. When the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other.</p>
-<div class="row">
-  <div class="col-75">
-    <div class="container">
-      <form action="/action_page.php">
-      
-        <div class="row">
-          <div class="col-50">
-            <h3>Billing Address</h3>
-            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
-            <label for="email"><i class="fa fa-envelope"></i> Email</label>
-            <input type="text" id="email" name="email" placeholder="john@example.com">
-            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
-            <label for="city"><i class="fa fa-institution"></i> City</label>
-            <input type="text" id="city" name="city" placeholder="New York">
+				<div class="form-group">
+					<label for="address">Adress</label>
+					<input
+						type="text"
+						name="address"
+						id="address"
+						placeholder="Ange adress"/>
+				</div>
 
-            <div class="row">
-              <div class="col-50">
-                <label for="state">State</label>
-                <input type="text" id="state" name="state" placeholder="NY">
-              </div>
-              <div class="col-50">
-                <label for="zip">Zip</label>
-                <input type="text" id="zip" name="zip" placeholder="10001">
-              </div>
-            </div>
-          </div>
+				<div class="form-group">
+					<label for="last-name">Stad</label>
+					<input
+						type="text"
+						name="city"
+						id="city"
+						placeholder="Ange stad"/>
+				</div>
 
-          <div class="col-50">
-            <h3>Payment</h3>
-            <label for="fname">Accepted Cards</label>
-            <div class="icon-container">
-              <i class="fa fa-cc-visa" style="color:navy;"></i>
-              <i class="fa fa-cc-amex" style="color:blue;"></i>
-              <i class="fa fa-cc-mastercard" style="color:red;"></i>
-              <i class="fa fa-cc-discover" style="color:orange;"></i>
-            </div>
-            <label for="cname">Name on Card</label>
-            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-            <label for="ccnum">Credit card number</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-            <label for="expmonth">Exp Month</label>
-            <input type="text" id="expmonth" name="expmonth" placeholder="September">
-            <div class="row">
-              <div class="col-50">
-                <label for="expyear">Exp Year</label>
-                <input type="text" id="expyear" name="expyear" placeholder="2018">
-              </div>
-              <div class="col-50">
-                <label for="cvv">CVV</label>
-                <input type="text" id="cvv" name="cvv" placeholder="352">
-              </div>
-            </div>
-          </div>
-          
-        </div>
-        <label>
-          <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-        </label>
-        <input type="submit" value="Continue to checkout" class="btn">
-      </form>
-    </div>
-  </div>
-  <div class="col-25">
-    <div class="container">
-      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-      <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-      <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-      <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-      <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-      <hr>
-      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
-    </div>
-  </div>
-</div>
+				<div class="form-group">
+					<label for="email">Kortnummer</label>
+					<input
+						type="text"
+						name="cardnumber"
+						id="cardnumber"
+						placeholder="Ange kortnummer"/>
+				</div>
+
+				<div class="form-group">
+					<label for="expirytdate">MM/ÅÅ</label>
+					<input
+						type="expirytdate"
+						name="expirytdate"
+						id="expirytdate"
+						placeholder="Ange giltighetsdatum"/>
+				</div>
+
+				<div class="form-group">
+					<label for="cvc">CVC</label>
+					<input
+						type="text"
+						name="cvc"
+						id="cvc"
+						placeholder="Ange CVC"/>
+				</div>
+
+				<button type="submit" class="btn">Slutför köpet</button>
+			</form>
+		</div>
+	</section>
+</main>
+
+<style> 
+	.checkout-container {
+		margin: 100px auto;
+		max-width: 400px;
+		padding: 20px;
+	}
+
+	.form-wrap {
+		background: #fff;
+		color: #333;
+		padding: 15px 25px;
+		border: #333 1px solid;
+		border-radius: 5px;
+		box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
+	}
+
+	.form-wrap h1,
+	.form-wrap p {
+		text-align: center;
+	}
+
+	.form-wrap p {
+		color: #344a72;
+		font-weight: bold;
+	}
+
+	.form-wrap .form-group {
+		margin-top: 15px;
+	}
+
+	.form-wrap .form-group label {
+		display: block;
+		color: #666;
+	}
+
+	.form-wrap .form-group input {
+		width: 100%;
+		padding: 10px;
+		color: #666;
+		border: #ddd 1px solid;
+		border-radius: 5px;
+	}
+
+	.form-wrap button {
+		display: block;
+		width: 100%;
+		padding: 10px;
+		margin: 20px 0;
+		background: #49c1a2;
+		color: #f4f4f4;
+		cursor: pointer;
+		border: #37a08e 1px solid;
+	}
+
+	.form-wrap button:hover {
+		background: #37a08e;
+		font-weight: bold;
+	}
+</style>
 
 </body>
-
-
