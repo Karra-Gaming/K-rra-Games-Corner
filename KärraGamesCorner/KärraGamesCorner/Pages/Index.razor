@@ -2,11 +2,15 @@
 @using KärraGamesCorner.Data.Models
 @using KärraGamesCorner.Data
 @using KärraGamesCorner.Interfaces
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@using System.Collections.Concurrent
 
 @inject IUnitOfWork _unitOfWork
+@inject IHttpContextAccessor _accessor
 
 
-   
+
 <PageTitle>Home Page</PageTitle>
 
    @foreach (var product in _products)
@@ -19,7 +23,7 @@
             </div>
             <div class="c-info">
                 <p class="price">@product.Price kr</p>
-                <a href="#" class="btn btn-primary">add</a>
+                <a href="#" @onclick="() => AddProduct(product.Id)" class="btn btn-primary">add</a>
             </div>
         </div>
     }
@@ -40,11 +44,32 @@
 
 @code{
 
-    private IEnumerable<Product> _products;
+    private ConcurrentBag<Product> _products;
 
     protected override async Task OnInitializedAsync()
     {
-        _products = await _unitOfWork.Products.GetAllAsync();
+        _products = new ConcurrentBag<Product>(await _unitOfWork.Products.GetAllAsync());
+    }
+
+    private async Task AddProduct(int id)
+    {
+        if (_accessor.HttpContext.User.Identity.IsAuthenticated)
+        {
+            var claims = _accessor.HttpContext.User.Claims;
+            foreach (var claim in claims)
+            {
+                if (claim.Type == ClaimTypes.NameIdentifier)
+                {
+                    await _unitOfWork.CartProducts.CreateAsync(new CartProduct
+                    {
+                        User = await _unitOfWork.Users.GetAsync(claim.Value),
+                        Product = await _unitOfWork.Products.GetAsync(id),
+                        Amount = 1
+                    });
+                    await _unitOfWork.CommitAsync();
+                }
+            }
+        }
     }
 
 }

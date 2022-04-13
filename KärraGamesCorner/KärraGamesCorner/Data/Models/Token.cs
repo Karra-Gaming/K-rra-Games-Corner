@@ -1,6 +1,6 @@
 ﻿namespace KärraGamesCorner.Data.Models
 {
-    public class Token : IEntity<int>
+    public class Token
     {
   
         public int Id { get; set; }

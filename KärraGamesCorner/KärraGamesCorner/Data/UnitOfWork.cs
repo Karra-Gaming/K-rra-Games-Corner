@@ -5,10 +5,12 @@ namespace KärraGamesCorner.Data
 {
     public class UnitOfWork : IUnitOfWork
     {
-        public IRepository<ApplicationUser, Guid> Users { get; private set; }
-        public IRepository<Genre, int> Genres { get; private set; }
-        public IRepository<Product, int> Products { get; private set; }
-        public IRepository<Token, int> Tokens { get; private set; }
+        public IRepository<ApplicationUser> Users { get; private set; }
+        public IRepository<Genre> Genres { get; private set; }
+        public IRepository<Product> Products { get; private set; }
+        public IRepository<Token> Tokens { get; private set; }
+        public IRepository<CartProduct> CartProducts { get; private set; }
+
 
         private readonly ApplicationDbContext context;
 
@@ -16,10 +18,11 @@ namespace KärraGamesCorner.Data
         {
             this.context = context;
 
-            Users = new GenericRepository<ApplicationUser, Guid>(context);
-            Genres = new GenericRepository<Genre, int>(context);
-            Products = new GenericRepository<Product, int>(context);
-            Tokens = new GenericRepository<Token, int>(context);
+            Users = new GenericRepository<ApplicationUser>(context);
+            Genres = new GenericRepository<Genre>(context);
+            Products = new GenericRepository<Product>(context);
+            Tokens = new GenericRepository<Token>(context);
+            CartProducts = new GenericRepository<CartProduct>(context);
         }
 
         public async Task CommitAsync()

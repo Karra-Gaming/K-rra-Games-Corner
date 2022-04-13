@@ -63,7 +63,7 @@ namespace KärraGamesCorner.Data
             modelBuilder
                 .Entity<Product>().HasData(productList);
 
-            Guid ADMIN_ID = Guid.NewGuid();
+            string ADMIN_ID = Guid.NewGuid().ToString();
             string ROLE_ID = Guid.NewGuid().ToString();
 
             //seed admin role
