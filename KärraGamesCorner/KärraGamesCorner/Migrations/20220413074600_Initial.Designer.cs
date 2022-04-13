@@ -4,6 +4,7 @@ using KärraGamesCorner.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KärraGamesCorner.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220413074600_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -97,22 +99,17 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-
-                            Id = "651c47c6-fc11-46d6-8d7a-6df194661e2c",
+                            Id = "51286879-85ae-4052-b78c-5660cb011cc4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ef3c58a2-369a-4213-89f1-3d38008cba38",
-
+                            ConcurrencyStamp = "a177760f-9ffb-415d-870a-c9611b0676c1",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             ImageUrl = "",
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-
-                            PasswordHash = "AQAAAAEAACcQAAAAEMTIuhUGDThJbXegbimhRpsLfwJcmGqhhNrjdTO2r/C5P4ujMbR6oI9hpLuJdx561A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBvLSzi3Wd5cjzDo4ImB10LLfc9gXW9OeODTDNgZ7jgCgKagF+XK0HNuhodyE0U1vw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7885fa28-1138-4b0d-b3f3-add26958ad20",
-
-
+                            SecurityStamp = "21e087ae-d1b9-4f53-a656-2e5a1a7181f5",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -129,12 +126,7 @@ namespace KärraGamesCorner.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("OrderId")
-                        .HasColumnType("int");
-
                     b.HasKey("ApplicationUserId", "ProductId");
-
-                    b.HasIndex("OrderId");
 
                     b.HasIndex("ProductId");
 
@@ -223,31 +215,6 @@ namespace KärraGamesCorner.Migrations
                             Id = 13,
                             Name = "Simulator"
                         });
-                });
-
-            modelBuilder.Entity("KärraGamesCorner.Data.Models.Order", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("OrderOfDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<decimal>("TotalPrice")
-                        .HasColumnType("decimal(8,2)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("KärraGamesCorner.Data.Models.Product", b =>
@@ -897,11 +864,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-
-                            Id = "f98082ed-a0f7-4388-9043-2809ff62b5a8",
-                            ConcurrencyStamp = "f98082ed-a0f7-4388-9043-2809ff62b5a8",
-
-
+                            Id = "57034861-89f1-473b-b5b0-a1a753f9e225",
+                            ConcurrencyStamp = "57034861-89f1-473b-b5b0-a1a753f9e225",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -998,11 +962,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-
-                            UserId = "651c47c6-fc11-46d6-8d7a-6df194661e2c",
-                            RoleId = "f98082ed-a0f7-4388-9043-2809ff62b5a8"
-
-
+                            UserId = "51286879-85ae-4052-b78c-5660cb011cc4",
+                            RoleId = "57034861-89f1-473b-b5b0-a1a753f9e225"
                         });
                 });
 
@@ -1042,10 +1003,6 @@ namespace KärraGamesCorner.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("KärraGamesCorner.Data.Models.Order", null)
-                        .WithMany("Products")
-                        .HasForeignKey("OrderId");
-
                     b.HasOne("KärraGamesCorner.Data.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
@@ -1053,17 +1010,6 @@ namespace KärraGamesCorner.Migrations
                         .IsRequired();
 
                     b.Navigation("Product");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("KärraGamesCorner.Data.Models.Order", b =>
-                {
-                    b.HasOne("KärraGamesCorner.Data.Models.ApplicationUser", "User")
-                        .WithMany("Orders")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
 
                     b.Navigation("User");
                 });
@@ -1151,14 +1097,7 @@ namespace KärraGamesCorner.Migrations
                 {
                     b.Navigation("CartProducts");
 
-                    b.Navigation("Orders");
-
                     b.Navigation("PurchasedTokens");
-                });
-
-            modelBuilder.Entity("KärraGamesCorner.Data.Models.Order", b =>
-                {
-                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("KärraGamesCorner.Data.Models.Product", b =>
