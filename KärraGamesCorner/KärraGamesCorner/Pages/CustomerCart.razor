@@ -1,4 +1,5 @@
 ﻿@page "/customercart"
+@using KärraGamesCorner.Data.Models
 
 <head>
     <meta charset="utf-8" />
@@ -60,4 +61,28 @@
 
 @code {
 
+    //Field för att targeta kundens lista av cartProducts
+
+    //Gör en metod som räknar ut totalpris på raden
+    public async Task<decimal> RowPriceAsync()
+    {
+        var productCart = new CartProduct();
+
+        return productCart.Amount * productCart.Product.Price;
+    }
+    //Gör en metod som ökar antalet
+    public async Task<int> AddToAmountAsync()
+    {
+        var product = 
+    }
+    //Gör en metod som minskar antalet
+    public async Task<int> SubtractFromAmountAsync()
+    {
+        var product = 
+    }
+    //Gör en metod som räknar ut totalpris på raden
+    public async Task DeleteRowAsync()
+    {
+        var product = 
+    }
 }
