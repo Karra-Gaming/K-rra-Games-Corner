@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.Identity;
 
 namespace KärraGamesCorner
 {
-    public interface IRepository<T,U> where T : IEntity<U> where U : struct
+    public interface IRepository<T> where T : class
     {
         Task<bool> CreateAsync(T type);
-        Task<bool> DeleteAsync(T type);
-        Task UpdateOrCreateAsync(T type);
+        Task<bool> DeleteAsync(params object[] keys);
+        Task UpdateAsync(params object[] keys);
         Task<IEnumerable<T>> GetAllAsync();
-        Task<T> GetAsync(U id);
+        Task<T> GetAsync(params object[] keys);
     }
 }
