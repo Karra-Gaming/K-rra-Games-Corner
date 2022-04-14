@@ -11,7 +11,6 @@ namespace KärraGamesCorner.Data
         public IRepository<Token> Tokens { get; private set; }
         public IRepository<CartProduct> CartProducts { get; private set; }
 
-
         private readonly ApplicationDbContext context;
 
         public UnitOfWork(ApplicationDbContext context)

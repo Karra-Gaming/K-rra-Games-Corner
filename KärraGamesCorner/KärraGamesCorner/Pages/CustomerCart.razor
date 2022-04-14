@@ -1,4 +1,11 @@
 ﻿@page "/customercart"
+@using KärraGamesCorner.Interfaces
+@using System.Collections.Concurrent
+@using System.Security.Claims
+@using KärraGamesCorner.Data.Models
+
+@inject IUnitOfWork _unitOfWork
+@inject IHttpContextAccessor _accessor
 
 <head>
     <meta charset="utf-8" />
@@ -13,42 +20,33 @@
 
 <body>
 
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" href="/">KärraGamesCorner</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        </nav>
-    </header>
-
 
  <table syle="100%">
      
-              <tr>
-                <th>Titel</th>
-                <th>Pris</th>
-                <th>Antal</th>
-                <th>TotalPris</th>
-                
-              </tr>
-               <tr>
-                <td>Csgo</td>
-                <td>200kr</td>
-                <td>1</td>
-                <td>200kr</td>
-              </tr>
-            
-               
-            
-             
-</table>
- <button> Delete</button>
+     <tr>
+         <th>Titel</th>
+         <th>Pris</th>
+         <th>Antal</th>
+         <th>TotalPris</th>
+         <th>Action</th>
+     </tr>
+     @foreach (var cartProduct in _cartProducts)
+     {
+         <tr>
+             <td>@cartProduct.Product.Name</td>
+             <td>@cartProduct.Product.Price</td>
+             <td>@cartProduct.Amount</td>
+             <td>@(@cartProduct.Amount * @cartProduct.Product.Price)</td>
+             <td>
+                 <button class="btn btn-danger">Delete</button>
+             </td>
+         </tr>
+     }
 
-    <footer class="footer border-top pl-3 text-muted">
+
+ </table>
+
+<footer class="footer border-top pl-3 text-muted">
         <div class="container">
         &copy; 2022 - KärraGamesCorner
         </div>
@@ -59,5 +57,30 @@
 
 
 @code {
+
+    private ConcurrentBag<CartProduct> _cartProducts = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (_accessor.HttpContext.User.Identity.IsAuthenticated)
+        {
+            var claims = _accessor.HttpContext.User.Claims;
+            foreach (var claim in claims)
+            {
+                if (claim.Type == ClaimTypes.NameIdentifier)
+                {
+                    var user = (await _unitOfWork.Users.GetAsync(filter: (x => x.Id == claim.Value), include: "CartProducts")).FirstOrDefault();
+
+                    if (user is null)
+                    {
+                        return;
+                    }
+
+                    _cartProducts = new ConcurrentBag<CartProduct>(user.CartProducts);
+                    return;
+                }
+            }
+        }
+    }
 
 }
