@@ -1,4 +1,5 @@
 ﻿@page "/Admin"
+@inject NavigationManager NavigationManager
 
 <h3>Admin</h3>
 
@@ -13,6 +14,7 @@
                 <th>Pris </th>
                 <th>Update/Delete</th>
                 
+
                 
               </tr>
                <tr>
@@ -20,15 +22,13 @@
                 <td>Test</td>
                 <td>200kr</td>
                 <td>
-                    <button class="btn update-btn">Update</button>   
-                     <button class="btn btn-danger">Delete</button>
+                   
+                    <button class="btn update-btn" @onclick=@ShowProduct>Update</button>   
+                     <button class="btn btn-dark btn-danger">Delete</button>
                 </td>
                  
               </tr>
             
-               
-            
-             
 </table>
 
  <button class="btn create-btn"> Create</button>
@@ -37,5 +37,10 @@
 
 
 @code {
+
+        void ShowProduct()
+    {
+        NavigationManager.NavigateTo($"product");
+    }
 
 }
