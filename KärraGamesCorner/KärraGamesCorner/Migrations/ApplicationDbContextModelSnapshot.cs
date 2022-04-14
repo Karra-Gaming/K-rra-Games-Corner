@@ -97,20 +97,21 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-
-                            Id = "f7dd7f4c-942e-4422-a7e1-51fa11a19773",
+                            Id = "25aefe86-6a4c-4cc8-832f-cb6abeb54546",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4b5754cc-30b8-4793-96ec-5fabb054cf4f",
+                            ConcurrencyStamp = "20c0ce05-180e-4864-967b-490e60d708bb",
 
+ 
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             ImageUrl = "",
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-
-                            PasswordHash = "AQAAAAEAACcQAAAAEIdOMBu+cHhxt1vnN4kbKvXrYmpeUYpFMzF3WJaOEWvyV9uU5ABRjIpJ7p1XiXPSPg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGLKT163YDttG6z7Z0I0UiibBEA0a3gil/xE/WCx0ZUVOONUIAZH3nP7CeD/mh2vDg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2b4ac3f6-936b-44a3-bb85-28431ce58990",
+                            SecurityStamp = "c02a13d5-5b73-4033-8e28-289ed12156a1",
+
+
 
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
@@ -897,8 +898,8 @@ namespace KärraGamesCorner.Migrations
                         new
                         {
 
-                            Id = "4d9945d6-c253-4671-8977-ff61debb0ecc",
-                            ConcurrencyStamp = "4d9945d6-c253-4671-8977-ff61debb0ecc",
+                            Id = "7549d0ca-56a0-4358-be02-349c2d604a22",
+                            ConcurrencyStamp = "7549d0ca-56a0-4358-be02-349c2d604a22",
 
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -996,9 +997,9 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
+                            UserId = "25aefe86-6a4c-4cc8-832f-cb6abeb54546",
+                            RoleId = "7549d0ca-56a0-4358-be02-349c2d604a22"
 
-                            UserId = "f7dd7f4c-942e-4422-a7e1-51fa11a19773",
-                            RoleId = "4d9945d6-c253-4671-8977-ff61debb0ecc"
 
                         });
                 });
