@@ -15,7 +15,36 @@
 
 <h3>@_product.Name</h3>
 
-
+<EditForm Model="_product" OnSubmit="HandleSubmit">
+    <div>
+        <label for="name">Name</label>
+        <InputText id="name" @bind-Value="_product.Name" class="form-control"></InputText>
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <InputText id="description" @bind-Value="_product.Description" class="form-control"></InputText>
+    </div>
+    <div>
+        <label for="producer">Producer</label>
+        <InputText id="producer" @bind-Value="_product.Producer" class="form-control"></InputText>
+    </div>
+    <div>
+        <label for="price">Price</label>
+        <InputNumber id="price" @bind-Value="_product.Price" class="form-control"></InputNumber>
+    </div>
+     <div>
+        <label>Genre</label><br />
+        <InputSelect @bind-Value="_product.GenreId" class="form-select">
+            @foreach (var genre in _genres)
+            {
+                <option value="@genre.Id">@genre.Name</option>
+            }
+        </InputSelect>
+    </div>
+   
+    <br />
+    <button type="submit" class="btn btn-primary">@btnText</button>
+</EditForm>
 
 
 @code {
@@ -25,6 +54,18 @@
 
     private KärraGamesCorner.Data.Models.Product _product;
 
+
+    string btnText = string.Empty;
+
+
+    private ConcurrentBag<Genre> _genres;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _genres = new ConcurrentBag<Genre>(await _unitOfWork.Genres.GetAsync());
+        btnText = Id == null ? "Save Product" : "Update product";
+    }
+
     protected override async Task OnParametersSetAsync()
     {
 
@@ -32,4 +73,14 @@
 
     }
 
+    async Task HandleSubmit()
+    {
+
+
+        await _unitOfWork.Products.UpdateAsync(_product);
+        await _unitOfWork.CommitAsync();
+        NavigationManager.NavigateTo("/Admin");
+
+        
+    }
 }
