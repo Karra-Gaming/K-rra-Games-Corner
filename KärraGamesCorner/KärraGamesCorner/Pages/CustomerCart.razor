@@ -39,6 +39,7 @@
          <th>Pris</th>
          <th>Antal</th>
          <th>TotalPris</th>
+         <th>Ta bort produkt</th>
                 
      </tr>
      @foreach (var product in  _currentUser.CartProducts)
@@ -53,15 +54,13 @@
 
              </td>
              <td>@RowPrice(product) kr</td>
+             <td>
+                 <button type="button" class="btn btn-primary" @onclick="() => DeleteRowAsync(product)"><span class="oi oi-trash" aria-hidden="true"></span></button>
+             </td>
          </tr>
      }
-               
-            
-               
-            
-             
-</table>
- <button> Delete</button>
+ </table>
+
 
     <footer class="footer border-top pl-3 text-muted">
         <div class="container">
@@ -116,11 +115,10 @@
         
     }
     //Gör en metod som räknar ut totalpris på raden
-    public async Task DeleteRowAsync(int rowNumber)
+    public async Task DeleteRowAsync(CartProduct product)
     {
         var productCart =  _currentUser.CartProducts.ToList();
-        var rowProduct = productCart[rowNumber];
-        productCart.Remove(rowProduct);
+        productCart.Remove(product);
 
         await _unitOfWork.CommitAsync();
     }
