@@ -12,6 +12,7 @@ namespace KärraGamesCorner.Data.Models
         public DateTime OrderOfDate { get; set; }
         [Column(TypeName = "decimal(8,2)")]
         public decimal TotalPrice { get; set; }
+        public string Address { get; set; } = string.Empty;
 
         public Order()
         {
