@@ -68,7 +68,7 @@ a {
     }
 
     .nav-item a.active:after{
-        content:"*";
+       
         margin-left:1em;
 
 

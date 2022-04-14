@@ -4,10 +4,11 @@ namespace KärraGamesCorner.Interfaces
 {
     public interface IUnitOfWork
     {
-        public IRepository<ApplicationUser, Guid> Users { get; }
-        public IRepository<Genre, int> Genres { get; }
-        public IRepository<Product, int> Products { get; }
-        public IRepository<Token, int> Tokens { get; }
+        public IRepository<ApplicationUser> Users { get; }
+        public IRepository<Genre> Genres { get; }
+        public IRepository<Product> Products { get; }
+        public IRepository<Token> Tokens { get; }
+        public IRepository<CartProduct> CartProducts { get; }
 
         public Task CommitAsync();
     }
