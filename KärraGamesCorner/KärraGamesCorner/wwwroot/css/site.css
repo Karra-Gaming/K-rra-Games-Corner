@@ -156,3 +156,8 @@ svg {
 }
 
 /* Checkout form*/
+/*Fixa för desktop?*/
+@media only screen (min-width: 800px ) {
+    #checkout-form {width: ;}
+
+}
