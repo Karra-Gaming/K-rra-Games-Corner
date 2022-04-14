@@ -52,7 +52,7 @@
                  <button class="btn-success" @onclick="() => AddToAmountAsync(product)">+</button>
 
              </td>
-             <td>@RowPriceAsync(product)</td>
+             <td>@RowPrice(product) kr</td>
          </tr>
      }
                
@@ -93,8 +93,9 @@
     
 
     //Gör en metod som räknar ut totalpris på raden
-    public async Task<decimal> RowPriceAsync(CartProduct product)
+    public decimal RowPrice(CartProduct product)
     {
+
         return product.Amount * product.Product.Price;
     }
     //Gör en metod som ökar antalet - koppla till en knapp
@@ -107,8 +108,12 @@
     //Gör en metod som minskar antalet - koppla till en knapp
     public async Task SubtractFromAmountAsync(CartProduct product)
     {
-        product.Amount--;
-        await _unitOfWork.CommitAsync();
+        if (product.Amount > 0)
+        {
+            product.Amount--;
+            await _unitOfWork.CommitAsync();
+        }
+        
     }
     //Gör en metod som räknar ut totalpris på raden
     public async Task DeleteRowAsync(int rowNumber)
