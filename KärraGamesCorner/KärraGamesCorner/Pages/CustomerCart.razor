@@ -47,9 +47,9 @@
              <td>@product.Product.Name</td>
              <td>@product.Product.Price Kr</td>
              <td>
-                 <button class="btn-danger" @onclick="() => AddToAmountAsync(product)">-</button>
+                 <button class="btn-danger" @onclick="() => SubtractFromAmountAsync(product)">-</button>
                  @product.Amount
-                 <button class="btn-success" @onclick="() => SubtractFromAmountAsync(product)">+</button>
+                 <button class="btn-success" @onclick="() => AddToAmountAsync(product)">+</button>
 
              </td>
              <td>@RowPriceAsync(product)</td>

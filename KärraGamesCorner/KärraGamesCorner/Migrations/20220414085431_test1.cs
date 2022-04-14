@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace KärraGamesCorner.Migrations
 {
-    public partial class test : Migration
+    public partial class test1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -280,12 +280,12 @@ namespace KärraGamesCorner.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "bb5e0bc7-fe3a-4e6a-9c67-96d5ee8ea9a9", "bb5e0bc7-fe3a-4e6a-9c67-96d5ee8ea9a9", "Admin", "ADMIN" });
+                values: new object[] { "64a30a9f-ae67-4ef2-93f5-b2f6b50e3900", "64a30a9f-ae67-4ef2-93f5-b2f6b50e3900", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "ImageUrl", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProductId", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "6d528673-a3ef-40a0-b1e2-47b19ecccf74", 0, "b838d660-cdfd-4ef4-9ee7-34eacea3947e", "admin@gmail.com", true, "", false, null, null, "ADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEOL1YcNmw9EXEiEBBJspDvmWC/Oc2ioE1SavRHo5o4kgRfacjEzHl5+oOzi0eWSkvg==", null, false, null, "b19a29ee-cee9-42f1-a855-789c5825b3b6", false, "admin@gmail.com" });
+                values: new object[] { "768c175c-7d06-4f6f-b29a-c87ca8656529", 0, "31497e70-005b-40fe-80fe-0dbc19d6e600", "admin@gmail.com", true, "", false, null, null, "ADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEG5GiZutPkI1pgSpxPHhYCMdROtTnhQYnKebiP2M+MNXtsNfMtL9VAKB72B3yj020Q==", null, false, null, "371e3a6f-e0ec-4a6a-8059-aea7ecd5d566", false, "admin@gmail.com" });
 
             migrationBuilder.InsertData(
                 table: "Genre",
@@ -310,7 +310,7 @@ namespace KärraGamesCorner.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "bb5e0bc7-fe3a-4e6a-9c67-96d5ee8ea9a9", "6d528673-a3ef-40a0-b1e2-47b19ecccf74" });
+                values: new object[] { "64a30a9f-ae67-4ef2-93f5-b2f6b50e3900", "768c175c-7d06-4f6f-b29a-c87ca8656529" });
 
             migrationBuilder.InsertData(
                 table: "Product",
