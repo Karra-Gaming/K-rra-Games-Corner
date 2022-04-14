@@ -1,0 +1,35 @@
+﻿@page "/updateproduct"
+@page "/updateproduct/{id:int}"
+
+
+@using KärraGamesCorner.Data.Models
+@using KärraGamesCorner.Data
+@using KärraGamesCorner.Interfaces
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@using System.Collections.Concurrent
+
+@inject NavigationManager NavigationManager
+@inject IUnitOfWork _unitOfWork 
+
+
+<h3>@_product.Name</h3>
+
+
+
+
+@code {
+
+    [Parameter]
+    public int? Id { get; set; }
+
+    private KärraGamesCorner.Data.Models.Product _product;
+
+    protected override async Task OnParametersSetAsync()
+    {
+
+        _product = (await _unitOfWork.Products.GetAsync(filter: (x => x.Id == Id))).FirstOrDefault();
+
+    }
+
+}
