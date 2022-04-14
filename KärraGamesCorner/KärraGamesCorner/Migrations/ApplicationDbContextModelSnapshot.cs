@@ -97,27 +97,17 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-
-                    
-
-
-                            Id = "d1faeb66-d59c-4e07-b4a0-b1e9402f0a8b",
+                            Id = "25aefe86-6a4c-4cc8-832f-cb6abeb54546",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f3f21296-cefa-4cab-b219-8a04bfcd94f5",
-
-
+                            ConcurrencyStamp = "20c0ce05-180e-4864-967b-490e60d708bb",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             ImageUrl = "",
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-
-
-                            PasswordHash = "AQAAAAEAACcQAAAAEDRwC/6FtTzZHkeASOOcesB8s2rzE22Sgs7/+HWC35HhCTGCTWSMnTKGcp+KjIdFzg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGLKT163YDttG6z7Z0I0UiibBEA0a3gil/xE/WCx0ZUVOONUIAZH3nP7CeD/mh2vDg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0edcb52f-c54e-4ee3-a59c-c23514d84a5d",
-
-
+                            SecurityStamp = "c02a13d5-5b73-4033-8e28-289ed12156a1",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -902,14 +892,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-
-        
-
-
-                            Id = "9e5e5c88-da7c-453f-b289-9a77a79e0f7c",
-                            ConcurrencyStamp = "9e5e5c88-da7c-453f-b289-9a77a79e0f7c",
-
-
+                            Id = "7549d0ca-56a0-4358-be02-349c2d604a22",
+                            ConcurrencyStamp = "7549d0ca-56a0-4358-be02-349c2d604a22",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -1006,14 +990,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-
-                   
-
-
-                            UserId = "d1faeb66-d59c-4e07-b4a0-b1e9402f0a8b",
-                            RoleId = "9e5e5c88-da7c-453f-b289-9a77a79e0f7c"
-
-
+                            UserId = "25aefe86-6a4c-4cc8-832f-cb6abeb54546",
+                            RoleId = "7549d0ca-56a0-4358-be02-349c2d604a22"
                         });
                 });
 
