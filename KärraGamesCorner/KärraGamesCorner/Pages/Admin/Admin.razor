@@ -1,5 +1,14 @@
 ﻿@page "/Admin"
+
+@using KärraGamesCorner.Data.Models
+@using KärraGamesCorner.Data
+@using KärraGamesCorner.Interfaces
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@using System.Collections.Concurrent
+
 @inject NavigationManager NavigationManager
+@inject IUnitOfWork _unitOfWork 
 
 <h3>Admin</h3>
 
@@ -14,20 +23,27 @@
                 <th>Pris </th>
                 <th>Update/Delete</th>
                 
-
-                
-              </tr>
+               </tr>
+                @foreach (var product in _products)
+                {
+                   
                <tr>
-                <td>Test</td>
-                <td>Test</td>
-                <td>200kr</td>
+                <td>@product.Name</td>
+                <td>@product.Genre.Name</td>
+                <td>@product.Price</td>
+
                 <td>
                    
                     <button class="btn update-btn" @onclick=@ShowProduct>Update</button>   
-                     <button class="btn btn-dark btn-danger">Delete</button>
+                     <button class="btn btn-danger">Delete</button>
                 </td>
                  
               </tr>
+                    
+                }
+
+                
+          
             
 </table>
 
@@ -37,6 +53,13 @@
 
 
 @code {
+
+     private ConcurrentBag<KärraGamesCorner.Data.Models.Product> _products;
+
+        protected override async Task OnInitializedAsync()
+    {
+        _products = new ConcurrentBag<KärraGamesCorner.Data.Models.Product>(await _unitOfWork.Products.GetAsync(include:"Genre"));
+    }
 
         void ShowProduct()
     {
