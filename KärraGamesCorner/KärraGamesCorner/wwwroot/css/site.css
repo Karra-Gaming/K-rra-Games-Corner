@@ -196,6 +196,8 @@ th, td {
 .update-btn {
     background-color: lightblue;
 }
+
+
 .update-btn:hover {
     background-color: blue;
 }
