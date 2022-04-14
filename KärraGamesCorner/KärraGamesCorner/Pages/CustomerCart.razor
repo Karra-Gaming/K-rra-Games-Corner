@@ -35,10 +35,14 @@
          <tr>
              <td>@cartProduct.Product.Name</td>
              <td>@cartProduct.Product.Price</td>
-             <td>@cartProduct.Amount</td>
-             <td>@(@cartProduct.Amount * @cartProduct.Product.Price)</td>
              <td>
-                 <button class="btn btn-danger">Delete</button>
+                 <button class="btn-danger" @onclick="()=> SubtractFromAmountAsync(cartProduct)" >-</button>
+                 @cartProduct.Amount
+                 <button class="btn-success" @onclick="()=> AddToAmountAsync(cartProduct)" >-</button>
+             </td>
+             <td>@RowPrice(cartProduct) kr</td>
+             <td>
+                 <button class="btn btn-danger" @onclick="() => DeleteRowAsync(cartProduct)">Delete</button>
              </td>
          </tr>
      }
@@ -82,36 +86,34 @@
             }
         }
     }
+    //Gör en metod som räknar ut totalpris på raden
+    public decimal RowPrice(CartProduct product)
+    {
 
-}
-//Gör en metod som räknar ut totalpris på raden
-public decimal RowPrice(CartProduct product)
-{
-
-return product.Amount * product.Product.Price;
-}
-//Gör en metod som ökar antalet - koppla till en knapp
-public async Task AddToAmountAsync(CartProduct product)
-{
-product.Amount++;
-await _unitOfWork.CommitAsync();
+        return product.Amount * product.Product.Price;
+    }
+    //Gör en metod som ökar antalet - koppla till en knapp
+    public async Task AddToAmountAsync(CartProduct product)
+    {
+        product.Amount++;
+        await _unitOfWork.CommitAsync();
         
-}
-//Gör en metod som minskar antalet - koppla till en knapp
-public async Task SubtractFromAmountAsync(CartProduct product)
-{
-if (product.Amount > 0)
-{
-product.Amount--;
-await _unitOfWork.CommitAsync();
-}
-        
-}
-//Gör en metod som räknar ut totalpris på raden
-public async Task DeleteRowAsync(CartProduct product)
-{
-var productCart =  _currentUser.CartProducts.ToList();
-productCart.Remove(product);
+    }
+    //Gör en metod som minskar antalet - koppla till en knapp
+    public async Task SubtractFromAmountAsync(CartProduct product)
+    {
+        if (product.Amount > 0)
+        {
+            product.Amount--;
+            await _unitOfWork.CommitAsync();
+        }
+    }
+    //Gör en metod som räknar ut totalpris på raden
+    public async Task DeleteRowAsync(CartProduct product)
+    {
+        var productCart =  _cartProducts.ToList();
+        productCart.Remove(product);
 
-await _unitOfWork.CommitAsync();
+        await _unitOfWork.CommitAsync();
+    }
 }
