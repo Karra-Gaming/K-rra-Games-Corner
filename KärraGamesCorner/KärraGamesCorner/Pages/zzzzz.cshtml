@@ -1,0 +1,201 @@
+﻿@page 
+@model KärraGamesCorner.Pages.CheckoutModel
+<body>
+<main>
+	<section class="checkout-container">
+		<div class="form-wrap">
+			<form>
+				<div class="form-group">
+					<label for="name">Namn</label>
+					<input
+						type="text"
+						name="name"
+						id="name"
+						placeholder="Namn..."/>
+				</div>
+
+				<div class="form-group">
+					<label for="address">Adress</label>
+					<input
+						type="text"
+						name="address"
+						id="address"
+						placeholder="Ange adress"/>
+				</div>
+
+				<div class="form-group">
+					<label for="last-name">Stad</label>
+					<input
+						type="text"
+						name="city"
+						id="city"
+						placeholder="Ange stad"/>
+				</div>
+
+				<div class="form-group">
+					<label for="email">Kortnummer</label>
+					<input
+						type="text"
+						name="cardnumber"
+						id="cardnumber"
+						placeholder="Ange kortnummer"/>
+				</div>
+
+				<div class="form-group">
+					<label for="expirytdate">MM/ÅÅ</label>
+					<input
+						type="expirytdate"
+						name="expirytdate"
+						id="expirytdate"
+						placeholder="Ange giltighetsdatum"/>
+				</div>
+
+				<div class="form-group">
+					<label for="cvc">CVC</label>
+					<input
+						type="text"
+						name="cvc"
+						id="cvc"
+						placeholder="Ange CVC"/>
+				</div>
+
+				<button type="submit" class="btn">Slutför köpet</button>
+			</form>
+		</div>
+	</section>
+</main>
+
+<style> 
+	.checkout-container {
+		margin: 100px auto;
+		max-width: 400px;
+		padding: 20px;
+	}
+
+	.form-wrap {
+		background: #fff;
+		color: #333;
+		padding: 15px 25px;
+		border: #333 1px solid;
+		border-radius: 5px;
+		box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
+	}
+
+	.form-wrap h1,
+	.form-wrap p {
+		text-align: center;
+	}
+
+	.form-wrap p {
+		color: #344a72;
+		font-weight: bold;
+	}
+
+	.form-wrap .form-group {
+		margin-top: 15px;
+	}
+
+	.form-wrap .form-group label {
+		display: block;
+		color: #666;
+	}
+
+	.form-wrap .form-group input {
+		width: 100%;
+		padding: 10px;
+		color: #666;
+		border: #ddd 1px solid;
+		border-radius: 5px;
+	}
+
+	.form-wrap button {
+		display: block;
+		width: 100%;
+		padding: 10px;
+		margin: 20px 0;
+		background: #49c1a2;
+		color: #f4f4f4;
+		cursor: pointer;
+		border: #37a08e 1px solid;
+	}
+
+	.form-wrap button:hover {
+		background: #37a08e;
+		font-weight: bold;
+	}
+</style>
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-4 col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Betalningsinfo
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <form role="form">
+                      
+                      <div class="row">
+                            <div class="col-xs-11">
+                                <div class="form-group">
+                                    <label for="couponCode">Namn</label>
+                                    <input type="text" class="form-control" name="couponCode" placeholder="Ditt fullständiga namn..."/>
+                                </div>
+                            </div>                        
+                        </div>
+	                    <div class="form-group">
+		                    <label for="cardNumber">Kortnummer</label>
+		                    <div class="input-group">
+			                    <input type="text" class="form-control" id="cardNumber" placeholder="xxxx xxxx xxxx xxxx"required autofocus />
+			                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+		                    </div>
+	                    </div>
+	                    <div class="row">
+		                    <div class="col-xs-7 col-md-7">
+			                    <div class="form-group">
+				                    <label for="expityMonth">Utgångsdatum</label>
+				                    <div class="col-xs-12 col-lg-12">
+					                    <div class="col-xs-6 col-lg-6 ">
+						                    <input type="text" class="form-control" id="expityMonth" placeholder="MM" required />
+					                    </div>
+					                    <div class="col-xs-6 col-lg-6 ">
+						                    <input type="text" class="form-control" id="expityYear" placeholder="ÅÅ" required />
+					                    </div>
+				                    </div>
+			                    </div>
+		                    </div>
+
+		                    <div class="col-xs-4 col-md-4 pull-right">
+			                    <div class="form-group">
+				                    <label for="cvCode">
+					                    CV Kod </label>
+				                    <input type="password" class="form-control" id="cvCode" placeholder="CVC" required />
+			                    </div>
+		                    </div>
+	                    </div>
+                    </form>
+                </div>
+            </div>
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#"><span class="badge pull-right"><span class="glyphicon glyphicon-usd"></span>4200</span> Att betala inkl. moms</a>
+                </li>
+            </ul>
+            <br/>
+            <a href="http://www.jquery2dotnet.com" class="btn btn-success btn-lg btn-block" role="button">Slutför betalning</a>
+        </div>
+    </div>
+</div>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<style>
+	body { margin-top:20px; }
+	.panel-title {display: inline;font-weight: bold;}
+	.checkbox.pull-right { margin: 0; }
+	.pl-ziro { padding-left: 0px; }
+</style>
+</body>

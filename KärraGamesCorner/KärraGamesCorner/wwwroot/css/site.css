@@ -156,6 +156,13 @@ svg {
 }
 
 
+/* Checkout form*/
+/*Fixa f�r desktop?*/
+@media only screen (min-width: 800px ) {
+    #checkout-form {width: ;}
+
+}
+
 .form-group
 {
     padding:5px;
