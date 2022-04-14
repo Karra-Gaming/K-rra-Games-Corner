@@ -38,7 +38,7 @@
              <td>
                  <button class="btn-danger" @onclick="()=> SubtractFromAmountAsync(cartProduct)" >-</button>
                  @cartProduct.Amount
-                 <button class="btn-success" @onclick="()=> AddToAmountAsync(cartProduct)" >-</button>
+                 <button class="btn-success" @onclick="()=> AddToAmountAsync(cartProduct)" >+</button>
              </td>
              <td>@RowPrice(cartProduct) kr</td>
              <td>
@@ -60,7 +60,8 @@
 
 
 
-@code {
+@code
+{
 
     private ConcurrentBag<CartProduct> _cartProducts = new();
 
@@ -111,9 +112,8 @@
     //Gör en metod som räknar ut totalpris på raden
     public async Task DeleteRowAsync(CartProduct product)
     {
-        var productCart =  _cartProducts.ToList();
-        productCart.Remove(product);
-
+        await _unitOfWork.CartProducts.DeleteAsync(product);
         await _unitOfWork.CommitAsync();
+        OnInitializedAsync();
     }
 }
