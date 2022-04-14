@@ -2,6 +2,7 @@
 @using KärraGamesCorner.Data.Models
 @using System.Security.Claims
 @using KärraGamesCorner.Interfaces
+@using Microsoft.AspNetCore.Identity
 @inject IUnitOfWork _unitOfWork
 @inject IHttpContextAccessor _accessor
 
@@ -40,12 +41,17 @@
          <th>TotalPris</th>
                 
      </tr>
-     @foreach (var product in _currentUser.CartProducts)
+     @foreach (var product in  _currentUser.CartProducts)
      {
          <tr>
              <td>@product.Product.Name</td>
              <td>@product.Product.Price Kr</td>
-             <td>@product.Amount</td>
+             <td>
+                 <button class="btn-danger" @onclick="() => AddToAmountAsync(product)">-</button>
+                 @product.Amount
+                 <button class="btn-success" @onclick="() => SubtractFromAmountAsync(product)">+</button>
+
+             </td>
              <td>@RowPriceAsync(product)</td>
          </tr>
      }
@@ -92,24 +98,17 @@
         return product.Amount * product.Product.Price;
     }
     //Gör en metod som ökar antalet - koppla till en knapp
-    public async Task<int> AddToAmountAsync(int rowNumber)
+    public async Task AddToAmountAsync(CartProduct product)
     {
-        var productCart =  _currentUser.CartProducts.ToList();
-        var rowProduct = productCart[rowNumber];
-        rowProduct.Amount++;
+        product.Amount++;
         await _unitOfWork.CommitAsync();
-
-        return rowProduct.Amount;
+        
     }
     //Gör en metod som minskar antalet - koppla till en knapp
-    public async Task<int> SubtractFromAmountAsync(int rowNumber)
+    public async Task SubtractFromAmountAsync(CartProduct product)
     {
-        var productCart =  _currentUser.CartProducts.ToList();
-        var rowProduct = productCart[rowNumber];
-        rowProduct.Amount--;
+        product.Amount--;
         await _unitOfWork.CommitAsync();
-
-        return rowProduct.Amount;
     }
     //Gör en metod som räknar ut totalpris på raden
     public async Task DeleteRowAsync(int rowNumber)
