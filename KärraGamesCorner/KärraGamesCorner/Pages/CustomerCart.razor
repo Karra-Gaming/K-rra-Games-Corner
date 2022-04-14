@@ -21,30 +21,33 @@
 <body>
 
 
- <table>
+<table>
      
-     <tr>
-         <th>Titel</th>
-         <th>Pris</th>
-         <th>Antal</th>
-         <th>TotalPris</th>
-         <th>Action</th>
-     </tr>
-     @foreach (var cartProduct in _cartProducts)
-     {
-         <tr>
-             <td>@cartProduct.Product.Name</td>
-             <td>@cartProduct.Product.Price</td>
-             <td>@cartProduct.Amount</td>
-             <td>@(@cartProduct.Amount * @cartProduct.Product.Price)</td>
-             <td>
-                 <button class="btn btn-danger">Delete</button>
-             </td>
-         </tr>
-     }
+	<tr>
+		<th>Titel</th>
+		<th>Pris</th>
+		<th>Antal</th>
+		<th>TotalPris</th>
+		<th>Action</th>
+	</tr>
+	@foreach (var cartProduct in _cartProducts)
+	{
+		<tr>
+			<td>@cartProduct.Product.Name</td>
+			<td>@cartProduct.Product.Price</td>
+			<td>@cartProduct.Amount</td>
+			<td>@(@cartProduct.Amount * @cartProduct.Product.Price)</td>
+			<td>
+				<button class="btn btn-danger">Delete</button>
+			</td>
+		</tr>
+	}
 
+</table>
 
- </table>
+<div>
+	<a class="btn btn-success" href="/Checkout"> Till checkout</a>
+</div>
 
 <footer class="footer border-top pl-3 text-muted">
         <div class="container">
