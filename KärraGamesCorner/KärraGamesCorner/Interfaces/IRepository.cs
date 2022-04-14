@@ -1,14 +1,17 @@
 ﻿using KärraGamesCorner.Data.Models;
 using Microsoft.AspNetCore.Identity;
+using System.Linq.Expressions;
 
 namespace KärraGamesCorner
 {
     public interface IRepository<T> where T : class
     {
-        Task<bool> CreateAsync(T type);
-        Task<bool> DeleteAsync(params object[] keys);
-        Task UpdateAsync(params object[] keys);
-        Task<IEnumerable<T>> GetAllAsync();
-        Task<T> GetAsync(params object[] keys);
+        Task CreateAsync(T type);
+        Task DeleteAsync(T type);
+        Task DeleteAsync(object id);
+        Task UpdateAsync(T type);
+        Task<IEnumerable<T>> GetAsync(
+            Expression<Func<T, bool>> filter = null,
+            string include = "");
     }
 }
