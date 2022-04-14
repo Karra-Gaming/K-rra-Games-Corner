@@ -48,7 +48,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        _products = new ConcurrentBag<Product>(await _unitOfWork.Products.GetAllAsync());
+        _products = new ConcurrentBag<Product>(await _unitOfWork.Products.GetAsync());
     }
 
     private async Task AddProduct(int id)
@@ -60,13 +60,19 @@
             {
                 if (claim.Type == ClaimTypes.NameIdentifier)
                 {
+                    var user = (await _unitOfWork.Users.GetAsync(filter: (x => x.Id == claim.Value))).FirstOrDefault();
+                    var prod = (await _unitOfWork.Products.GetAsync(filter: (x => x.Id == id))).FirstOrDefault();
+
                     await _unitOfWork.CartProducts.CreateAsync(new CartProduct
                     {
-                        User = await _unitOfWork.Users.GetAsync(claim.Value),
-                        Product = await _unitOfWork.Products.GetAsync(id),
+                        User = user,
+                        Product = prod,
+                        ApplicationUserId = user.Id,
+                        ProductId = prod.Id,
                         Amount = 1
                     });
                     await _unitOfWork.CommitAsync();
+                    return;
                 }
             }
         }

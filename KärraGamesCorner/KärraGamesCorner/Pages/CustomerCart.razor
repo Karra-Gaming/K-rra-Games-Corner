@@ -70,9 +70,9 @@
             {
                 if (claim.Type == ClaimTypes.NameIdentifier)
                 {
-                    var users = await _unitOfWork.Users.GetAllAsync();
-                    var user = users.Where(x => x.Id == claim.Value).FirstOrDefault();
+                    var user = (await _unitOfWork.Users.GetAsync(filter: (x => x.Id == claim.Value), include: "CartProducts")).FirstOrDefault();
                     _cartProducts = new ConcurrentBag<CartProduct>(user.CartProducts);
+                    return;
                 }
             }
         }

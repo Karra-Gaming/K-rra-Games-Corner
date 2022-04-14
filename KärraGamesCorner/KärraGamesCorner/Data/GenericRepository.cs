@@ -1,58 +1,65 @@
-﻿using System.Text;
-using KärraGamesCorner.Data.Models;
+﻿using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 
 namespace KärraGamesCorner.Data
 {
     public class GenericRepository<T> : IRepository<T> where T : class
     {
-        private readonly ApplicationDbContext _applicationDbContext;
+        private readonly ApplicationDbContext context;
         private readonly DbSet<T> _dbSet;
 
-        public GenericRepository(ApplicationDbContext applicationDbContext)
+        public GenericRepository(ApplicationDbContext context)
         {
-            _applicationDbContext = applicationDbContext;
-            _dbSet = applicationDbContext.Set<T>();
+            this.context = context;
+            _dbSet = this.context.Set<T>();
         }
 
-        public async Task<bool> CreateAsync(T type)
+        public async Task CreateAsync(T type)
         {
-            if (type is null) return false;
-            if (await _dbSet.ContainsAsync(type)) return false;
-            await _dbSet.AddAsync(type);
-
-            return true;
+            _dbSet.AddAsync(type);
         }
 
-        public async Task<bool> DeleteAsync(params object[] keys)
+        public Task DeleteAsync(T type)
         {
-            var entity = await _dbSet.FindAsync(keys);
-            if (entity is null) return false;
-            
-            _dbSet.Remove(entity);
-            return await Task.FromResult(true);
-        }
-
-        public async Task<IEnumerable<T>> GetAllAsync()
-        {
-            if (typeof(T) ==  typeof(ApplicationUser))
+            if (context.Entry(type).State == EntityState.Detached)
             {
-                return (IEnumerable<T>)await Task.FromResult(_dbSet.IncludeCartProducts());
+                _dbSet.Attach(type);
             }
-            return await Task.FromResult(_dbSet);
+            _dbSet.Remove(type);
+            return Task.CompletedTask;
         }
 
-        public async Task<T> GetAsync(params object[] keys)
+        public async Task DeleteAsync(object id)
         {
-            return await Task.FromResult(await _dbSet.FindAsync(keys));
+            T entity = await _dbSet.FindAsync(id);
+            await DeleteAsync(entity);
         }
 
-        public async Task UpdateAsync(params object[] keys)
+        public async Task<IEnumerable<T>> GetAsync(
+            Expression<Func<T, bool>> filter = null,
+            string include = "")
         {
-            var entity = await _dbSet.FindAsync(keys);
-            if (entity is null) return;
+            IQueryable<T> query = _dbSet;
 
-            _dbSet.Update(entity);
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            foreach (var includeProperty in include.Split
+                (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                query = query.Include(includeProperty);
+            }
+
+            return query.AsEnumerable();
+        }
+
+        public Task UpdateAsync(T type)
+        {
+            _dbSet.Attach(type);
+            context.Entry(type).State = EntityState.Modified;
+            return Task.CompletedTask;
         }
     }
 }

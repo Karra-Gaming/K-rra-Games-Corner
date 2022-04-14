@@ -9,16 +9,8 @@ namespace KärraGamesCorner.Data.Models
         public ApplicationUser User { get; set; }
         public Product Product { get; set; }
         public int Amount { get; set; }
-        public string ApplicationUserId { get => User.Id;
-            set => User.Id = value;
-        }
-
-        public int ProductId
-        {
-            get => Product.Id;
-            set => Product.Id = value;
-
-        }
+        public string ApplicationUserId { get; set; }
+        public int ProductId { get; set; }
 
         public CartProduct()
         {
