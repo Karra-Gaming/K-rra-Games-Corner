@@ -118,7 +118,7 @@ footer {
     margin: auto 0px;
 }
 
-/* sökfältet */
+/* sÃ¶kfÃ¤ltet */
 #search-form {
     background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
     width: 300px;
@@ -155,9 +155,16 @@ svg {
     fill: currentColor;
 }
 
+
 /* Checkout form*/
-/*Fixa för desktop?*/
+/*Fixa fï¿½r desktop?*/
 @media only screen (min-width: 800px ) {
     #checkout-form {width: ;}
 
 }
+
+.form-group
+{
+    padding:5px;
+}
+

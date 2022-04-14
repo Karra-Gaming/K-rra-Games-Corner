@@ -9,12 +9,18 @@
 @inject IUnitOfWork _unitOfWork
 @inject IHttpContextAccessor _accessor
 
-
-
 <PageTitle>Home Page</PageTitle>
 
- @*  @foreach (var product in _products)
+    <div class="form-group">
+    <input class="form-control" type="text" placeholder="Search by Game name"
+           @bind="Filter"
+           @bind:event="oninput">
+    </div>
+
+   @foreach (var product in _products)
     {
+        if (!IsVisible(product))
+                continue;
         <div class="card" style="width: 18rem;">
             <img src="@product.ImageUrl" runat="server" class="card-img-top" alt="...">
             <div class="card-body">
@@ -26,7 +32,7 @@
                 <a href="#" @onclick="() => AddProduct(product.Id)" class="btn btn-primary">add</a>
             </div>
         </div>
-    }*@
+    }
 
 
  <hr />
@@ -71,6 +77,22 @@
             }
         }
     }
+
+    public bool IsVisible(Product product)
+        {
+        if (string.IsNullOrEmpty(Filter))
+            return true;
+ 
+        if (product.Name.Contains(Filter, StringComparison.OrdinalIgnoreCase))
+            return true;
+ 
+        if (product.Id.ToString().StartsWith(Filter) || product.Id.ToString().StartsWith(Filter))
+            return true;
+ 
+            return false;
+        }
+
+    public string Filter { get; set; }
 
 }
 
