@@ -34,8 +34,8 @@
 
                 <td>
                    
-                    <button class="btn update-btn" @onclick=@ShowProduct>Update</button>   
-                     <button class="btn btn-danger">Delete</button>
+                    <button class="btn update-btn" @onclick="(()=>ShowProduct(product.Id))">Update</button>   
+                     <button class="btn btn-danger" style="background-color:red;">Delete</button>
                 </td>
                  
               </tr>
@@ -61,9 +61,9 @@
         _products = new ConcurrentBag<KärraGamesCorner.Data.Models.Product>(await _unitOfWork.Products.GetAsync(include:"Genre"));
     }
 
-        void ShowProduct()
+        void ShowProduct(int id)
     {
-        NavigationManager.NavigateTo($"product");
+        NavigationManager.NavigateTo($"updateproduct/{id}");
     }
 
 }
