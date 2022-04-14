@@ -60,9 +60,23 @@
             {
                 if (claim.Type == ClaimTypes.NameIdentifier)
                 {
-                    var user = (await _unitOfWork.Users.GetAsync(filter: (x => x.Id == claim.Value))).FirstOrDefault();
+                    var user = (await _unitOfWork.Users.GetAsync(filter: (x => x.Id == claim.Value), include: "CartProducts")).FirstOrDefault();
                     var prod = (await _unitOfWork.Products.GetAsync(filter: (x => x.Id == id))).FirstOrDefault();
 
+                    if (user is null || prod is null)
+                    {
+                        return;
+                    }
+                    foreach (var userCartProduct in user.CartProducts)
+                    {
+                        if (userCartProduct.ProductId == prod.Id)
+                        {
+                            userCartProduct.Amount++;
+                            await _unitOfWork.CartProducts.UpdateAsync(userCartProduct);
+                            await _unitOfWork.CommitAsync();
+                            return;
+                        }
+                    }
                     await _unitOfWork.CartProducts.CreateAsync(new CartProduct
                     {
                         User = user,

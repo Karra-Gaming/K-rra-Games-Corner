@@ -36,7 +36,7 @@
              <td>@cartProduct.Product.Name</td>
              <td>@cartProduct.Product.Price</td>
              <td>@cartProduct.Amount</td>
-             <td>@((@cartProduct.Amount + 2) * @cartProduct.Product.Price)</td>
+             <td>@(@cartProduct.Amount * @cartProduct.Product.Price)</td>
              <td>
                  <button class="btn btn-danger">Delete</button>
              </td>
@@ -45,9 +45,8 @@
 
 
  </table>
- <button> Delete</button>
 
-    <footer class="footer border-top pl-3 text-muted">
+<footer class="footer border-top pl-3 text-muted">
         <div class="container">
         &copy; 2022 - KärraGamesCorner
         </div>
@@ -71,6 +70,12 @@
                 if (claim.Type == ClaimTypes.NameIdentifier)
                 {
                     var user = (await _unitOfWork.Users.GetAsync(filter: (x => x.Id == claim.Value), include: "CartProducts")).FirstOrDefault();
+
+                    if (user is null)
+                    {
+                        return;
+                    }
+
                     _cartProducts = new ConcurrentBag<CartProduct>(user.CartProducts);
                     return;
                 }
