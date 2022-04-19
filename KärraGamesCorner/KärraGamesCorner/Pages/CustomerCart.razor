@@ -39,6 +39,7 @@
      }
  </table>
 <div>
+    <h3>Cart Price: @GetTotalCartPrice()</h3>
 	<button class="btn btn-success" @onclick="GoToCheckout" disabled=@IsDisabled> Till checkout</button>
 </div>
 
@@ -56,7 +57,7 @@
 
 @code {
     //När den är true så kan man inte klicka på knappen
-	private bool IsDisabled { get; set; } = true;
+    private bool IsDisabled { get; set; } = true;
 
 
 
@@ -71,11 +72,13 @@
             {
                 if (claim.Type == ClaimTypes.NameIdentifier)
                 {
+
                     _cartProducts = new ConcurrentBag<CartProduct>(await _unitOfWork.CartProducts.GetAsync(filter:(x => x.ApplicationUserId == claim.Value), include:"Product"));
 	                if (_cartProducts.Count > 0)
 	                { // Man kan klicka på knappen endast om det finns något i carten
 		                IsDisabled = false;
 	                }
+
                     return;
                 }
             }
@@ -87,7 +90,18 @@
         return product.Amount * product.Product.Price;
     }
 
+    public decimal GetTotalCartPrice()
+    {
+        CartProduct[] products = _cartProducts.ToArray();
+        decimal total = 0m;
 
+        for(int i = 0; i < products.Length; i++)
+        {
+            total += RowPrice(products[i]);
+        }
+
+        return total;
+    }
 
     private void GoToCheckout()
 	{
