@@ -16,18 +16,23 @@ namespace KärraGamesCorner.Data.Models
 
         public Order()
         {
-            Products = User.CartProducts;
+           
             GetTotalPrice();
         }
 
-        public decimal GetTotalPrice()
+        public void GetTotalPrice()
         {
-            var cartProducts = Products.ToList();
-            foreach (var product in cartProducts)
+            if (Products != null)
             {
-                TotalPrice += product.Product.Price * product.Amount;
+                var cartProducts = Products.ToList();
+                foreach (var product in cartProducts)
+                {
+                    TotalPrice += product.Product.Price * product.Amount;
+                }
+               
             }
-            return TotalPrice;
+           
+
         }
     }
 }

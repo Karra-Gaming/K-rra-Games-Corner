@@ -26,31 +26,35 @@
 
 <table>
      
-	<tr>
-		<th>Titel</th>
-		<th>Pris</th>
-		<th>Antal</th>
-		<th>TotalPris</th>
-		<th>Action</th>
-	</tr>
-	@foreach (var cartProduct in _cartProducts)
-	{
-		<tr>
-			<td>@cartProduct.Product.Name</td>
-			<td>@cartProduct.Product.Price</td>
-			<td>@cartProduct.Amount</td>
-			<td>@(@cartProduct.Amount * @cartProduct.Product.Price)</td>
-			<td>
-				<button class="btn btn-danger">Delete</button>
-			</td>
-		</tr>
-	}
 
-</table>
-
+     <tr>
+         <th>Titel</th>
+         <th>Pris</th>
+         <th>Antal</th>
+         <th>TotalPris</th>
+         <th>Action</th>
+     </tr>
+     @foreach (var cartProduct in _cartProducts)
+     {
+         <tr>
+             <td>@cartProduct.Product.Name</td>
+             <td>@cartProduct.Product.Price</td>
+             <td>
+                 <button class="btn-danger" @onclick="()=> SubtractFromAmountAsync(cartProduct)" >-</button>
+                 @cartProduct.Amount
+                 <button class="btn-success" @onclick="()=> AddToAmountAsync(cartProduct)" >+</button>
+             </td>
+             <td>@RowPrice(cartProduct) kr</td>
+             <td>
+                 <button class="btn btn-danger" @onclick="() => DeleteRowAsync(cartProduct)">Delete</button>
+             </td>
+         </tr>
+     }
+ </table>
 <div>
 	<button class="btn btn-success" @onclick="GoToCheckout" disabled=@IsDisabled> Till checkout</button>
 </div>
+
 
 <footer class="footer border-top pl-3 text-muted">
         <div class="container">
@@ -62,9 +66,11 @@
 
 
 
+
 @code {
     //När den är true så kan man inte klicka på knappen
 	private bool IsDisabled { get; set; } = true;
+
 
 
     private ConcurrentBag<CartProduct> _cartProducts = new();
@@ -95,6 +101,10 @@
             }
         }
     }
+    //Gör en metod som räknar ut totalpris på raden
+    public decimal RowPrice(CartProduct product)
+    {
+
 
     
 	private void GoToCheckout()
@@ -102,5 +112,32 @@
 		NavigationManager.NavigateTo("/Checkout");
 	}
 
+
+
+        return product.Amount * product.Product.Price;
+    }
+    //Gör en metod som ökar antalet - koppla till en knapp
+    public async Task AddToAmountAsync(CartProduct product)
+    {
+        product.Amount++;
+        await _unitOfWork.CommitAsync();
+        
+    }
+    //Gör en metod som minskar antalet - koppla till en knapp
+    public async Task SubtractFromAmountAsync(CartProduct product)
+    {
+        if (product.Amount > 0)
+        {
+            product.Amount--;
+            await _unitOfWork.CommitAsync();
+        }
+    }
+    //Gör en metod som räknar ut totalpris på raden
+    public async Task DeleteRowAsync(CartProduct product)
+    {
+        await _unitOfWork.CartProducts.DeleteAsync(product);
+        await _unitOfWork.CommitAsync();
+        OnInitializedAsync();
+    }
 
 }
