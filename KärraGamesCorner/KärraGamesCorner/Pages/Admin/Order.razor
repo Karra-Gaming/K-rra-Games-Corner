@@ -1,5 +1,15 @@
 ﻿@page "/Order"
 
+@using KärraGamesCorner.Data.Models
+@using KärraGamesCorner.Data
+@using KärraGamesCorner.Interfaces
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@using System.Collections.Concurrent
+
+@inject NavigationManager NavigationManager
+@inject IUnitOfWork _unitOfWork 
+
 <h3> Orderhistorik</h3>
 
  <link rel="stylesheet" href="/Identity/css/site.css" />
@@ -7,37 +17,43 @@
  <div class="table-responsive">
  <table class="table">
 
-   
-
-
-
      
               <tr>
                 <th>UserId</th>
                 <th>OrderId </th>
                 <th>Datetime </th>
                 <th>Totalpris</th>
-                
-                
+                <th>Address</th>
               </tr>
+
+              @foreach (var order in _orders)
+             {
                <tr>
-                <td>Test</td>
-                <td>Test</td>
-                <td>Datetime</td>
-                <td>200kr</td>
-                <td> 
-                     <button class="btn btn-danger">Cancel</button>
-                </td>
-                 
+                <td>@order.User.Id</td>
+                <td>@order.Id</td>
+                <td>@order.OrderOfDate</td>
+                <td>@order.TotalPrice</td>
+                <td>@order.Address</td>
+
               </tr>
+             
+             }
+             
             
 </table>
 
-
- 
 </div>
 
 
+
+
 @code {
+
+        private ConcurrentBag<KärraGamesCorner.Data.Models.Order> _orders;
+
+        protected override async Task OnInitializedAsync()
+    {
+        _orders = new ConcurrentBag<KärraGamesCorner.Data.Models.Order>(await _unitOfWork.Orders.GetAsync(include:"User,Products"));
+    }
 
 }

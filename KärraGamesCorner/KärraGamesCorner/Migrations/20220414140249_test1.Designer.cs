@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KärraGamesCorner.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220413121852_Initial")]
-    partial class Initial
+    [Migration("20220414140249_test1")]
+    partial class test1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -99,17 +99,17 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8d05da10-5e3d-42a9-b458-74dfe1b3c2ce",
+                            Id = "2545616f-08ae-48d3-8a70-24314092f517",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5cc20ff9-ef43-43b1-83a9-4adb66ae8b1a",
+                            ConcurrencyStamp = "fdc688a9-c2fa-4787-a941-f1cd3f6645b9",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             ImageUrl = "",
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEILtkA7c+My9ZFJr9Roj3GDNEnPGe6qz4InYDczeclsWP7X7MbRevvtoVQtiF7iSNg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAZKdot0YYMAZ3wkUFQJqdTWh1qw0iJSr9SS2Q9p1rBvY05GHpI9w9gfdxhEVL/Zew==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6e882a3c-2367-4bae-b66f-00f1352abfa1",
+                            SecurityStamp = "292b75d1-0190-4c95-a584-761892b191e0",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -229,6 +229,10 @@ namespace KärraGamesCorner.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("OrderOfDate")
                         .HasColumnType("datetime2");
@@ -894,8 +898,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "795e343f-3806-4ece-9f27-06d3707249f2",
-                            ConcurrencyStamp = "795e343f-3806-4ece-9f27-06d3707249f2",
+                            Id = "3c482a8b-d5c1-4009-ad90-b3a15ffd1fa6",
+                            ConcurrencyStamp = "3c482a8b-d5c1-4009-ad90-b3a15ffd1fa6",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -992,8 +996,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "8d05da10-5e3d-42a9-b458-74dfe1b3c2ce",
-                            RoleId = "795e343f-3806-4ece-9f27-06d3707249f2"
+                            UserId = "2545616f-08ae-48d3-8a70-24314092f517",
+                            RoleId = "3c482a8b-d5c1-4009-ad90-b3a15ffd1fa6"
                         });
                 });
 

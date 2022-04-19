@@ -76,11 +76,9 @@
     async Task HandleSubmit()
     {
 
-
         await _unitOfWork.Products.UpdateAsync(_product);
         await _unitOfWork.CommitAsync();
         NavigationManager.NavigateTo("/Admin");
-
-        
+      
     }
 }

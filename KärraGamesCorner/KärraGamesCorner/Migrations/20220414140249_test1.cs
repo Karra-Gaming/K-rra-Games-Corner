@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace KärraGamesCorner.Migrations
 {
-    public partial class Initial : Migration
+    public partial class test1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -207,7 +207,8 @@ namespace KärraGamesCorner.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     OrderOfDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TotalPrice = table.Column<decimal>(type: "decimal(8,2)", nullable: false)
+                    TotalPrice = table.Column<decimal>(type: "decimal(8,2)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -280,12 +281,12 @@ namespace KärraGamesCorner.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "795e343f-3806-4ece-9f27-06d3707249f2", "795e343f-3806-4ece-9f27-06d3707249f2", "Admin", "ADMIN" });
+                values: new object[] { "3c482a8b-d5c1-4009-ad90-b3a15ffd1fa6", "3c482a8b-d5c1-4009-ad90-b3a15ffd1fa6", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "ImageUrl", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProductId", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "8d05da10-5e3d-42a9-b458-74dfe1b3c2ce", 0, "5cc20ff9-ef43-43b1-83a9-4adb66ae8b1a", "admin@gmail.com", true, "", false, null, null, "ADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEILtkA7c+My9ZFJr9Roj3GDNEnPGe6qz4InYDczeclsWP7X7MbRevvtoVQtiF7iSNg==", null, false, null, "6e882a3c-2367-4bae-b66f-00f1352abfa1", false, "admin@gmail.com" });
+                values: new object[] { "2545616f-08ae-48d3-8a70-24314092f517", 0, "fdc688a9-c2fa-4787-a941-f1cd3f6645b9", "admin@gmail.com", true, "", false, null, null, "ADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEAZKdot0YYMAZ3wkUFQJqdTWh1qw0iJSr9SS2Q9p1rBvY05GHpI9w9gfdxhEVL/Zew==", null, false, null, "292b75d1-0190-4c95-a584-761892b191e0", false, "admin@gmail.com" });
 
             migrationBuilder.InsertData(
                 table: "Genre",
@@ -310,7 +311,7 @@ namespace KärraGamesCorner.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "795e343f-3806-4ece-9f27-06d3707249f2", "8d05da10-5e3d-42a9-b458-74dfe1b3c2ce" });
+                values: new object[] { "3c482a8b-d5c1-4009-ad90-b3a15ffd1fa6", "2545616f-08ae-48d3-8a70-24314092f517" });
 
             migrationBuilder.InsertData(
                 table: "Product",
