@@ -6,6 +6,7 @@
 @using Microsoft.AspNetCore.Identity
 @using System.Security.Claims
 @using System.Collections.Concurrent
+@using Microsoft.CodeAnalysis.VisualBasic.Syntax
 
 @inject NavigationManager NavigationManager
 @inject IUnitOfWork _unitOfWork 
@@ -28,9 +29,17 @@
                 {
                    
                <tr>
-                <td>@product.Name</td>
-                <td>@product.Genre.Name</td>
-                <td>@product.Price</td>
+                   <td>@product.Name</td>
+                   @if (product.Genre is not null)
+                   {
+                       <td>@product.Genre.Name</td>
+                   }
+                   else
+                   {
+                       <td>null</td>
+
+                   }
+                   <td>@product.Price</td>
 
                 <td>
                    

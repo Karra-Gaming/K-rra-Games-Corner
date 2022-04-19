@@ -1,9 +1,6 @@
 ﻿@page "/PhysicalProducts"
 
-@using KärraGamesCorner.Data.Models
-@using KärraGamesCorner.Data
 @using KärraGamesCorner.Interfaces
-@using Microsoft.AspNetCore.Identity
 @using System.Security.Claims
 @using System.Collections.Concurrent
 
@@ -17,27 +14,25 @@
            @bind:event="oninput">
     </div>
 
-     
-       @foreach (var product in _products)
-    {
-        if (!IsVisible(product))
+    <div class="card-deck-wrapper">
+        @foreach (var product in _products)
+        {
+            if (!IsVisible(product))
                 continue;
-        <div class="card" style="width: 18rem;">
-            <img src="@product.ImageUrl" runat="server" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">@product.Name</h5>
-                <p class="card-text">@product.Description</p>
+            <div class="card" style="width: 18rem;">
+                <img src="@product.ImageUrl" runat="server" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text">@product.Description</p>
+                </div>
+                <div class="c-info">
+                    <p class="price">@product.Price kr</p>
+                    <a @onclick="() => AddProduct(product.Id)" class="btn btn-primary">add</a>
+                </div>
             </div>
-            <div class="c-info">
-                <p class="price">@product.Price kr</p>
-                <a href="#" @onclick="() => AddProduct(product.Id)" class="btn btn-primary">add</a>
-            </div>
-        </div>
-    }
-
-
- <hr />
-
+        }
+    </div>
+<hr />
 
 @code {
 
@@ -45,7 +40,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        _products = new ConcurrentBag<Product>(await _unitOfWork.Products.GetAsync(filter:(p => p.IsPhysical == true )));
+        _products = new ConcurrentBag<Product>(await _unitOfWork.Products.GetAsync(filter:(x => x.IsPhysical == true)));
     }
 
     private async Task AddProduct(int id)
@@ -70,7 +65,6 @@
                         {
                             userCartProduct.Amount++;
                             await _unitOfWork.CartProducts.UpdateAsync(userCartProduct);
-                            await _unitOfWork.CommitAsync();
                             return;
                         }
                     }
