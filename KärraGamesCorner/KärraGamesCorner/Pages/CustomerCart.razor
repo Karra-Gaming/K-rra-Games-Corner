@@ -136,6 +136,10 @@
     {
         await _unitOfWork.CartProducts.DeleteAsync(product);
         await _unitOfWork.CommitAsync();
+        if (_cartProducts.Count == 1)
+        {
+            IsDisabled = true;
+        }
         OnInitializedAsync();
     }
 
