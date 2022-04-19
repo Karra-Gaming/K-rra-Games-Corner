@@ -35,7 +35,7 @@
                 <td>
                    
                     <button class="btn update-btn" @onclick="(()=>ShowProduct(product.Id))">Update</button>   
-                     <button class="btn btn-danger" style="background-color:red;">Delete</button>
+                     <button class="btn btn-danger" style="background-color:red;" @onclick="()=> DeleteProduct(product)">Delete</button>
                 </td>
                  
               </tr>
@@ -64,6 +64,14 @@
         void ShowProduct(int id)
     {
         NavigationManager.NavigateTo($"updateproduct/{id}");
+    }
+
+    //Gör en metod som tar bort produkten från databasen.
+    public async Task DeleteProduct(Product product)
+    {
+       await _unitOfWork.Products.DeleteAsync(product);
+       await _unitOfWork.CommitAsync();
+        OnInitializedAsync();
     }
 
 }
