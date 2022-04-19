@@ -13,9 +13,9 @@ namespace KärraGamesCorner.Data.Models
         [Column(TypeName = "decimal(8,2)")]
         public decimal Price { get; set; }
 
-        public int GenreId { get; set; }
+        public int? GenreId { get; set; }
 
-        public Genre Genre { get; set; }
+        public Genre? Genre { get; set; }
 
         public string ImageUrl { get; set; } 
 
