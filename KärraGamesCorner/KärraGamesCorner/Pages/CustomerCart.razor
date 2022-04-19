@@ -1,4 +1,5 @@
 ﻿@page "/customercart"
+
 @using KärraGamesCorner.Interfaces
 @using System.Collections.Concurrent
 @using System.Security.Claims
@@ -6,6 +7,8 @@
 
 @inject IUnitOfWork _unitOfWork
 @inject IHttpContextAccessor _accessor
+@inject NavigationManager NavigationManager
+
 
 <body>
 <table>
@@ -36,7 +39,7 @@
      }
  </table>
 <div>
-	<a class="btn btn-success" href="/Checkout"> Till checkout</a>
+	<button class="btn btn-success" @onclick="GoToCheckout" disabled=@IsDisabled> Till checkout</button>
 </div>
 
 
@@ -50,8 +53,12 @@
 
 
 
-@code
-{
+
+@code {
+    //När den är true så kan man inte klicka på knappen
+	private bool IsDisabled { get; set; } = true;
+
+
 
     private ConcurrentBag<CartProduct> _cartProducts = new();
 
@@ -72,6 +79,10 @@
                     }
 
                     _cartProducts = new ConcurrentBag<CartProduct>(user.CartProducts);
+	                if (_cartProducts.Count > 0)
+	                { // Man kan klicka på knappen endast om det finns något i carten
+		                IsDisabled = false;
+	                }
                     return;
                 }
             }
@@ -80,9 +91,17 @@
     //Gör en metod som räknar ut totalpris på raden
     public decimal RowPrice(CartProduct product)
     {
-
         return product.Amount * product.Product.Price;
     }
+
+
+
+    private void GoToCheckout()
+	{
+		NavigationManager.NavigateTo("/Checkout");
+	}
+
+    
     //Gör en metod som ökar antalet - koppla till en knapp
     public async Task AddToAmountAsync(CartProduct product)
     {
@@ -104,6 +123,11 @@
     {
         await _unitOfWork.CartProducts.DeleteAsync(product);
         await _unitOfWork.CommitAsync();
+        if (_cartProducts.Count == 1)
+        {
+            IsDisabled = true;
+        }
         OnInitializedAsync();
     }
+
 }
