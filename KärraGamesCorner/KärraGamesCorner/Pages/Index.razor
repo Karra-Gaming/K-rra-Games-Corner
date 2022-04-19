@@ -13,11 +13,12 @@
 
 <div class="search-form">
     <form class="nosubmit">
-    <input class="nosubmit" type="search" placeholder="Sök efter spelnamn..."
-           @bind="Filter"
-           @bind:event="oninput">
+        <input class="nosubmit" type="search" placeholder="Sök efter spelnamn..."
+               @bind="Filter"
+               @bind:event="oninput">
     </form>
 </div>
+
 <div class="card-deck-wrapper">
    @foreach (var product in _products)
     {
@@ -81,7 +82,6 @@
                         {
                             userCartProduct.Amount++;
                             await _unitOfWork.CartProducts.UpdateAsync(userCartProduct);
-                            await _unitOfWork.CommitAsync();
                             return;
                         }
                     }
