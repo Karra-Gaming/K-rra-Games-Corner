@@ -104,18 +104,17 @@
     //Gör en metod som räknar ut totalpris på raden
     public decimal RowPrice(CartProduct product)
     {
+        return product.Amount * product.Product.Price;
+    }
 
 
-    
-	private void GoToCheckout()
+
+    private void GoToCheckout()
 	{
 		NavigationManager.NavigateTo("/Checkout");
 	}
 
-
-
-        return product.Amount * product.Product.Price;
-    }
+    
     //Gör en metod som ökar antalet - koppla till en knapp
     public async Task AddToAmountAsync(CartProduct product)
     {
