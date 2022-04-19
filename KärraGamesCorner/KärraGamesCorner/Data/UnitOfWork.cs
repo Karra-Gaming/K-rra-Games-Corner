@@ -7,6 +7,7 @@ namespace KärraGamesCorner.Data
     {
         public IRepository<ApplicationUser> Users { get; private set; }
         public IRepository<Genre> Genres { get; private set; }
+        public IRepository<Order> Orders { get; private set; }
         public IRepository<Product> Products { get; private set; }
         public IRepository<Token> Tokens { get; private set; }
         public IRepository<CartProduct> CartProducts { get; private set; }
@@ -22,6 +23,7 @@ namespace KärraGamesCorner.Data
             Products = new GenericRepository<Product>(context);
             Tokens = new GenericRepository<Token>(context);
             CartProducts = new GenericRepository<CartProduct>(context);
+            Orders = new GenericRepository<Order>(context);
         }
 
         public async Task CommitAsync()
