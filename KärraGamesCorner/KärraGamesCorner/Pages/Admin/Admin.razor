@@ -56,7 +56,7 @@
             
 </table>
 
- <button class="btn create-btn"> Create</button>
+ <button class="btn create-btn" @onclick="()=>CreateProduct()"> Create</button>
  
 </div>
 
@@ -73,6 +73,11 @@
         void ShowProduct(int id)
     {
         NavigationManager.NavigateTo($"updateproduct/{id}");
+    }
+
+          void CreateProduct()
+    {
+        NavigationManager.NavigateTo($"updateproduct");
     }
 
     //Gör en metod som tar bort produkten från databasen.
