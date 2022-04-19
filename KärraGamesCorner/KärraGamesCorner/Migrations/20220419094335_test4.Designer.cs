@@ -4,6 +4,7 @@ using KärraGamesCorner.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KärraGamesCorner.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220419094335_test4")]
+    partial class test4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -97,17 +99,17 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "96ef2256-26a6-4dec-aca2-91d54a43b16a",
+                            Id = "6682611b-9c78-4252-aee4-79e5ba54e401",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "97cafd9b-7cc4-4c2a-bf22-ed54ddc8547a",
+                            ConcurrencyStamp = "5a861dc7-4872-4c5a-97b9-a3ee2bc1b1bb",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             ImageUrl = "",
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEG4KidRG9GlBbKNzO0mlqIgjsdQ7BruaqojvO7rvnx+YxFI8QVppMRlsQdqTVkXhNA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEN6ngmiUuL+xDoT75QivmyctQHxbGhTSqrBQ3kF9HvFV3k7oCZ0EbQeEDmczOXVq8g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4e986a0a-5ee5-44c2-ba55-e5ca29279ed5",
+                            SecurityStamp = "ecf59bd1-29de-4c19-a65f-82c2af26a26d",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -846,37 +848,7 @@ namespace KärraGamesCorner.Migrations
                             ImageUrl = "/Resources/Images/Products/All_Images/Product_51.jpg",
                             IsPhysical = true,
                             Name = "Razer Huntsman V2 Analog",
-                            Price = 2990m,
-                            Producer = "Razor"
-                        },
-                        new
-                        {
-                            Id = 52,
-                            Description = "Trådlös mus med utbytbar sidopanel",
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_52.jpg",
-                            IsPhysical = true,
-                            Name = "Razer Naga Pro MOBA/MMO",
-                            Price = 1749m,
-                            Producer = "Razor"
-                        },
-                        new
-                        {
-                            Id = 53,
-                            Description = "Musmatta med RGB-belysning",
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_53.jpg",
-                            IsPhysical = true,
-                            Name = "Razer Firefly V2",
-                            Price = 649m,
-                            Producer = "Razor"
-                        },
-                        new
-                        {
-                            Id = 54,
-                            Description = "Trådlöst haptiskt spelheadset för ultimat spelinlevelse",
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_54.jpg",
-                            IsPhysical = true,
-                            Name = "Razer Kraken V3 Pro",
-                            Price = 2199m,
+                            Price = 400m,
                             Producer = "Razor"
                         });
                 });
@@ -936,8 +908,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "16539feb-f988-4673-8de3-3575ea482e4c",
-                            ConcurrencyStamp = "16539feb-f988-4673-8de3-3575ea482e4c",
+                            Id = "f99fb9fd-9017-4d03-b859-aaba73eb4333",
+                            ConcurrencyStamp = "f99fb9fd-9017-4d03-b859-aaba73eb4333",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -1034,8 +1006,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "96ef2256-26a6-4dec-aca2-91d54a43b16a",
-                            RoleId = "16539feb-f988-4673-8de3-3575ea482e4c"
+                            UserId = "6682611b-9c78-4252-aee4-79e5ba54e401",
+                            RoleId = "f99fb9fd-9017-4d03-b859-aaba73eb4333"
                         });
                 });
 

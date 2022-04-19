@@ -497,5 +497,45 @@
     "GenreId": 4,
     "Producer": "Square Enix",
     "ImageUrl": "/Resources/Images/Products/All_Images/Product_50.jpg"
+  },
+  {
+    "Id": 51,
+    "Name": "Razer Huntsman V2 Analog",
+    "Description": "Huntsman med analoga och optiska switchar",
+    "Price": 2990,
+    "IsPhysical": true,
+    "GenreId": null,
+    "Producer": "Razor",
+    "ImageUrl": "/Resources/Images/Products/All_Images/Product_51.jpg"
+  },
+  {
+    "Id": 52,
+    "Name": "Razer Naga Pro MOBA/MMO",
+    "Description": "Trådlös mus med utbytbar sidopanel",
+    "Price": 1749,
+    "IsPhysical": true,
+    "GenreId": null,
+    "Producer": "Razor",
+    "ImageUrl": "/Resources/Images/Products/All_Images/Product_52.jpg"
+  },
+  {
+    "Id": 53,
+    "Name": "Razer Firefly V2",
+    "Description": "Musmatta med RGB-belysning",
+    "Price": 649,
+    "IsPhysical": true,
+    "GenreId": null,
+    "Producer": "Razor",
+    "ImageUrl": "/Resources/Images/Products/All_Images/Product_53.jpg"
+  },
+  {
+    "Id": 54,
+    "Name": "Razer Kraken V3 Pro",
+    "Description": "Trådlöst haptiskt spelheadset för ultimat spelinlevelse",
+    "Price": 2199,
+    "IsPhysical": true,
+    "GenreId": null,
+    "Producer": "Razor",
+    "ImageUrl": "/Resources/Images/Products/All_Images/Product_54.jpg"
   }
 ]

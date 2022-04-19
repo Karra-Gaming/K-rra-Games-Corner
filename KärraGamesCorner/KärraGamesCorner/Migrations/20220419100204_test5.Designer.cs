@@ -4,6 +4,7 @@ using KärraGamesCorner.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KärraGamesCorner.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220419100204_test5")]
+    partial class test5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -97,17 +99,17 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "96ef2256-26a6-4dec-aca2-91d54a43b16a",
+                            Id = "87e32a95-2d37-40eb-8b08-4ded4680da4a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "97cafd9b-7cc4-4c2a-bf22-ed54ddc8547a",
+                            ConcurrencyStamp = "1c1b1ef1-20e1-4898-bab3-d2112454b2d2",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             ImageUrl = "",
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEG4KidRG9GlBbKNzO0mlqIgjsdQ7BruaqojvO7rvnx+YxFI8QVppMRlsQdqTVkXhNA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBvFV0aGgLHjEbuPkry8OZ343NJ1nyhL2nbD03sLa3jyEsiLHMFLsZqbDpUa/utbSA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4e986a0a-5ee5-44c2-ba55-e5ca29279ed5",
+                            SecurityStamp = "044dea45-f2b6-4056-a37c-e6abf5eb652f",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -846,7 +848,7 @@ namespace KärraGamesCorner.Migrations
                             ImageUrl = "/Resources/Images/Products/All_Images/Product_51.jpg",
                             IsPhysical = true,
                             Name = "Razer Huntsman V2 Analog",
-                            Price = 2990m,
+                            Price = 400m,
                             Producer = "Razor"
                         },
                         new
@@ -856,7 +858,7 @@ namespace KärraGamesCorner.Migrations
                             ImageUrl = "/Resources/Images/Products/All_Images/Product_52.jpg",
                             IsPhysical = true,
                             Name = "Razer Naga Pro MOBA/MMO",
-                            Price = 1749m,
+                            Price = 500m,
                             Producer = "Razor"
                         },
                         new
@@ -866,17 +868,7 @@ namespace KärraGamesCorner.Migrations
                             ImageUrl = "/Resources/Images/Products/All_Images/Product_53.jpg",
                             IsPhysical = true,
                             Name = "Razer Firefly V2",
-                            Price = 649m,
-                            Producer = "Razor"
-                        },
-                        new
-                        {
-                            Id = 54,
-                            Description = "Trådlöst haptiskt spelheadset för ultimat spelinlevelse",
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_54.jpg",
-                            IsPhysical = true,
-                            Name = "Razer Kraken V3 Pro",
-                            Price = 2199m,
+                            Price = 800m,
                             Producer = "Razor"
                         });
                 });
@@ -936,8 +928,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "16539feb-f988-4673-8de3-3575ea482e4c",
-                            ConcurrencyStamp = "16539feb-f988-4673-8de3-3575ea482e4c",
+                            Id = "1b495115-a57f-43d1-bf29-b003554e3de2",
+                            ConcurrencyStamp = "1b495115-a57f-43d1-bf29-b003554e3de2",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -1034,8 +1026,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "96ef2256-26a6-4dec-aca2-91d54a43b16a",
-                            RoleId = "16539feb-f988-4673-8de3-3575ea482e4c"
+                            UserId = "87e32a95-2d37-40eb-8b08-4ded4680da4a",
+                            RoleId = "1b495115-a57f-43d1-bf29-b003554e3de2"
                         });
                 });
 
