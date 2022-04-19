@@ -18,7 +18,7 @@
            @bind:event="oninput">
     </form>
 </div>
-
+<div class="card-deck-wrapper">
    @foreach (var product in _products)
     {
         if (!IsVisible(product))
@@ -35,7 +35,7 @@
             </div>
         </div>
     }
-
+</div>
 
  <hr />
 
