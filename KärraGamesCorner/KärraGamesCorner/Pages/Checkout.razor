@@ -1,5 +1,11 @@
 ﻿@page "/checkout"
 @using System.Security.Permissions
+@using System.Collections.Concurrent
+@using System.Security.Claims
+@using KärraGamesCorner.Interfaces
+
+@inject IUnitOfWork _unitOfWork
+@inject IHttpContextAccessor _accessor
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
@@ -62,7 +68,7 @@
 							<p class="title">CVC</p>
 							<input type="text">
 						</div><!-- .security -->
-						<button class="btn-success" id="confirm-btn">Slutför betalning</button>
+						<button class="btn-success" @onclick="CreateOrderAsync" id="confirm-btn">Slutför betalning</button>
 					</div> <!-- .infos -->
 				</div> <!-- .content -->
 			</div> <!-- .payment -->
@@ -73,5 +79,72 @@
 
 @code {
 
+    private ConcurrentBag<CartProduct> _cartProducts = new();
+    private ApplicationUser _currentUser; 
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (_accessor.HttpContext.User.Identity.IsAuthenticated)
+        {
+            var claims = _accessor.HttpContext.User.Claims;
+            foreach (var claim in claims)
+            {
+                if (claim.Type == ClaimTypes.NameIdentifier)
+                {
+                    var user = (await _unitOfWork.Users.GetAsync(filter: (x => x.Id == claim.Value), include: "CartProducts")).FirstOrDefault();
+                    _currentUser = user;
+
+                    if (user is null)
+                    {
+                        return;
+                    }
+
+                    _cartProducts = new ConcurrentBag<CartProduct>(user.CartProducts);
+                   
+                    return;
+                }
+            }
+        }
+    }
+	//Ta kundvagnens innehåll och "rensa den" 
+	//Rensning av kundvagn = Man skapar ordern först och sedan byter man ut alla nullvärden mot order Id:et
+    private async Task CreateOrderAsync()
+    {
+		//Skapa en order
+        decimal totalPriceOfOrder = 0;
+        foreach (var product in _cartProducts)
+        {
+			//De produkter som inte är köpta ännu
+            if (product.OrderId == 0)
+            {
+                totalPriceOfOrder += product.Amount * product.Product.Price;
+            }
+        }
+        var order = new Order()
+        {
+			//Denna ska inte behöva skrivas in utan autogenereras.
+            Id = 1,
+            OrderOfDate = DateTime.Today,
+            Products = _cartProducts.Where(c=>c.OrderId == 0).ToList(),
+            TotalPrice = totalPriceOfOrder,
+            User = _currentUser
+        };
+        //Lägg in order i ordertabellen.
+        await _unitOfWork.Orders.CreateAsync(order);
+        
+		//Byt ut alla NUll-värden till det nya orderId:et.
+        foreach (var product in _cartProducts)
+        {
+
+            if (product.OrderId is 0)
+            {
+                product.OrderId = order.Id;
+                await _unitOfWork.CartProducts.UpdateAsync(product);
+            }
+           
+        }
+        await _unitOfWork.CommitAsync();
+
+    }
 
 }
