@@ -11,12 +11,14 @@
 
 <PageTitle>Home Page</PageTitle>
 
-    <div class="form-group">
-    <input class="form-control" type="text" placeholder="Search by Game name"
+<div class="search-form">
+    <form class="nosubmit">
+    <input class="nosubmit" type="search" placeholder="Sök efter spelnamn..."
            @bind="Filter"
            @bind:event="oninput">
-    </div>
-
+    </form>
+</div>
+<div class="card-deck-wrapper">
    @foreach (var product in _products)
     {
         if (!IsVisible(product))
@@ -33,7 +35,7 @@
             </div>
         </div>
     }
-
+</div>
 
  <hr />
 
