@@ -1,4 +1,5 @@
 ﻿@page "/customercart"
+
 @using KärraGamesCorner.Interfaces
 @using System.Collections.Concurrent
 @using System.Security.Claims
@@ -6,6 +7,8 @@
 
 @inject IUnitOfWork _unitOfWork
 @inject IHttpContextAccessor _accessor
+@inject NavigationManager NavigationManager
+
 
 <head>
     <meta charset="utf-8" />
@@ -46,7 +49,7 @@
 </table>
 
 <div>
-	<a class="btn btn-success" href="/Checkout"> Till checkout</a>
+	<button class="btn btn-success" @onclick="GoToCheckout" disabled=@IsDisabled> Till checkout</button>
 </div>
 
 <footer class="footer border-top pl-3 text-muted">
@@ -60,6 +63,9 @@
 
 
 @code {
+    //När den är true så kan man inte klicka på knappen
+	private bool IsDisabled { get; set; } = true;
+
 
     private ConcurrentBag<CartProduct> _cartProducts = new();
 
@@ -80,10 +86,21 @@
                     }
 
                     _cartProducts = new ConcurrentBag<CartProduct>(user.CartProducts);
+	                if (_cartProducts.Count > 0)
+	                { // Man kan klicka på knappen endast om det finns något i carten
+		                IsDisabled = false;
+	                }
                     return;
                 }
             }
         }
     }
+
+    
+	private void GoToCheckout()
+	{
+		NavigationManager.NavigateTo("/Checkout");
+	}
+
 
 }

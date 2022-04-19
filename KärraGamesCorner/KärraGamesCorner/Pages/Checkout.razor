@@ -1,76 +1,75 @@
 ﻿@page "/checkout"
 @using System.Security.Permissions
 
-
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
 <body>
-	<div class="checkoutform">
-		<div class="row">
-			<div id="checkout-form" class="col-xs-12 col-md-4 col-sm-6">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title">
-							Betalningsinfo
-						</h3>
-					</div>
-					<div class="panel-body">
-						<form role="form">
-
-							<div class="row">
-								<div class="col-xs-11">
-									<div class="form-group">
-										<label for="couponCode">Namn</label>
-										<input type="text" class="form-control" name="couponCode" placeholder="Ditt fullständiga namn..."/>
-									</div>
-								</div>
-							</div>
-							
-							<div class="form-group">
-								<label for="cardNumber">Kortnummer</label>
-								<div class="input-group">
-									<input type="text" class="form-control" id="cardNumber" placeholder="xxxx xxxx xxxx xxxx" required autofocus />
-									<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-xs-7 col-md-7">
-									<div class="form-group">
-										<label for="expityMonth">Utgångsdatum</label>
-										<div class="col-xs-12 col-lg-12">
-											<div class="col-xs-6 col-lg-6 ">
-												<input type="text" class="form-control" id="expityMonth" placeholder="MM" required />
-											</div>
-											<div class="col-xs-6 col-lg-6 ">
-												<input type="text" class="form-control" id="expityYear" placeholder="ÅÅ" required />
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-xs-4 col-md-4 pull-right">
-									<div class="form-group">
-										<label for="cvCode">
-											CV Kod
-										</label>
-										<input type="password" class="form-control" id="cvCode" placeholder="CVC" required />
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-				<ul class="nav nav-pills nav-stacked">
-					<li class="active">
-						<a href="#"><span class="badge pull-right"><span class="glyphicon glyphicon-usd"></span>4200</span> Att betala inkl. moms</a>
-					</li>
-				</ul>
-				<br />
-				<a href="/" class="btn btn-success btn-lg btn-block" role="button">Slutför betalning</a>
-			</div>
-		</div>
-	</div>
+	<div class="checkout-container">
+		<div class="checkout">
+			<p><i class="bi bi-check-circle"></i>Shipping</p>
+			<p><i class="bi bi-check-circle"></i>Checkout</p>
+			<p><i class="bi bi-check-circle"></i>Confirmation</p>
+			<div class="payment">
+				<div class="content">
+					<div class="infos">
+						<div class="method">
+							<h2>Välj en betalningsmetod</h2>
+							<img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1978060/visa.png' alt='' class="visa">
+							<img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1978060/mastercard.png' alt='' class="mastercard">
+							<img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1978060/paypal.png' alt='' class="paypal">
+						</div> <!-- .method -->
+						<div class="cardHolderName">
+							<p class="title">Namn</p>
+							<input type="text">
+						</div> <!-- cardHolderName -->
+						<div class="cardUserAddress">
+							<p class="title">Adress</p>
+							<input type="text">
+						</div> <!-- cardUserAddress-->
+						<div class="cardNumber">
+							<p class="title">Kortnummer</p><br>
+							<input type="text" class="number">
+							<input type="text" class="number">
+							<input type="text" class="number">
+							<input type="text" class="number">
+						</div> <!-- .cardNumber -->
+						<div class="expiration">
+							<p class="title">Utgångsdatum</p>
+							<select>
+								<option>Mån</option>
+								<option>01</option>
+								<option>02</option>
+								<option>03</option>
+								<option>04</option>
+								<option>05</option>
+								<option>06</option>
+								<option>07</option>
+								<option>08</option>
+								<option>09</option>
+								<option>10</option>
+								<option>11</option>
+								<option>12</option>
+							</select>
+							<select>
+								<option>År</option>
+								<option>2022</option>
+								<option>2023</option>
+								<option>2024</option>
+								<option>2025</option>
+							</select>
+						</div> <!-- .expiration -->
+						<div class="security">
+							<p class="title">CVC</p>
+							<input type="text">
+						</div><!-- .security -->
+						<button class="btn-success" id="confirm-btn">Slutför betalning</button>
+					</div> <!-- .infos -->
+				</div> <!-- .content -->
+			</div> <!-- .payment -->
+		</div> <!-- .checkout -->
+	</div> <!-- .checkout-container  -->
 </body>
+
 
 @code {
 
