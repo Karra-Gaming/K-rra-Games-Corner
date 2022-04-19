@@ -72,18 +72,13 @@
             {
                 if (claim.Type == ClaimTypes.NameIdentifier)
                 {
-                    var user = (await _unitOfWork.Users.GetAsync(filter: (x => x.Id == claim.Value), include: "CartProducts")).FirstOrDefault();
 
-                    if (user is null)
-                    {
-                        return;
-                    }
+                    _cartProducts = new ConcurrentBag<CartProduct>(await _unitOfWork.CartProducts.GetAsync(filter:(x => x.ApplicationUserId == claim.Value), include:"Product"));
+	                if (_cartProducts.Count > 0)
+	                { // Man kan klicka på knappen endast om det finns något i carten
+		                IsDisabled = false;
+	                }
 
-                    _cartProducts = new ConcurrentBag<CartProduct>(user.CartProducts);
-                    if (_cartProducts.Count > 0)
-                    { // Man kan klicka på knappen endast om det finns något i carten
-                        IsDisabled = false;
-                    }
                     return;
                 }
             }

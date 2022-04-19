@@ -1,5 +1,12 @@
 ﻿@page "/checkout"
 @using System.Security.Permissions
+@using KärraGamesCorner.Interfaces
+@using System.Collections.Concurrent
+@using System.Security.Claims
+
+@inject IUnitOfWork _unitOfWork
+@inject IHttpContextAccessor _accessor
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
@@ -21,12 +28,19 @@
 						<div class="cardHolderName">
 							<p class="title">Namn</p>
 							<input type="text">
-						</div> <!-- cardHolderName -->
-						<div class="cardUserAddress">
-							<p class="title">Adress</p>
-							<input type="text">
-						</div> <!-- cardUserAddress-->
-						<div class="cardNumber">
+                        </div> <!-- cardHolderName -->
+                        @foreach (var cartProduct in _cartProduct)
+                        {
+                            if (cartProduct.Product.IsPhysical)
+                            {
+                                <div class="cardUserAddress">
+                                    <p class="title">Adress</p>
+                                    <input type="text">
+                                </div> <!-- cardUserAddress-->
+								break;
+                            }
+                        }
+                        <div class="cardNumber">
 							<p class="title">Kortnummer</p><br>
 							<input type="text" class="number">
 							<input type="text" class="number">
@@ -72,6 +86,22 @@
 
 
 @code {
+    private ConcurrentBag<CartProduct> _cartProduct;
 
+    protected override async Task OnInitializedAsync()
+    {
+        if (_accessor.HttpContext.User.Identity.IsAuthenticated)
+        {
+            var claims = _accessor.HttpContext.User.Claims;
+            foreach (var claim in claims)
+            {
+                if (claim.Type == ClaimTypes.NameIdentifier)
+                {
+                    _cartProduct = new ConcurrentBag<CartProduct>(await _unitOfWork.CartProducts.GetAsync(filter: (c => c.ApplicationUserId == claim.Value), include:"Product,User"));
+					return;
+                }
+            }
+        }
+    }
 
 }
