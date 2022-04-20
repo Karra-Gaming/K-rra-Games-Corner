@@ -97,17 +97,17 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2f21f8a4-7284-4d46-afb0-81f6a9b18b69",
+                            Id = "56be389b-1ec2-4cfc-a6b1-68051527c356",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1d4977f3-69e1-4f3c-8950-4f3d377c7764",
+                            ConcurrencyStamp = "1c494371-b2a8-42ef-833b-f3b14069a266",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             ImageUrl = "",
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFSms5oCi+DtxqrjmppiwIfI+kOlihmxi6GnYXiLHGq9n+Xcd3qmrleYFZx/3psfEw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELYbx+i+bVWKVFTzBQDoeHpU1zWzH5FUFig/ktRrKYyWilxVBmOe4DFMGzbvZ/J9EQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0c8615c8-8c54-4ee4-9586-e13c1aa34cef",
+                            SecurityStamp = "9765ab4b-b589-4281-b7c3-a8dfbe905159",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -124,8 +124,8 @@ namespace KärraGamesCorner.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("OrderId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("OrderId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("ApplicationUserId", "ProductId");
 
@@ -222,11 +222,9 @@ namespace KärraGamesCorner.Migrations
 
             modelBuilder.Entity("KärraGamesCorner.Data.Models.Order", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -936,8 +934,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "49e34b7b-5f12-4822-b2a5-5b47c4810939",
-                            ConcurrencyStamp = "49e34b7b-5f12-4822-b2a5-5b47c4810939",
+                            Id = "4d0b693c-6a41-4599-a61e-b4314c948899",
+                            ConcurrencyStamp = "4d0b693c-6a41-4599-a61e-b4314c948899",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -1034,8 +1032,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "2f21f8a4-7284-4d46-afb0-81f6a9b18b69",
-                            RoleId = "49e34b7b-5f12-4822-b2a5-5b47c4810939"
+                            UserId = "56be389b-1ec2-4cfc-a6b1-68051527c356",
+                            RoleId = "4d0b693c-6a41-4599-a61e-b4314c948899"
                         });
                 });
 

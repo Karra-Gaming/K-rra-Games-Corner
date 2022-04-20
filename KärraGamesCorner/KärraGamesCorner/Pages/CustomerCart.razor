@@ -23,7 +23,7 @@
      </tr>
      @foreach (var cartProduct in _cartProducts)
      {
-         if (cartProduct.OrderId == 0)
+         if (cartProduct.OrderId == null)
          {
              <tr>
                  <td>@cartProduct.Product.Name</td>
@@ -95,7 +95,7 @@
 
     public decimal GetTotalCartPrice()
     {
-        CartProduct[] products = _cartProducts.ToArray();
+        CartProduct[] products = _cartProducts.Where(p=>p.OrderId == null).ToArray();
         decimal total = 0m;
 
         for(int i = 0; i < products.Length; i++)

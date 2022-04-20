@@ -6,6 +6,7 @@
 
 @inject IUnitOfWork _unitOfWork
 @inject IHttpContextAccessor _accessor
+@inject NavigationManager _navigationManager
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
@@ -29,7 +30,7 @@
 							<p class="title">Namn</p>
 							<input type="text">
                         </div> <!-- cardHolderName -->
-                        @foreach (var cartProduct in _cartProduct)
+                        @foreach (var cartProduct in _cartProducts)
                         {
                             if (cartProduct.Product.IsPhysical)
                             {
@@ -86,7 +87,7 @@
 
 
 @code {
-    private ConcurrentBag<CartProduct> _cartProduct;
+    
 
     private ConcurrentBag<CartProduct> _cartProducts = new();
     private ApplicationUser _currentUser; 
@@ -102,13 +103,10 @@
                 {
                     var user = (await _unitOfWork.Users.GetAsync(filter: (x => x.Id == claim.Value), include: "CartProducts")).FirstOrDefault();
                     _currentUser = user;
+                    _cartProducts = new ConcurrentBag<CartProduct>(await _unitOfWork.CartProducts.GetAsync(filter: (x => x.ApplicationUserId == claim.Value && x.OrderId == null), include: "Product"));
 
-                    if (user is null)
-                    {
-                        return;
-                    }
 
-                    _cartProducts = new ConcurrentBag<CartProduct>(user.CartProducts);
+                    //_cartProducts = new ConcurrentBag<CartProduct>(user.CartProducts);
                    
                     return;
                 }
@@ -132,7 +130,7 @@
         var order = new Order()
         {
 			//Denna ska inte behöva skrivas in utan autogenereras.
-            Id = 1,
+            Id = Guid.NewGuid(),
             OrderOfDate = DateTime.Today,
             Products = _cartProducts.Where(c=>c.OrderId == null).ToList(),
             TotalPrice = totalPriceOfOrder,
@@ -153,6 +151,7 @@
            
         }
         await _unitOfWork.CommitAsync();
+        _navigationManager.NavigateTo("/CustomerCart");
 
     }
 

@@ -4,7 +4,7 @@ namespace KärraGamesCorner.Data.Models
 {
     public class Order 
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         //En order kan bara ha en user
         public ApplicationUser User { get; set; }
         //Så kan man göra en if-sats som sållar
