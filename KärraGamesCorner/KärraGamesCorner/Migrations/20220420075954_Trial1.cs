@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace KärraGamesCorner.Migrations
 {
-    public partial class test1 : Migration
+    public partial class Trial1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -66,7 +66,7 @@ namespace KärraGamesCorner.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(8,2)", nullable: false),
-                    GenreId = table.Column<int>(type: "int", nullable: false),
+                    GenreId = table.Column<int>(type: "int", nullable: true),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Producer = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsPhysical = table.Column<bool>(type: "bit", nullable: false)
@@ -78,8 +78,7 @@ namespace KärraGamesCorner.Migrations
                         name: "FK_Product_Genre_GenreId",
                         column: x => x.GenreId,
                         principalTable: "Genre",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -281,12 +280,12 @@ namespace KärraGamesCorner.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "3c482a8b-d5c1-4009-ad90-b3a15ffd1fa6", "3c482a8b-d5c1-4009-ad90-b3a15ffd1fa6", "Admin", "ADMIN" });
+                values: new object[] { "49e34b7b-5f12-4822-b2a5-5b47c4810939", "49e34b7b-5f12-4822-b2a5-5b47c4810939", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "ImageUrl", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProductId", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "2545616f-08ae-48d3-8a70-24314092f517", 0, "fdc688a9-c2fa-4787-a941-f1cd3f6645b9", "admin@gmail.com", true, "", false, null, null, "ADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEAZKdot0YYMAZ3wkUFQJqdTWh1qw0iJSr9SS2Q9p1rBvY05GHpI9w9gfdxhEVL/Zew==", null, false, null, "292b75d1-0190-4c95-a584-761892b191e0", false, "admin@gmail.com" });
+                values: new object[] { "2f21f8a4-7284-4d46-afb0-81f6a9b18b69", 0, "1d4977f3-69e1-4f3c-8950-4f3d377c7764", "admin@gmail.com", true, "", false, null, null, "ADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEFSms5oCi+DtxqrjmppiwIfI+kOlihmxi6GnYXiLHGq9n+Xcd3qmrleYFZx/3psfEw==", null, false, null, "0c8615c8-8c54-4ee4-9586-e13c1aa34cef", false, "admin@gmail.com" });
 
             migrationBuilder.InsertData(
                 table: "Genre",
@@ -309,9 +308,20 @@ namespace KärraGamesCorner.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Product",
+                columns: new[] { "Id", "Description", "GenreId", "ImageUrl", "IsPhysical", "Name", "Price", "Producer" },
+                values: new object[,]
+                {
+                    { 51, "Huntsman med analoga och optiska switchar", null, "/Resources/Images/Products/All_Images/Product_51.jpg", true, "Razer Huntsman V2 Analog", 2990m, "Razor" },
+                    { 52, "Trådlös mus med utbytbar sidopanel", null, "/Resources/Images/Products/All_Images/Product_52.jpg", true, "Razer Naga Pro MOBA/MMO", 1749m, "Razor" },
+                    { 53, "Musmatta med RGB-belysning", null, "/Resources/Images/Products/All_Images/Product_53.jpg", true, "Razer Firefly V2", 649m, "Razor" },
+                    { 54, "Trådlöst haptiskt spelheadset för ultimat spelinlevelse", null, "/Resources/Images/Products/All_Images/Product_54.jpg", true, "Razer Kraken V3 Pro", 2199m, "Razor" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "3c482a8b-d5c1-4009-ad90-b3a15ffd1fa6", "2545616f-08ae-48d3-8a70-24314092f517" });
+                values: new object[] { "49e34b7b-5f12-4822-b2a5-5b47c4810939", "2f21f8a4-7284-4d46-afb0-81f6a9b18b69" });
 
             migrationBuilder.InsertData(
                 table: "Product",

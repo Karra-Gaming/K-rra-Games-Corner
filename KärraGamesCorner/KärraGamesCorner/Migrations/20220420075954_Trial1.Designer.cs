@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KärraGamesCorner.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220419093749_test3")]
-    partial class test3
+    [Migration("20220420075954_Trial1")]
+    partial class Trial1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -99,17 +99,17 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "17acf601-63c8-4810-b311-a2a4fe8a4a38",
+                            Id = "2f21f8a4-7284-4d46-afb0-81f6a9b18b69",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d36dfe1b-451e-4de9-b30a-1b564714baa0",
+                            ConcurrencyStamp = "1d4977f3-69e1-4f3c-8950-4f3d377c7764",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             ImageUrl = "",
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOuKwzBVi0Z/c6Z+ULgoQDWbKt9XnLJXLKhmf52dpSyvF2UAfy/LoHzhTwXznX7IgA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFSms5oCi+DtxqrjmppiwIfI+kOlihmxi6GnYXiLHGq9n+Xcd3qmrleYFZx/3psfEw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ce42bf48-f775-4f5a-b7e5-05e849e90db7",
+                            SecurityStamp = "0c8615c8-8c54-4ee4-9586-e13c1aa34cef",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -845,10 +845,40 @@ namespace KärraGamesCorner.Migrations
                         {
                             Id = 51,
                             Description = "Huntsman med analoga och optiska switchar",
-                            ImageUrl = "/Resources/Images/Products/All_Images/Product_51.avif",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_51.jpg",
                             IsPhysical = true,
                             Name = "Razer Huntsman V2 Analog",
-                            Price = 400m,
+                            Price = 2990m,
+                            Producer = "Razor"
+                        },
+                        new
+                        {
+                            Id = 52,
+                            Description = "Trådlös mus med utbytbar sidopanel",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_52.jpg",
+                            IsPhysical = true,
+                            Name = "Razer Naga Pro MOBA/MMO",
+                            Price = 1749m,
+                            Producer = "Razor"
+                        },
+                        new
+                        {
+                            Id = 53,
+                            Description = "Musmatta med RGB-belysning",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_53.jpg",
+                            IsPhysical = true,
+                            Name = "Razer Firefly V2",
+                            Price = 649m,
+                            Producer = "Razor"
+                        },
+                        new
+                        {
+                            Id = 54,
+                            Description = "Trådlöst haptiskt spelheadset för ultimat spelinlevelse",
+                            ImageUrl = "/Resources/Images/Products/All_Images/Product_54.jpg",
+                            IsPhysical = true,
+                            Name = "Razer Kraken V3 Pro",
+                            Price = 2199m,
                             Producer = "Razor"
                         });
                 });
@@ -908,8 +938,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "dcf90e9a-7d72-497d-8633-1baa510c2e19",
-                            ConcurrencyStamp = "dcf90e9a-7d72-497d-8633-1baa510c2e19",
+                            Id = "49e34b7b-5f12-4822-b2a5-5b47c4810939",
+                            ConcurrencyStamp = "49e34b7b-5f12-4822-b2a5-5b47c4810939",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -1006,8 +1036,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "17acf601-63c8-4810-b311-a2a4fe8a4a38",
-                            RoleId = "dcf90e9a-7d72-497d-8633-1baa510c2e19"
+                            UserId = "2f21f8a4-7284-4d46-afb0-81f6a9b18b69",
+                            RoleId = "49e34b7b-5f12-4822-b2a5-5b47c4810939"
                         });
                 });
 
@@ -1047,7 +1077,7 @@ namespace KärraGamesCorner.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("KärraGamesCorner.Data.Models.Order", null)
+                    b.HasOne("KärraGamesCorner.Data.Models.Order", "Order")
                         .WithMany("Products")
                         .HasForeignKey("OrderId");
 
@@ -1056,6 +1086,8 @@ namespace KärraGamesCorner.Migrations
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Order");
 
                     b.Navigation("Product");
 

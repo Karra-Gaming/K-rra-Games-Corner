@@ -124,7 +124,7 @@
         foreach (var product in _cartProducts)
         {
 			//De produkter som inte är köpta ännu
-            if (product.OrderId == 0)
+            if (product.OrderId == null)
             {
                 totalPriceOfOrder += product.Amount * product.Product.Price;
             }
@@ -134,7 +134,7 @@
 			//Denna ska inte behöva skrivas in utan autogenereras.
             Id = 1,
             OrderOfDate = DateTime.Today,
-            Products = _cartProducts.Where(c=>c.OrderId == 0).ToList(),
+            Products = _cartProducts.Where(c=>c.OrderId == null).ToList(),
             TotalPrice = totalPriceOfOrder,
             User = _currentUser
         };
@@ -145,7 +145,7 @@
         foreach (var product in _cartProducts)
         {
 
-            if (product.OrderId is 0)
+            if (product.OrderId is null)
             {
                 product.OrderId = order.Id;
                 await _unitOfWork.CartProducts.UpdateAsync(product);
