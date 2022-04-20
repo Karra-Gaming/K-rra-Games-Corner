@@ -17,7 +17,7 @@ namespace KärraGamesCorner.Data.Models
 
         public Genre? Genre { get; set; }
 
-        public string ImageUrl { get; set; } 
+        public string ImageUrl { get; set; } = "/Resources/Images/Products/All_Images/default.jpg";
 
         public string Producer { get; set; }
 
@@ -33,7 +33,7 @@ namespace KärraGamesCorner.Data.Models
             
         }
 
-        public Product(int id, string name, string description, decimal price, Genre? genre, string imageUrl, string producer,bool isPhysical)
+        public Product(int id, string name, string description, decimal price, Genre? genre, string producer,bool isPhysical, string imageUrl)
         {
             Id = id;
             Name = name;

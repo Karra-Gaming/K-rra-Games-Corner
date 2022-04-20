@@ -1,7 +1,6 @@
 ﻿@page "/updateproduct"
 @page "/updateproduct/{id:int}"
 
-
 @using KärraGamesCorner.Data.Models
 @using KärraGamesCorner.Data
 @using KärraGamesCorner.Interfaces
@@ -13,7 +12,20 @@
 @inject IUnitOfWork _unitOfWork 
 
 
-<h3>@_product.Name</h3>
+@if (Id == null)
+{
+    <PageTitle>Create a new Product</PageTitle>
+    <h3>Create a new Product</h3>
+}
+else
+{
+    <PageTitle>Edit @_product.Name</PageTitle>
+    <h3>Edit @_product.Name</h3>
+}
+
+
+
+
 
 <EditForm Model="_product" OnSubmit="HandleSubmit">
     <div>
@@ -33,6 +45,13 @@
         <InputNumber id="price" @bind-Value="_product.Price" class="form-control"></InputNumber>
     </div>
      <div>
+        <label for="physical">Fysisk</label>
+        <InputCheckbox id="physical" @bind-Value="_product.IsPhysical"></InputCheckbox>
+    </div>
+
+    @if(_product.IsPhysical is false)
+    {
+          <div>
         <label>Genre</label><br />
         <InputSelect @bind-Value="_product.GenreId" class="form-select">
             @foreach (var genre in _genres)
@@ -41,6 +60,8 @@
             }
         </InputSelect>
     </div>
+    }
+  
    
     <br />
     <button type="submit" class="btn btn-primary">@btnText</button>
@@ -52,7 +73,10 @@
     [Parameter]
     public int? Id { get; set; }
 
-    private KärraGamesCorner.Data.Models.Product _product;
+    //private KärraGamesCorner.Data.Models.Product _product = new KärraGamesCorner.Data.Models.Product{ Genre = new Genre()  };
+
+    private KärraGamesCorner.Data.Models.Product _product = new Product{}; 
+
 
 
     string btnText = string.Empty;
@@ -63,22 +87,34 @@
     protected override async Task OnInitializedAsync()
     {
         _genres = new ConcurrentBag<Genre>(await _unitOfWork.Genres.GetAsync());
-        btnText = Id == null ? "Save Product" : "Update product";
+        btnText = Id == null ? "Create Product" : "Update product";
     }
 
     protected override async Task OnParametersSetAsync()
     {
-
-        _product = (await _unitOfWork.Products.GetAsync(filter: (x => x.Id == Id))).FirstOrDefault();
+        if (Id != null)
+        {
+             _product = (await _unitOfWork.Products.GetAsync(filter: (x => x.Id == Id))).FirstOrDefault();
+            
+        }
 
     }
-
     async Task HandleSubmit()
     {
-
-        await _unitOfWork.Products.UpdateAsync(_product);
-        await _unitOfWork.CommitAsync();
-        NavigationManager.NavigateTo("/Admin");
+        if (Id == null)
+        {
+            await _unitOfWork.Products.CreateAsync(_product);
+            
+            await _unitOfWork.CommitAsync();
+            
+        }
+        else
+        {
+             await _unitOfWork.Products.UpdateAsync(_product);
+             await _unitOfWork.CommitAsync();
+             NavigationManager.NavigateTo("/Admin");
+        }
+     
       
     }
 }
