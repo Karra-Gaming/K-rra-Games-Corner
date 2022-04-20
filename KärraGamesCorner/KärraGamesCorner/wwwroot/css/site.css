@@ -447,6 +447,56 @@ th, td {
     color: #fff;
 }
 
+/* Cart Icon + Cart Icon Number (Number in corner for number of items in cart) */
+.cart-icon {
+    position: absolute;
+    top: -0.1em;
+    right: -0.05em;
+    font-size: 2em;
+}
+
+    .cart-icon i {
+        color: #3a0647;
+    }
+
+        .cart-icon i:hover {
+            color: #4c5888;
+        }
+
+.cart-icon-number {
+    position: absolute;
+    top: 1.9em;
+    right: 1.9em;
+    color: green;
+    font-size: 0.3em;
+    font-style: normal;
+}
+
+    .cart-icon-number:hover {
+        color: #00c000;
+    }
+
+@media screen and (max-width: 640px ) {
+
+    .cart-icon {
+        position: absolute;
+        top: -0.1em;
+        right: 1.2em;
+        font-size: 1.6em;
+    }
+
+        .cart-icon i {
+            color: #dddddd;
+        }
+
+    .cart-icon-number {
+        position: absolute;
+        top: 1.8em;
+        right: 2.3em;
+        font-size: 0.3em;
+    }
+}
+
 
 
 
