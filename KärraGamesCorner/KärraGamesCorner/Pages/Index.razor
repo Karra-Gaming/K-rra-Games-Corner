@@ -1,4 +1,7 @@
 ﻿@page "/"
+@inject IUnitOfWork _unitOfWork
+@inject IHttpContextAccessor _accessor
+@inject NavigationManager _navigationManager
 @using KärraGamesCorner.Data.Models
 @using KärraGamesCorner.Data
 @using KärraGamesCorner.Interfaces
@@ -6,8 +9,7 @@
 @using System.Security.Claims
 @using System.Collections.Concurrent
 
-@inject IUnitOfWork _unitOfWork
-@inject IHttpContextAccessor _accessor
+
 
 <PageTitle>Home Page</PageTitle>
 
@@ -32,15 +34,17 @@
             </div>
             <div class="c-info">
                 <p class="price">@product.Price kr</p>
-                <a href="#" @onclick="() => AddProduct(product.Id)" class="btn btn-primary">add</a>
+                <a @onclick="() => AddProduct(product.Id)" class="btn btn-primary">add</a>
             </div>
         </div>
     }
 </div>
 
+ 
+
  <hr />
 
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+ 
   <footer class="footer">
             <div class="container-fluid">
             <h3 class="header">Kontakta Oss</h3>
@@ -52,6 +56,8 @@
         </footer>
 
 @code{
+
+    public string Filter { get; set; }
 
     private ConcurrentBag<Product> _products;
 
@@ -82,6 +88,7 @@
                         {
                             userCartProduct.Amount++;
                             await _unitOfWork.CartProducts.UpdateAsync(userCartProduct);
+                             await _unitOfWork.CommitAsync();
                             return;
                         }
                     }
@@ -97,8 +104,14 @@
                     return;
                 }
             }
+           
         }
+
+       
     }
+
+    
+
 
     public bool IsVisible(Product product)
         {
@@ -114,8 +127,7 @@
             return false;
         }
 
-    public string Filter { get; set; }
-
+   
 }
 
 

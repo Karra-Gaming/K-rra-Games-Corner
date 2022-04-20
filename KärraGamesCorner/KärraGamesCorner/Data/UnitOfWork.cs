@@ -14,6 +14,8 @@ namespace KärraGamesCorner.Data
 
         private readonly ApplicationDbContext context;
 
+        public event Func<Task> OnChange;
+
         public UnitOfWork(ApplicationDbContext context)
         {
             this.context = context;
@@ -31,6 +33,7 @@ namespace KärraGamesCorner.Data
             try
             {
                 await context.SaveChangesAsync();
+                OnChange?.Invoke();
             }
             catch
             {

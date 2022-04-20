@@ -4,6 +4,7 @@ namespace KärraGamesCorner.Interfaces
 {
     public interface IUnitOfWork
     {
+        event Func<Task> OnChange;
         public IRepository<ApplicationUser> Users { get; }
         public IRepository<Genre> Genres { get; }
         public IRepository<Order> Orders { get; }
