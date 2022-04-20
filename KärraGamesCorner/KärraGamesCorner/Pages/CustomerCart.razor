@@ -23,19 +23,22 @@
      </tr>
      @foreach (var cartProduct in _cartProducts)
      {
-         <tr>
-             <td>@cartProduct.Product.Name</td>
-             <td>@cartProduct.Product.Price</td>
-             <td>
-                 <button class="btn-danger" @onclick="()=> SubtractFromAmountAsync(cartProduct)" >-</button>
-                 @cartProduct.Amount
-                 <button class="btn-success" @onclick="()=> AddToAmountAsync(cartProduct)" >+</button>
-             </td>
-             <td>@RowPrice(cartProduct) kr</td>
-             <td>
-                 <button class="btn btn-danger" @onclick="() => DeleteRowAsync(cartProduct)">Delete</button>
-             </td>
-         </tr>
+         if (cartProduct.OrderId == null)
+         {
+             <tr>
+                 <td>@cartProduct.Product.Name</td>
+                 <td>@cartProduct.Product.Price</td>
+                 <td>
+                     <button class="btn-danger" @onclick="()=> SubtractFromAmountAsync(cartProduct)" >-</button>
+                     @cartProduct.Amount
+                     <button class="btn-success" @onclick="()=> AddToAmountAsync(cartProduct)" >+</button>
+                 </td>
+                 <td>@RowPrice(cartProduct) kr</td>
+                 <td>
+                     <button class="btn btn-danger" @onclick="() => DeleteRowAsync(cartProduct)">Delete</button>
+                 </td>
+             </tr>
+         }
      }
  </table>
 <div>
@@ -92,7 +95,7 @@
 
     public decimal GetTotalCartPrice()
     {
-        CartProduct[] products = _cartProducts.ToArray();
+        CartProduct[] products = _cartProducts.Where(p=>p.OrderId == null).ToArray();
         decimal total = 0m;
 
         for(int i = 0; i < products.Length; i++)
@@ -106,6 +109,7 @@
     private void GoToCheckout()
 	{
 		NavigationManager.NavigateTo("/Checkout");
+
 	}
 
     

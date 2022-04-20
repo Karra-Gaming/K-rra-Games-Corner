@@ -11,6 +11,8 @@ namespace KärraGamesCorner.Data.Models
         public int Amount { get; set; }
         public string ApplicationUserId { get; set; }
         public int ProductId { get; set; }
+        public Guid? OrderId { get; set; }
+        public Order Order { get; set; }
 
         public CartProduct()
         {

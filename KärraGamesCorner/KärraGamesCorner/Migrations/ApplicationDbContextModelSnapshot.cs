@@ -97,17 +97,17 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6de90be0-3e29-4578-b91e-d502b8b1e7eb",
+                            Id = "56be389b-1ec2-4cfc-a6b1-68051527c356",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3f4244da-2e9b-4d8c-ac08-c955208aaa12",
+                            ConcurrencyStamp = "1c494371-b2a8-42ef-833b-f3b14069a266",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             ImageUrl = "",
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAED4yt8ktrr0la/WJAeksiMrc+bIvNIvPKMF6Gela7NDBFOPkBWhBiflIrfu0hkDBww==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELYbx+i+bVWKVFTzBQDoeHpU1zWzH5FUFig/ktRrKYyWilxVBmOe4DFMGzbvZ/J9EQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cb2e3b5d-1130-438f-986b-00598c158bdf",
+                            SecurityStamp = "9765ab4b-b589-4281-b7c3-a8dfbe905159",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -124,8 +124,8 @@ namespace KärraGamesCorner.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("OrderId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("OrderId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("ApplicationUserId", "ProductId");
 
@@ -222,11 +222,9 @@ namespace KärraGamesCorner.Migrations
 
             modelBuilder.Entity("KärraGamesCorner.Data.Models.Order", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -936,8 +934,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6cf64468-00a2-411b-b806-dd92d04e0b87",
-                            ConcurrencyStamp = "6cf64468-00a2-411b-b806-dd92d04e0b87",
+                            Id = "4d0b693c-6a41-4599-a61e-b4314c948899",
+                            ConcurrencyStamp = "4d0b693c-6a41-4599-a61e-b4314c948899",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -1034,8 +1032,8 @@ namespace KärraGamesCorner.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "6de90be0-3e29-4578-b91e-d502b8b1e7eb",
-                            RoleId = "6cf64468-00a2-411b-b806-dd92d04e0b87"
+                            UserId = "56be389b-1ec2-4cfc-a6b1-68051527c356",
+                            RoleId = "4d0b693c-6a41-4599-a61e-b4314c948899"
                         });
                 });
 
@@ -1075,7 +1073,7 @@ namespace KärraGamesCorner.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("KärraGamesCorner.Data.Models.Order", null)
+                    b.HasOne("KärraGamesCorner.Data.Models.Order", "Order")
                         .WithMany("Products")
                         .HasForeignKey("OrderId");
 
@@ -1084,6 +1082,8 @@ namespace KärraGamesCorner.Migrations
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Order");
 
                     b.Navigation("Product");
 

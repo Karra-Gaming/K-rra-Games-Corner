@@ -3,6 +3,7 @@ using System.Reflection;
 using KärraGamesCorner.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.Build.Experimental.ProjectCache;
 using Microsoft.CodeAnalysis.VisualBasic.Syntax;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -103,6 +104,10 @@ namespace KärraGamesCorner.Data
             });
 
             modelBuilder.Entity<CartProduct>().HasKey(vf => new {  vf. ApplicationUserId, vf.ProductId });
+
+            //modelBuilder.Entity<CartProduct>()
+            //    .Property(b => b.OrderId)
+            //    .HasDefaultValue(0);
 
             base.OnModelCreating(modelBuilder);
                     

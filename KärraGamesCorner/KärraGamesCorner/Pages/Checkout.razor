@@ -6,9 +6,11 @@
 
 @inject IUnitOfWork _unitOfWork
 @inject IHttpContextAccessor _accessor
+@inject NavigationManager _navigationManager
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
 
 <body>
 	<div class="checkout-container">
@@ -29,7 +31,7 @@
 							<p class="title">Namn</p>
 							<input type="text">
                         </div> <!-- cardHolderName -->
-                        @foreach (var cartProduct in _cartProduct)
+                        @foreach (var cartProduct in _cartProducts)
                         {
                             if (cartProduct.Product.IsPhysical)
                             {
@@ -76,17 +78,21 @@
 							<p class="title">CVC</p>
 							<input type="text">
 						</div><!-- .security -->
-						<button class="btn-success" id="confirm-btn">Slutför betalning</button>
+						<button class="btn-success" @onclick="CreateOrderAsync" id="confirm-btn">Slutför betalning</button>
 					</div> <!-- .infos -->
 				</div> <!-- .content -->
 			</div> <!-- .payment -->
 		</div> <!-- .checkout -->
-	</div> <!-- .checkout-container  -->
+    </div> <!-- .checkout-container  -->
+
 </body>
 
 
 @code {
-    private ConcurrentBag<CartProduct> _cartProduct;
+    
+
+    private ConcurrentBag<CartProduct> _cartProducts = new();
+    private ApplicationUser _currentUser; 
 
     protected override async Task OnInitializedAsync()
     {
@@ -97,11 +103,61 @@
             {
                 if (claim.Type == ClaimTypes.NameIdentifier)
                 {
-                    _cartProduct = new ConcurrentBag<CartProduct>(await _unitOfWork.CartProducts.GetAsync(filter: (c => c.ApplicationUserId == claim.Value), include:"Product,User"));
-					return;
+                    var user = (await _unitOfWork.Users.GetAsync(filter: (x => x.Id == claim.Value), include: "CartProducts")).FirstOrDefault();
+                    _currentUser = user;
+                    _cartProducts = new ConcurrentBag<CartProduct>(await _unitOfWork.CartProducts.GetAsync(filter: (x => x.ApplicationUserId == claim.Value && x.OrderId == null), include: "Product"));
+
+
+                    //_cartProducts = new ConcurrentBag<CartProduct>(user.CartProducts);
+                   
+                    return;
                 }
             }
         }
     }
+	//Ta kundvagnens innehåll och "rensa den" 
+	//Rensning av kundvagn = Man skapar ordern först och sedan byter man ut alla nullvärden mot order Id:et
+    private async Task CreateOrderAsync()
+    {
+		//Skapa en order
+        decimal totalPriceOfOrder = 0;
+        foreach (var product in _cartProducts)
+        {
+			//De produkter som inte är köpta ännu
+            if (product.OrderId == null)
+            {
+                totalPriceOfOrder += product.Amount * product.Product.Price;
+            }
+        }
+        var order = new Order()
+        {
+			//Denna ska inte behöva skrivas in utan autogenereras.
+            Id = Guid.NewGuid(),
+            OrderOfDate = DateTime.Today,
+            Products = _cartProducts.Where(c=>c.OrderId == null).ToList(),
+            TotalPrice = totalPriceOfOrder,
+            User = _currentUser
+        };
+        //Lägg in order i ordertabellen.
+        await _unitOfWork.Orders.CreateAsync(order);
+        
+		//Byt ut alla NUll-värden till det nya orderId:et.
+        foreach (var product in _cartProducts)
+        {
+
+            if (product.OrderId is null)
+            {
+                product.OrderId = order.Id;
+                await _unitOfWork.CartProducts.UpdateAsync(product);
+            }
+           
+        }
+        await _unitOfWork.CommitAsync();
+        //Ska starta en modal som säger tack för köp med en knapp och denna knappen skall leda tillbaka till kundvagnen.
+        _navigationManager.NavigateTo("/SuccessfulPurchase");
+
+    }
+
+    
 
 }
