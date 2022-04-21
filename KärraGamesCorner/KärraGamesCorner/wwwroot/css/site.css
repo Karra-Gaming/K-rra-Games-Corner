@@ -475,25 +475,26 @@ th, td {
 /* Cart Icon + Cart Icon Number (Number in corner for number of items in cart) */
 .cart-icon {
     position: fixed;
-    top: -0.05em;
-    right: 0em;
+    top: -0.15em;
+    right: 0.04em;
     font-size: 2em;
     z-index:1;
 }
 
     .cart-icon i {
-        color: black;
+        color: limegreen;
     }
 
         .cart-icon i:hover {
-            color: #4c5888;
+            /*color: #4c5888;*/
+            color: lime;
         }
 
 .cart-icon-number {
     position: fixed;
     top: 1.9em;
     right: 1.9em;
-    color: green;
+    color: limegreen;
     font-size: 0.3em;
     font-style: normal;
 }
@@ -515,9 +516,13 @@ th, td {
             color: #dddddd;
         }
 
+        .cart-icon i:hover {
+            color: #c0c0c0;
+        }
+
     .cart-icon-number {
         position: absolute;
-        top: 1.8em;
+        top: 2.2em;
         right: 2.3em;
         font-size: 0.3em;
     }
