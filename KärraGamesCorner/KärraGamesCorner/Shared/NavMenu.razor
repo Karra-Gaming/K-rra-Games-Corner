@@ -145,7 +145,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-         await GetCartAsync();
+        await GetCartAsync();
 
         _unitOfWork.OnChange += async () =>
         {
@@ -160,6 +160,10 @@
         counter = 0;
         foreach (var item in _cartProducts)
         {
+            if (item.OrderId != null)
+            {
+                continue;
+            }
             counter += item.Amount;
         }
 
