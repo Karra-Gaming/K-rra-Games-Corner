@@ -126,6 +126,13 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
+    margin-right: 4.3em;
+}
+
+@media screen and (max-width: 640px ) {
+    .search-form {
+        margin-right: 0;
+    }
 }
 
 .nosubmit {
@@ -449,9 +456,9 @@ th, td {
 
 /* Cart Icon + Cart Icon Number (Number in corner for number of items in cart) */
 .cart-icon {
-    position: absolute;
-    top: -0.1em;
-    right: -0.05em;
+    position: fixed;
+    top: -0.05em;
+    right: 0em;
     font-size: 2em;
 }
 
@@ -464,7 +471,7 @@ th, td {
         }
 
 .cart-icon-number {
-    position: absolute;
+    position: fixed;
     top: 1.9em;
     right: 1.9em;
     color: green;
@@ -481,7 +488,7 @@ th, td {
     .cart-icon {
         position: absolute;
         top: -0.1em;
-        right: 1.2em;
+        right: 1.3em;
         font-size: 1.6em;
     }
 
@@ -496,8 +503,3 @@ th, td {
         font-size: 0.3em;
     }
 }
-
-
-
-
-
