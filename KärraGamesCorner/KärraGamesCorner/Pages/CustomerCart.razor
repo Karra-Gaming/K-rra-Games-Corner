@@ -10,8 +10,9 @@
 @inject NavigationManager NavigationManager
 
 
-<body>
-<table>
+
+ <div class="table-responsive">
+      <table class="table">
      
 
      <tr>
@@ -27,7 +28,7 @@
          {
              <tr>
                  <td>@cartProduct.Product.Name</td>
-                 <td>@cartProduct.Product.Price</td>
+                 <td>@cartProduct.Product.Price kr</td>
                  <td>
                      <button class="btn-danger" @onclick="()=> SubtractFromAmountAsync(cartProduct)" >-</button>
                      @cartProduct.Amount
@@ -40,11 +41,15 @@
              </tr>
          }
      }
- </table>
+          </table>
+ </div>
+
 <div>
-    <h3>Cart Price: @GetTotalCartPrice()</h3>
+    <h3>Total Kostnad: @GetTotalCartPrice() kr</h3>
 	<button class="btn btn-success" @onclick="GoToCheckout" disabled=@IsDisabled> Till checkout</button>
 </div>
+
+
 
 
 <footer class="footer border-top pl-3 text-muted">
@@ -53,7 +58,7 @@
         </div>
     </footer>
 
-</body>
+
 
 
 

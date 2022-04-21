@@ -8,11 +8,13 @@
 @inject IHttpContextAccessor _accessor
 
 
-    <div class="form-group">
-    <input class="form-control" type="text" placeholder="Sök efter spelnamn..."
-           @bind="Filter"
-           @bind:event="oninput">
-    </div>
+   <div class="search-form">
+    <form class="nosubmit">
+        <input class="nosubmit" type="search" placeholder="Sök efter spelnamn..."
+               @bind="Filter"
+               @bind:event="oninput">
+    </form>
+</div>
 
     <div class="card-deck-wrapper">
         @foreach (var product in _products)
@@ -27,7 +29,7 @@
                 </div>
                 <div class="c-info">
                     <p class="price">@product.Price kr</p>
-                    <a @onclick="() => AddProduct(product.Id)" class="btn btn-primary">add</a>
+                    <a @onclick="() => AddProduct(product.Id)" class="btn btn-decoration">add</a>
                 </div>
             </div>
         }
