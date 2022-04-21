@@ -19,11 +19,11 @@
 
      
               <tr>
-                <th>UserId</th>
-                <th>OrderId </th>
-                <th>Datetime </th>
-                <th>Totalpris</th>
-                <th>Address</th>
+                <th>Användar Id</th>
+                <th>Order Id </th>
+                <th>Order Datum </th>
+                <th>Kostnad</th>
+                
               </tr>
 
               @foreach (var order in _orders)
@@ -32,24 +32,72 @@
                 <td>@order.User.Id</td>
                 <td>@order.Id</td>
                 <td>@order.OrderOfDate</td>
-                <td>@order.TotalPrice</td>
-                <td>@order.Address</td>
+                <td>@order.TotalPrice kr</td>              
                </tr>
              }
  </table>
 
 </div>
 
+<h3> Ej Slutförda Ordrar</h3>
+ <div class="table-responsive">
+ <table class="table">
+
+     
+              <tr>
+                <th>Användar Id</th>
+                <th>Email </th>
+                <th>Kostnad</th>
+                <th>Action</th>            
+              </tr>
+
+              @foreach (var user in _users)
+             {
+            decimal totalPrice = 0;
+            @foreach (var cartProd in user.CartProducts)
+              {
+                  @if (cartProd.OrderId != null)
+                {
+
+                    continue;
+
+                }
+
+                totalPrice += cartProd.Product.Price * cartProd.Amount;
+              }
+            @if(totalPrice <= 0)
+            {
+                continue;
+            }
+
+              <tr>
+              <td>@user.Id</td>
+              <td>@user.Email</td>
+              <td>@totalPrice kr</td>
+              <td>
+                  <button class="btn btn-decoration">Info</button>
+              </td>
+              </tr>
+             }
+
+ </table>
+
+</div>
 
 
 
 @code {
 
-        private ConcurrentBag<KärraGamesCorner.Data.Models.Order> _orders;
+    private ConcurrentBag<KärraGamesCorner.Data.Models.ApplicationUser> _users;
 
-        protected override async Task OnInitializedAsync()
+    private ConcurrentBag<KärraGamesCorner.Data.Models.Order> _orders;
+
+    protected override async Task OnInitializedAsync()
     {
         _orders = new ConcurrentBag<KärraGamesCorner.Data.Models.Order>(await _unitOfWork.Orders.GetAsync(include:"User,Products"));
+
+        _users = new ConcurrentBag<ApplicationUser>(await _unitOfWork.Users.GetAsync(include:"CartProducts"));
     }
+
 
 }

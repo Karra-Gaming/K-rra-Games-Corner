@@ -64,7 +64,7 @@ else
   
    
     <br />
-    <button type="submit" class="btn btn-primary">@btnText</button>
+    <button type="submit" class="btn btn-decoration">@btnText</button>
 </EditForm>
 
 
@@ -102,8 +102,7 @@ else
     {
         if (Id == null)
         {
-            await _unitOfWork.Products.CreateAsync(_product);
-            
+            await _unitOfWork.Products.CreateAsync(_product);           
             await _unitOfWork.CommitAsync();
             
         }

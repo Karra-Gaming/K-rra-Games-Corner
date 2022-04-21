@@ -1,3 +1,5 @@
+
+
 .navbar-toggler {
     background-color: rgba(255, 255, 255, 0.1);
 }
@@ -8,7 +10,9 @@
 }
 
 .navbar-brand {
-    font-size: 1.1rem;
+    font-size: 1.1em;
+    text-align:center;
+    margin:auto;
 }
 
 .oi {
@@ -37,7 +41,7 @@
         height: 3rem;
         display: flex;
         align-items: center;
-        line-height: 3rem;
+        
     }
 
 .nav-item ::deep a.active {
