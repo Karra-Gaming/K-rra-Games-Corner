@@ -30,13 +30,13 @@
                  <td>@cartProduct.Product.Name</td>
                  <td>@cartProduct.Product.Price kr</td>
                  <td>
-                     <button class="btn-danger" @onclick="()=> SubtractFromAmountAsync(cartProduct)" >-</button>
+                     <button class="btn-decoration" @onclick="()=> SubtractFromAmountAsync(cartProduct)" >-</button>
                      @cartProduct.Amount
-                     <button class="btn-success" @onclick="()=> AddToAmountAsync(cartProduct)" >+</button>
+                     <button class="btn-decoration" @onclick="()=> AddToAmountAsync(cartProduct)" >+</button>
                  </td>
                  <td>@RowPrice(cartProduct) kr</td>
                  <td>
-                     <button class="btn btn-danger" @onclick="() => DeleteRowAsync(cartProduct)">Delete</button>
+                     <button class="btn btn-decoration" @onclick="() => DeleteRowAsync(cartProduct)">Delete</button>
                  </td>
              </tr>
          }
