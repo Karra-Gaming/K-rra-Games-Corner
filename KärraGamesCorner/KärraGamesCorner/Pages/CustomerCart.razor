@@ -70,6 +70,7 @@
 
 
     private ConcurrentBag<CartProduct> _cartProducts = new();
+    private IEnumerable<CartProduct> current;
 
     protected override async Task OnInitializedAsync()
     {
@@ -82,10 +83,11 @@
                 {
 
                     _cartProducts = new ConcurrentBag<CartProduct>(await _unitOfWork.CartProducts.GetAsync(filter:(x => x.ApplicationUserId == claim.Value), include:"Product"));
-	                if (_cartProducts.Count > 0)
-	                { // Man kan klicka på knappen endast om det finns något i carten
-		                IsDisabled = false;
-	                }
+                    current = _cartProducts.Where(p => p.OrderId == null);
+                    if (current.Count() > 0)
+                    { // Man kan klicka på knappen endast om det finns något i carten
+                        IsDisabled = false;
+                    }
 
                     return;
                 }
@@ -100,46 +102,48 @@
 
     public decimal GetTotalCartPrice()
     {
-        CartProduct[] products = _cartProducts.Where(p=>p.OrderId == null).ToArray();
         decimal total = 0m;
 
-        for(int i = 0; i < products.Length; i++)
+        foreach(CartProduct product in current)
         {
-            total += RowPrice(products[i]);
+            total += RowPrice(product);
         }
 
         return total;
     }
 
     private void GoToCheckout()
-	{
-		NavigationManager.NavigateTo("/Checkout");
+    {
+        NavigationManager.NavigateTo("/Checkout");
 
-	}
+    }
 
-    
+
     //Gör en metod som ökar antalet - koppla till en knapp
     public async Task AddToAmountAsync(CartProduct product)
     {
         product.Amount++;
         await _unitOfWork.CommitAsync();
-        
+
     }
     //Gör en metod som minskar antalet - koppla till en knapp
     public async Task SubtractFromAmountAsync(CartProduct product)
     {
-        if (product.Amount > 0)
+        if (product.Amount <= 1)
         {
-            product.Amount--;
-            await _unitOfWork.CommitAsync();
+            await DeleteRowAsync(product);
+            return;
         }
+
+        product.Amount--;
+        await _unitOfWork.CommitAsync();
     }
     //Gör en metod som räknar ut totalpris på raden
     public async Task DeleteRowAsync(CartProduct product)
     {
         await _unitOfWork.CartProducts.DeleteAsync(product);
         await _unitOfWork.CommitAsync();
-        if (_cartProducts.Count == 1)
+        if (current.Count() <= 1)
         {
             IsDisabled = true;
         }
