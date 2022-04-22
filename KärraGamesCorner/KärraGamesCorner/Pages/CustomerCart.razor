@@ -102,6 +102,11 @@
 
     public decimal GetTotalCartPrice()
     {
+        if (current is null)
+        {
+            return 0m;
+        }
+
         decimal total = 0m;
 
         foreach(CartProduct product in current)
