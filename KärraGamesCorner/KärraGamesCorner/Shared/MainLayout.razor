@@ -1,37 +1,119 @@
 ﻿@inherits LayoutComponentBase
+@inject AuthenticationStateProvider _provider
+@inject IUnitOfWork _unitOfWork
+@inject IHttpContextAccessor _accessor
+@using System.Collections.Concurrent
+@using KärraGamesCorner.Interfaces
+@using System.Security.Claims
+
 
 <PageTitle>KärraGamesCorner</PageTitle>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+	<div class="sidebar">
+		<NavMenu />
+	</div>
 
-    <main>
-        <AuthorizeView>
-            <Authorized>
-                <h5>
-                    Welcome,Logged in as: 
-                    <a href="Identity/Account/Manage">
-                        @context.User.Identity?.Name!
-                        @if (context.User.IsInRole("Admin"))
-                        {
-                            <p>[Admin]</p>
-                        }
-                    </a>
-                </h5>
-            </Authorized>
+	<main>
+		<div class="container">
+				<div id="cartIcon" class="cart-icon" style="float: right">
+					<div class="px-3 cart-icon">
+						<NavLink href="CustomerCart">
+							<i class="bi bi-cart">
+								<span class="cart-icon-number">
+									@counter
+								</span>
+							</i>
+						</NavLink>
+					</div>
+				</div>
+			</div>
+		<AuthorizeView>
+			<Authorized>
+				<h5>
+					Welcome,Logged in as:
+					<a href="Identity/Account/Manage">
+						@context.User.Identity?.Name!
+						@if (context.User.IsInRole("Admin"))
+						{
+							<p>[Admin]</p>
+						}
+					</a>
+				</h5>
+			</Authorized>
 
-</AuthorizeView>
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-
-  
-      
-
+		</AuthorizeView>
+		<article class="content px-4">
+			@Body
+		</article>
+	</main>
 </div>
 
 
+@code {
+	public int counter;
+	private bool collapseNavMenu = true;
+
+	private ConcurrentBag<CartProduct> _cartProducts = new();
+
+
+	private bool expandSubMenuAccount;
+	private bool expandSubMenuContact;
+
+	private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+
+	private async Task GetCartAsync()
+	{
+
+		if (_accessor.HttpContext.User.Identity.IsAuthenticated)
+		{
+			var claims = _accessor.HttpContext.User.Claims;
+			foreach (var claim in claims)
+			{
+				if (claim.Type == ClaimTypes.NameIdentifier)
+				{
+					_cartProducts = new ConcurrentBag<CartProduct>(await _unitOfWork.CartProducts.GetAsync
+						(filter: (x => x.ApplicationUserId == claim.Value), include: "Product"));
+					UpdateQuantity();
+					return;
+				}
+			}
+
+		}
+	}
+
+	protected override async Task OnInitializedAsync()
+	{
+		await GetCartAsync();
+
+		_unitOfWork.OnChange += async () =>
+		{
+			await GetCartAsync();
+
+		};
+
+	}
+
+	private void UpdateQuantity()
+	{
+		counter = 0;
+		foreach (var item in _cartProducts)
+		{
+			if (item.OrderId != null)
+			{
+				continue;
+			}
+			counter += item.Amount;
+		}
+
+		StateHasChanged();
+
+	}
+	private void ToggleNavMenu()
+	{
+		collapseNavMenu = !collapseNavMenu;
+	}
+
+}
