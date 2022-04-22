@@ -16,7 +16,7 @@ namespace KärraGamesCorner.Data
 
         public async Task CreateAsync(T type)
         {
-            _dbSet.AddAsync(type);
+             _dbSet.AddAsync(type);
         }
 
         public Task DeleteAsync(T type)
